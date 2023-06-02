@@ -16,7 +16,7 @@ typealias SuspendCall<T> = suspend () -> Response<T>?
 object RequestHandler {
 
     private val successRange = 200..299
-    private val errorRange = 400..400 //400..499
+    private val errorRange = 400..400
 
     suspend fun <T: Any?> doRequest(
         handleSession: Boolean = true, call: SuspendCall<T>
