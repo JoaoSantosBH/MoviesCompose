@@ -19,7 +19,8 @@ interface Services {
 
     @GET(MOVIE_DETAILS)
     suspend fun getMovieDetails(
-        @Path("movie_id") movieId: String
+        @Path("movie_id") movieId: String,
+        @Query("language") language: String
     ): Response<MovieDetailResponse>
 
 
