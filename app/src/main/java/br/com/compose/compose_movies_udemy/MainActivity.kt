@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import br.com.compose.compose_movies_udemy.navigation.AppNavigation
-import br.com.compose.compose_movies_udemy.presentation.HomeViewModel
+import br.com.compose.compose_movies_udemy.presentation.home.HomeViewModel
 import br.com.compose.compose_movies_udemy.ui.theme.MoviesComposeTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay

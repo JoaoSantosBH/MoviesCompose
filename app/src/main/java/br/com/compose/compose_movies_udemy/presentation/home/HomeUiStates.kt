@@ -1,4 +1,4 @@
-package br.com.compose.compose_movies_udemy.presentation
+package br.com.compose.compose_movies_udemy.presentation.home
 
 import br.com.compose.compose_movies_udemy.domain.MovieModel
 

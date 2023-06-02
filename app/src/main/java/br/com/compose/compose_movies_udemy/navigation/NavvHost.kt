@@ -7,8 +7,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import br.com.compose.compose_movies_udemy.presentation.HomeUiStates
-import br.com.compose.compose_movies_udemy.presentation.HomeViewModel
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import br.com.compose.compose_movies_udemy.presentation.detail.DetailUiStates
+import br.com.compose.compose_movies_udemy.presentation.detail.MovieDetailViewModel
+import br.com.compose.compose_movies_udemy.presentation.home.HomeUiStates
+import br.com.compose.compose_movies_udemy.presentation.home.HomeViewModel
 import br.com.compose.compose_movies_udemy.ui.details.DetailsScreen
 import br.com.compose.compose_movies_udemy.ui.home.HomeScreen
 import br.com.compose.compose_movies_udemy.util.rememberFlowWithLifecycle
@@ -49,10 +53,14 @@ private fun NavGraphBuilder.navigateToHome(navController: NavHostController) {
 
 @OptIn(ExperimentalAnimationApi::class)
 private fun NavGraphBuilder.navigateToDetails2(navController: NavHostController) {
-    composable(route = Screen.MoviesDetailsScreen.route) {
-        val viewModel: HomeViewModel = getViewModel()
+    composable(
+        route = Screen.MoviesDetailsScreen.route + "/{filmId}",
+        arguments = listOf(navArgument("filmId") { type = NavType.StringType })
+    ) { backStackEntry ->
+        val viewModel: MovieDetailViewModel = getViewModel()
+        viewModel.setMovieId(backStackEntry.arguments?.getString("filmId").toString())
         val uiState by rememberFlowWithLifecycle(viewModel.uiSTate)
-            .collectAsState(initial = HomeUiStates.Empty)
+            .collectAsState(initial = DetailUiStates.Empty)
         DetailsScreen(
             state = uiState,
             onEvent = viewModel::onEvent

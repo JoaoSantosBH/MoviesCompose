@@ -30,8 +30,8 @@ import br.com.compose.compose_movies_udemy.components.LoadingLayout
 import br.com.compose.compose_movies_udemy.domain.MovieModel
 import br.com.compose.compose_movies_udemy.domain.PopularMoviesModel
 import br.com.compose.compose_movies_udemy.navigation.Screen
-import br.com.compose.compose_movies_udemy.presentation.HomeEvent
-import br.com.compose.compose_movies_udemy.presentation.HomeUiStates
+import br.com.compose.compose_movies_udemy.presentation.home.HomeEvent
+import br.com.compose.compose_movies_udemy.presentation.home.HomeUiStates
 import br.com.compose.compose_movies_udemy.util.NetworkUtils.Companion.PATH_PREFIX_URL
 import coil.compose.AsyncImage
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -83,7 +83,7 @@ fun HomeLayout(
 @Composable
 fun CardMovie(navController: NavHostController, card: MovieModel) {
     Card(modifier = Modifier.clickable {
-        navController.navigate(Screen.MoviesDetailsScreen.route)
+        navController.navigate(Screen.MoviesDetailsScreen.route + "/${card.id}")
     }) {
         AsyncImage(
             modifier = Modifier.fillMaxSize(),

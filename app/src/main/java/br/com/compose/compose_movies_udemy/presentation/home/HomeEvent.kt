@@ -1,4 +1,4 @@
-package br.com.compose.compose_movies_udemy.presentation
+package br.com.compose.compose_movies_udemy.presentation.home
 
 sealed class HomeEvent {
     object GetMovieList: HomeEvent()

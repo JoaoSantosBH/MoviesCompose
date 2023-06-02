@@ -1,6 +1,5 @@
 package br.com.compose.compose_movies_udemy.di
 
-import br.com.compose.compose_movies_udemy.presentation.HomeViewModel
 import br.com.compose.compose_movies_udemy.services.provideServices
 import br.com.compose.compose_movies_udemy.util.HttpInterceptor
 import br.com.compose.compose_movies_udemy.util.NetworkUtils.Companion.BASE_URL
@@ -9,7 +8,6 @@ import br.com.compose.compose_movies_udemy.util.provideOkHttpClient
 import br.com.compose.compose_movies_udemy.util.provideRetrofit
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val mainModule = module {
