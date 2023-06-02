@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.compose.compose_movies_udemy.remote.model.MovieResponse.Companion.toDomain
 import br.com.compose.compose_movies_udemy.services.Services
 import br.com.compose.compose_movies_udemy.util.NetworkUtils.Companion.DEFAULT_NUMBER_PAGES
-import br.com.compose.compose_movies_udemy.util.NetworkUtils.Companion.ENGLISH_LANGUAGE
+import br.com.compose.compose_movies_udemy.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
 import br.com.compose.compose_movies_udemy.util.RequestHandler
 import br.com.compose.compose_movies_udemy.util.then
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -30,7 +30,7 @@ class HomeViewModel(
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true)
             RequestHandler.doRequest {
-                service.getPopularMoviesList(ENGLISH_LANGUAGE, DEFAULT_NUMBER_PAGES) }.then(
+                service.getPopularMoviesList(PORTUGUESE_LANGUAGE, DEFAULT_NUMBER_PAGES) }.then(
                 onSuccess = {
                     _uiState.value = _uiState.value.copy(popularMovies = it.results.toDomain())
                 },

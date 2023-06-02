@@ -1,4 +1,4 @@
-//package br.com.compose.compose_movies_udemy.ui.theme
+package br.com.compose.compose_movies_udemy.remote.model//package br.com.compose.compose_movies_udemy.ui.theme
 //
 //data class MovieModel(
 //    val id:Int,

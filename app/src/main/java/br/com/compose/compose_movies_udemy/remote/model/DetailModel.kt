@@ -1,4 +1,4 @@
-//package br.com.compose.compose_movies_udemy.ui.theme
+package br.com.compose.compose_movies_udemy.remote.model//package br.com.compose.compose_movies_udemy.ui.theme
 //
 //import br.com.compose.compose_movies_udemy.ui.theme.Avatar.Companion.DUMB_AVATAR
 //import br.com.compose.compose_movies_udemy.ui.theme.Gravatar.Companion.DUMB_GRAVATAR

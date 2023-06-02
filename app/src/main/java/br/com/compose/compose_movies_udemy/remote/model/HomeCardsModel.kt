@@ -1,4 +1,4 @@
-//package br.com.compose.compose_movies_udemy.ui.theme
+package br.com.compose.compose_movies_udemy.remote.model//package br.com.compose.compose_movies_udemy.ui.theme
 //
 //
 ////import com.google.gson.annotations.SerializedName
