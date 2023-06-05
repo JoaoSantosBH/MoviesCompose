@@ -56,10 +56,20 @@ class MovieDetailViewModel(
             pendingActions.collect { event ->
                 when (event) {
                     DetailEvent.GetMovieDetails -> getMoviesDetail()
-                    else -> {}
+                    DetailEvent.SetLoadingImage -> setLoading()
+                    DetailEvent.FinishLoadingImage -> finishLoading()
                 }
             }
         }
     }
+
+    private fun finishLoading() {
+        _uiState.value = _uiState.value.copy(isLoading = false)
+    }
+
+    private fun setLoading() {
+        _uiState.value = _uiState.value.copy(isLoading = true)
+    }
+
 
 }

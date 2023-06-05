@@ -24,8 +24,6 @@ class HomeViewModel(
 
     init { handleEvents() }
 
-    private fun navigateToDetails() {}
-
     private fun getMoviesList() {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true)
@@ -55,10 +53,24 @@ class HomeViewModel(
             pendingActions.collect { event ->
                 when (event) {
                     HomeEvent.GetMovieList -> getMoviesList()
-                    else -> navigateToDetails()
+                    HomeEvent.TabMoviesEvent -> filterAllMovies()
+                    HomeEvent.FavMoviesEvent -> filterFavMovies()
                 }
             }
         }
     }
+
+    private fun filterAllMovies() {
+//        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.cachedMovies)
+
+    }
+
+    private fun filterFavMovies() {
+//        _uiState.value = _uiState.value.copy(cachedMovies = _uiState.value.popularMovies)
+//        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.popularMovies.filter { m.contains(it.id) })
+
+    }
+
+    val m = listOf(640146,1107872,758323  )
 }
 

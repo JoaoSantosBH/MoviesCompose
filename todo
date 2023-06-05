@@ -15,10 +15,12 @@ usecase
 
 jacoco
 tests
-cores thema
+
 ====================
 DONE
 ====================
+cores thema
+
 apikey
 retrofit
 domain
