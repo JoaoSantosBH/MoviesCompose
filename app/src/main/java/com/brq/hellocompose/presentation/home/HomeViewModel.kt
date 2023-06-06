@@ -30,7 +30,10 @@ class HomeViewModel(
             RequestHandler.doRequest {
                 service.getPopularMoviesList(PORTUGUESE_LANGUAGE, DEFAULT_NUMBER_PAGES) }.then(
                 onSuccess = {
-                    _uiState.value = _uiState.value.copy(popularMovies = it.results.toDomain())
+                    _uiState.value = _uiState.value.copy(
+                        popularMovies = it.results.toDomain(),
+                        cachedMovies = it.results.toDomain()
+                    )
                 },
                 onError = {
                     _uiState.value = _uiState.value.copy(isLoading = false)
@@ -61,16 +64,16 @@ class HomeViewModel(
     }
 
     private fun filterAllMovies() {
-//        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.cachedMovies)
+        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.cachedMovies)
 
     }
 
     private fun filterFavMovies() {
-//        _uiState.value = _uiState.value.copy(cachedMovies = _uiState.value.popularMovies)
-//        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.popularMovies.filter { m.contains(it.id) })
+
+        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.popularMovies.filter { m.contains(it.id) })
 
     }
 
-    val m = listOf(640146,1107872,758323  )
+    val m = listOf<Int>() // TODO remover e buscar pelo room
 }
 
