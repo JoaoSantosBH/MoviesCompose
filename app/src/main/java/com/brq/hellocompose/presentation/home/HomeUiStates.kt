@@ -7,7 +7,7 @@ data class HomeUiStates(
     val isSuccess: Boolean = false,
     val popularMovies: List<MovieModel> = emptyList(),
     val cachedMovies: List<MovieModel> = emptyList(),
-    val filteredMovies: List<MovieModel> = emptyList()
+    val favoriteIds: List<Int> = emptyList()
 ) {
         companion object {
         val Empty = HomeUiStates()

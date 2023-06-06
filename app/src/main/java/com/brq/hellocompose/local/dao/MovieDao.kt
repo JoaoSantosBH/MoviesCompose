@@ -5,19 +5,19 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.brq.hellocompose.local.entities.MovieEntity
+import com.brq.hellocompose.local.entities.FavoriteMovieEntity
 
 @Dao
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFavoriteMovie(movie: MovieEntity)
+    fun insertFavoriteMovie(movie: FavoriteMovieEntity)
 
     @Delete
-    fun removeFavoriteMovie(movie: MovieEntity)
+    fun removeFavoriteMovie(movie: FavoriteMovieEntity)
 
-    @Query("SELECT * FROM MovieEntity WHERE id = :id" )
-    fun getRoom(id: Long): List<MovieEntity>
+    @Query("SELECT * FROM FavoriteMovieEntity WHERE id = :id")
+    fun getFavoriteMovie(id: Int): List<FavoriteMovieEntity>
 
 
 }
