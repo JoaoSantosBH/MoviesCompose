@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.sharp.ArrowBack
+import androidx.compose.material.icons.sharp.Favorite
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -90,15 +91,26 @@ fun DetailsLayout(
                         error = painterResource(R.drawable.ic_placeholder),
                         contentDescription = state.movie.title
                     )
-                    Box(modifier = Modifier.padding(start = 8.dp, top = 16.dp)) {
-                        Icon(
-                            modifier = Modifier
-                                .size(42.dp)
-                                .clickable { navController.popBackStack() },
-                            imageVector = Icons.Sharp.ArrowBack,
-                            tint = Grey900,
-                            contentDescription = null
-                        )
+                    Box(modifier = Modifier.padding(start = 8.dp, top = 16.dp, end = 16.dp)) {
+                        Row(Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween) {
+                            Icon(
+                                modifier = Modifier
+                                    .size(42.dp)
+                                    .clickable { navController.popBackStack() },
+                                imageVector = Icons.Sharp.ArrowBack,
+                                tint = Grey900,
+                                contentDescription = null
+                            )
+                            Icon(
+                                modifier = Modifier
+                                    .size(42.dp)
+                                    .clickable { navController.popBackStack() },
+                                imageVector = Icons.Sharp.Favorite,
+                                tint = Grey900,
+                                contentDescription = null
+                            )
+                        }
                     }
                 }
             }

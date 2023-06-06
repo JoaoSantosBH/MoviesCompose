@@ -14,7 +14,7 @@ data class PopularMoviesResponse(
     companion object {
         fun PopularMoviesResponse.toDomain() = PopularMoviesModel(
             page = this.page,
-            results = this.results.toDomain() ?: listOf(),
+            results = this.results.toDomain(),
             totalPages=this.totalPages,
             totalResults= this.totalResults
         )

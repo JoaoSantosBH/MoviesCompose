@@ -2,6 +2,8 @@ plugins {
     id(Deps.androidAplicationPlugin)
     kotlin(Deps.androidPlugin)
     id("kotlin-kapt")
+    id("jacoco")
+//    id("jacoco-report")
 }
 
 android {
@@ -39,6 +41,7 @@ android {
 
         getByName("debug") {
             isMinifyEnabled = false
+            isTestCoverageEnabled = true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
@@ -48,7 +51,6 @@ android {
 
 
 dependencies {
-
     implementation(Deps.androidX)
     implementation(platform(Deps.kotlinBom))
     implementation(Deps.lifecycle)
@@ -59,12 +61,15 @@ dependencies {
     implementation(Deps.composePreview)
     implementation(Deps.composeAnimatioNavigation)
     implementation(Deps.splashScreen)
+    implementation(Deps.roomRuntime)
+    annotationProcessor(Deps.roomCompiler)
     implementation(Deps.material3)
     implementation(Deps.coilCompose)
     implementation(Deps.koinCompose)
     implementation(Deps.retrofit)
     implementation(Deps.retrofitGson)
     implementation(Deps.interceptor)
+    implementation(Deps.jacoco)
     testImplementation(Deps.junitTest)
     androidTestImplementation(Deps.junit5)
     androidTestImplementation(Deps.espresso)
@@ -72,4 +77,5 @@ dependencies {
     androidTestImplementation(Deps.composeUiTestJunit)
     debugImplementation(Deps.composeUiTooling)
     debugImplementation(Deps.composeUiTestManifest)
+
 }

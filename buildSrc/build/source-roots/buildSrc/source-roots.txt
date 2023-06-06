@@ -2,6 +2,7 @@ src/main/resources
 src/main/java
 src/main/groovy
 src/main/kotlin
+buildSrc/src/main/kotlin
 src/test/resources
 src/test/java
 src/test/groovy
