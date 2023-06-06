@@ -63,7 +63,6 @@ class HomeViewModel(
         _uiState.value = _uiState.value.copy(
             popularMovies = it.results.toDomain(),
             cachedMovies = it.results.toDomain()
-
         )
     }
 
