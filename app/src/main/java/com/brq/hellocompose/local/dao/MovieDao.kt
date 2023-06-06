@@ -16,8 +16,13 @@ interface MovieDao {
     @Delete
     fun removeFavoriteMovie(movie: FavoriteMovieEntity)
 
-    @Query("SELECT * FROM FavoriteMovieEntity WHERE id = :id")
-    fun getFavoriteMovie(id: Int): List<FavoriteMovieEntity>
+    @Query("SELECT * FROM FavoriteMovieEntity")
+    fun getFavoriteMoviesList(): List<FavoriteMovieEntity>
 
+    @Query("SELECT * FROM FavoriteMovieEntity WHERE movieId = :id")
+    fun checkIfisAFavoriteMovie(id: Int): Boolean
+
+    @Query("SELECT * FROM FavoriteMovieEntity WHERE movieId = :id")
+    fun getFavoriteMovieById(id: Int) : FavoriteMovieEntity
 
 }

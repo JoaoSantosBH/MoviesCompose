@@ -2,6 +2,7 @@ package com.brq.hellocompose.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.brq.hellocompose.local.dao.MovieDao
 import com.brq.hellocompose.remote.model.MovieResponse.Companion.toDomain
 import com.brq.hellocompose.services.Services
 import com.brq.hellocompose.util.NetworkUtils.Companion.DEFAULT_NUMBER_PAGES
@@ -14,7 +15,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val service: Services
+    private val service: Services,
+    private val db:MovieDao
 ) : ViewModel() {
 
     private val _uiState: MutableStateFlow<HomeUiStates> =

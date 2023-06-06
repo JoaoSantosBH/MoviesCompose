@@ -65,6 +65,7 @@ dependencies {
     implementation(Deps.splashScreen)
     implementation(Deps.roomRuntime)
     annotationProcessor(Deps.roomCompiler)
+    kapt(Deps.roomCompiler)
     implementation(Deps.material3)
     implementation(Deps.coilCompose)
     implementation(Deps.koinCompose)

@@ -6,9 +6,8 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.brq.hellocompose.local.dao.MovieDao
 import com.brq.hellocompose.local.entities.FavoriteMovieEntity
-import org.hamcrest.CoreMatchers
-import org.hamcrest.MatcherAssert
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -31,6 +30,7 @@ companion object {
             context, AppDatabase::class.java
         ).build()
         dao = db.movieDao()
+
     }
 
     @After
@@ -41,29 +41,37 @@ companion object {
 
     @Test
     @Throws(Exception::class)
-    fun writeRoomAndReadInList() {
+    fun writeAndReadInList() {
         val movieCreated = createFakeMovie()
         dao.insertFavoriteMovie(movieCreated)
-        val movieRead = dao.getFavoriteMovie(DUMB_MOVIE_ID)
-        MatcherAssert.assertThat(movieRead, CoreMatchers.equalTo(movieCreated))
+        val expected = true
+        val result = dao.checkIfisAFavoriteMovie(DUMB_MOVIE_ID)
+        assertEquals(expected, result)
     }
 
     @Test
     @Throws(Exception::class)
-    fun deleteRoom() {
-//        val movieCreated = createFakeMovie()
-//        dao.removeFavoriteMovie(movieCreated)
-//        val movieWrited = movieCreated.id?.let { dao.getFavoriteMovie(it) }
-//        MatcherAssert.assertThat(movieWrited?, CoreMatchers.equalTo(movieCreated))
-//        val expectedDeleted = null
-//        if (movieWrited != null) {
-//            dao.removeFavoriteMovie(movieWrited)
-//        }
-//        val movieDeleted = movieWrited?.let { dao.getFavoriteMovie(it) }
-//        MatcherAssert.assertThat(movieDeleted, CoreMatchers.equalTo(expectedDeleted))
+    fun deleteFavorite() {
+        dao.insertFavoriteMovie(createFakeMovie())
+        val expected = dao.checkIfisAFavoriteMovie(12345)
+        assertEquals(expected, true)
+        val created = dao.getFavoriteMovieById(12345)
+        dao.removeFavoriteMovie(created)
+        val result = dao.checkIfisAFavoriteMovie(12345)
+        assertEquals(result, false)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun checkLists() {
+        dao.insertFavoriteMovie(createFakeMovie())
+        dao.insertFavoriteMovie(createFakeMovie())
+        val expected = dao.getFavoriteMoviesList()
+        assertEquals(expected.size, 2)
+
     }
 
     private fun createFakeMovie() = FavoriteMovieEntity(
-        id = 12345
+        movieId = 12345
     )
 }
