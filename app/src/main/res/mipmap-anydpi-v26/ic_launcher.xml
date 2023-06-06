@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/tmdbicon" />
+    <foreground android:drawable="@drawable/tmdbicon" />
+    <monochrome android:drawable="@drawable/tmdbicon" />
+</adaptive-icon>

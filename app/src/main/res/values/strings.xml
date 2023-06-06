@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MoviesCompose</string>
+    <string name="home_title_text">Compose Films</string>
+    <string name="home_toolbar_title_text">Compose FIlms</string>
+    <string name="films_tab_title">Filmes</string>
+    <string name="films_tab_favorites">Favoritos</string>
+    <string name="no_movies_yet">Ainda não existem favoritos!</string>
+</resources>
