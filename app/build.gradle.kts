@@ -15,6 +15,8 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = Deps.androidTestRunnerImplementationClass
+
     }
     buildFeatures {
         compose = true
@@ -63,6 +65,7 @@ dependencies {
     implementation(Deps.splashScreen)
     implementation(Deps.roomRuntime)
     annotationProcessor(Deps.roomCompiler)
+    kapt(Deps.roomCompiler)
     implementation(Deps.material3)
     implementation(Deps.coilCompose)
     implementation(Deps.koinCompose)
@@ -75,6 +78,7 @@ dependencies {
     androidTestImplementation(Deps.espresso)
     androidTestImplementation(platform(Deps.composeBom))
     androidTestImplementation(Deps.composeUiTestJunit)
+    testImplementation(Deps.roomTests)
     debugImplementation(Deps.composeUiTooling)
     debugImplementation(Deps.composeUiTestManifest)
 

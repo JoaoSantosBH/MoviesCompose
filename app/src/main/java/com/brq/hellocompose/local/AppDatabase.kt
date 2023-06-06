@@ -4,12 +4,12 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.brq.hellocompose.local.dao.MovieDao
-import com.brq.hellocompose.local.entities.MovieEntity
+import com.brq.hellocompose.local.entities.FavoriteMovieEntity
 
 
 @Database(
-    entities = [MovieEntity::class, ],
-    version = 1,
+    entities = [FavoriteMovieEntity::class, ],
+    version = 2,
     exportSchema = false
 )
 

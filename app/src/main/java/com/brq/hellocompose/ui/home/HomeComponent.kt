@@ -70,6 +70,7 @@ fun HomeScreen(
     )
     LaunchedEffect(key1 = Unit) {
         delay(1000)
+        onEvent.invoke(HomeEvent.UpdateFavorites)
         if (state.popularMovies.isEmpty()) onEvent.invoke(HomeEvent.GetMovieList)
     }
 }
