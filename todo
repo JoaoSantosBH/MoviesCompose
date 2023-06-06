@@ -1,8 +1,8 @@
 ====================
 DOING
 ====================
-room
 sharedPrefs
+Tab bar home filter
 
 ====================
 TO DO
@@ -10,10 +10,9 @@ TO DO
 
 full screen
 savedStateHandle
-Tab bar home filter
 Botoes Toolbar
 usecase
-tests
+
 
 ====================
 DONE
@@ -35,7 +34,8 @@ TELA DETALHES
 srcBuild
 renomear pacotes
 jacoco
-
+room
+tests
 
 Token vivo
 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

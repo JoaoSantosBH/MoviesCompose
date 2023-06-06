@@ -6,7 +6,8 @@ data class DetailUiStates(
     val isLoading: Boolean = false,
     val isSuccess: Boolean = false,
     val movieId: String = "",
-    val movie: MovieDetailModel = MovieDetailModel.EMPTY
+    val movie: MovieDetailModel = MovieDetailModel.EMPTY,
+    val isFavorite: Boolean = false
 ) {
 
     companion object {

@@ -105,7 +105,7 @@ fun DetailsLayout(
                             Icon(
                                 modifier = Modifier
                                     .size(42.dp)
-                                    .clickable { navController.popBackStack() },
+                                    .clickable { onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id)) },
                                 imageVector = Icons.Sharp.Favorite,
                                 tint = Grey900,
                                 contentDescription = null

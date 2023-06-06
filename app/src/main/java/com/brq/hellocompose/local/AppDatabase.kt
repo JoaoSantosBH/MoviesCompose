@@ -9,7 +9,7 @@ import com.brq.hellocompose.local.entities.FavoriteMovieEntity
 
 @Database(
     entities = [FavoriteMovieEntity::class, ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 

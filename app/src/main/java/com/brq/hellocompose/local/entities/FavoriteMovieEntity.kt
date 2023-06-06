@@ -12,3 +12,9 @@ data class FavoriteMovieEntity (
     val movieId: Int?,
 
 )
+
+fun List<FavoriteMovieEntity>.toDomain() = this.map {
+    it.movieId
+}
+
+fun Int.toLocal() = FavoriteMovieEntity(null,this)
