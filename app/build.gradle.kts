@@ -2,7 +2,7 @@ plugins {
     id(Deps.androidAplicationPlugin)
     kotlin(Deps.androidPlugin)
     id("kotlin-kapt")
-    id("jacoco")
+//    id("jacoco")
 //    id("jacoco-report")
 }
 
@@ -69,7 +69,7 @@ dependencies {
     implementation(Deps.retrofit)
     implementation(Deps.retrofitGson)
     implementation(Deps.interceptor)
-    implementation(Deps.jacoco)
+//    implementation(Deps.jacoco)
     testImplementation(Deps.junitTest)
     androidTestImplementation(Deps.junit5)
     androidTestImplementation(Deps.espresso)
