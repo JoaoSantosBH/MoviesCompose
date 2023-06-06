@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:name=".CustomApp"
+        android:name="com.brq.hellocompose.CustomApp"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +17,7 @@
         android:theme="@style/SplashScreenTheme"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.brq.hellocompose.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,1 @@
+/Users/joaosantos/AndroidStudioProjects/MoviesCompose/buildSrc/build/classes/kotlin/main/Deps.class:/Users/joaosantos/AndroidStudioProjects/MoviesCompose/buildSrc/build/classes/kotlin/main/Versions.class

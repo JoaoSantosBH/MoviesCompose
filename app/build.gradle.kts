@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "br.com.compose.compose_movies_udemy"
+    namespace = "com.brq.hellocompose"
     compileSdk = 33
     defaultConfig {
-        applicationId = "br.com.compose.compose_movies_udemy"
+        applicationId = "com.brq.hellocompose"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
