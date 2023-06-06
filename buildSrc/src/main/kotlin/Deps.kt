@@ -29,6 +29,7 @@ object Deps {
 
     const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+    const val roomTests = "androidx.room:room-testing:${Versions.roomVersion}"
 
     const val junitTest = "junit:junit:${Versions.junitTestVersion}"
 
@@ -44,6 +45,7 @@ object Deps {
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
 
     const val androidBuildTools = "com.android.tools.build:gradle:${Versions.gradleVersion}"
+    const val androidTestRunnerImplementationClass = "androidx.test.runner.AndroidJUnitRunner"
 
     const val jacoco = "org.jacoco:org.jacoco.core:${Versions.jacocoVersion}"
 
