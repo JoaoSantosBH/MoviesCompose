@@ -1,6 +1,7 @@
 package com.brq.hellocompose.ui.home
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -49,6 +50,8 @@ import com.brq.hellocompose.core.navigation.Screen
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.PATH_PREFIX_URL
 import com.brq.hellocompose.presentation.home.HomeEvent
 import com.brq.hellocompose.presentation.home.HomeUiStates
+import com.brq.hellocompose.ui.theme.Cyan700
+import com.brq.hellocompose.ui.theme.Green100
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay
 
@@ -84,7 +87,7 @@ fun HomeLayout(
     onEvent: (HomeEvent) -> Unit
 ) {
 
-    Column(modifier = Modifier.padding(paddingValues)) {
+    Column(modifier = Modifier.padding(paddingValues).background(color = Green100).fillMaxSize()) {
         TabLayout(onEvent)
         Spacer(modifier = Modifier.height(8.dp))
         if (cards.isEmpty()) {
@@ -132,15 +135,15 @@ fun TabLayout(onEvent: (HomeEvent) -> Unit) {
         stringResource(id = R.string.films_tab_favorites))
 
     Column(modifier = Modifier.fillMaxWidth()) {
-        TabRow(selectedTabIndex = tabIndex) {
+        TabRow(selectedTabIndex = tabIndex, containerColor = Green100) {
             tabs.forEachIndexed { index, title ->
                 Tab(text = { Text(title) },
                     selected = tabIndex == index,
                     onClick = { tabIndex = index },
                     icon = {
-                        when (index) {
-                            0 -> Icon(imageVector = Icons.Sharp.Info, contentDescription = null)
-                            1 -> Icon(imageVector = Icons.Default.Favorite, contentDescription = null)
+                        when (index) { //tint = if (state.isFavorite) MaterialTheme.colorScheme.error
+                            0 -> Icon(imageVector = Icons.Sharp.Info, contentDescription = null, tint = Cyan700)
+                            1 -> Icon(imageVector = Icons.Default.Favorite, contentDescription = null, tint = Cyan700)
                         }
                     }
                 )
