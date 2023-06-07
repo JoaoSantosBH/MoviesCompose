@@ -2,10 +2,14 @@ FIX:
 jacoco -> Cannot process instrumented class com/google/accompanist/navigation/animation/R. Please supply original non-instrumented classes.
 belongs to collection
 ====================
+FIX:
+====================
+jacoco -> Cannot process instrumented class com/google/accompanist/navigation/animation/R. Please supply original non-instrumented classes.
+DETAILS -> belongs to collection
+====================
 DOING
 ====================
-Favoritando Icone change
-Desfavoritar
+Dialog ERROR Home
 sharedPrefs
 
 ====================
@@ -14,9 +18,9 @@ TO DO
 Modal EERROR
 full screen
 savedStateHandle
-Botoes ToolBar [Draewr] e logout
+Trocar Botoes rascunhos ToolBar [Draewr] e logout
 
-usecase
+usecase???
 
 
 ====================
@@ -42,6 +46,12 @@ jacoco
 room
 tests
 Tab bar home filter
+Favoritando Icone change
+Dialog ERROR Details
+Desfavoritar
+
 
 Token vivo
 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
+
+

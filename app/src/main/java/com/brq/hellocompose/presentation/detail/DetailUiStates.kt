@@ -8,7 +8,8 @@ data class DetailUiStates(
     val movieId: String = "",
     val movie: MovieDetailModel = MovieDetailModel.EMPTY,
     val isFavorite: Boolean = false,
-    val errorMessage:String = ""
+    val errorMessage:String = "",
+    val mustShowErrorDialog:Boolean = false
 ) {
 
     companion object {

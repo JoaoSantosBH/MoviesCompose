@@ -5,4 +5,9 @@
     <string name="films_tab_title">Filmes</string>
     <string name="films_tab_favorites">Favoritos</string>
     <string name="no_movies_yet">Ainda não existem favoritos!</string>
+    <string name="button_ok">OK</string>
+    <string name="continue_label">Continuar</string>
+    <string name="compose_dialog_master_choice_title_dialog_text">Atenção!</string>
+    <string name="compose_dialog_master_choice_info_dialog_text">Texto de aviso</string>
+    <string name="close_label">Fechar</string>
 </resources>
