@@ -122,7 +122,7 @@ fun TitleLayout(title: String) {
         Text(
             text = title,
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.bodySmall, color = Cyan900
+            style = MaterialTheme.typography.labelLarge, color = Color.Red
         )
     }
 }
@@ -147,7 +147,7 @@ private fun TopHeaderLayout(setShowDialog: () -> Unit) {
             )
             Column(
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(1f).padding(end = 16.dp)
             ) {
                 Image(
                     modifier = Modifier

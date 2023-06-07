@@ -5,5 +5,6 @@ sealed class HomeEvent {
     object TabMoviesEvent : HomeEvent()
     object FavMoviesEvent : HomeEvent()
     object UpdateFavorites: HomeEvent()
+     object DismissDialog: HomeEvent()
 
 }
