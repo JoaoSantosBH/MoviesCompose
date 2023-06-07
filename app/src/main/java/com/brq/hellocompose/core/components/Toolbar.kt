@@ -11,17 +11,19 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.brq.hellocompose.R
+import com.brq.hellocompose.core.util.ShowToastMessage
 import com.brq.hellocompose.ui.theme.Cyan700
 import com.brq.hellocompose.ui.theme.Green100
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeToolBarCompose(title: Int) {
-
+    val context = LocalContext.current
     CenterAlignedTopAppBar(
         title = {
             Text( stringResource(id = title),
@@ -31,7 +33,9 @@ fun HomeToolBarCompose(title: Int) {
             )
         },
         navigationIcon = {
-            IconButton(onClick = { /* doSomething() */ }) {
+            IconButton(onClick = {
+                ShowToastMessage(context = context, string = "NOT YET")
+            }) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
                     tint = Cyan700,
@@ -40,7 +44,10 @@ fun HomeToolBarCompose(title: Int) {
             }
         },
         actions = {
-            IconButton(onClick = { /* doSomething() */ }) {
+            IconButton(onClick = {
+                ShowToastMessage(context = context, string = "NOT YET")
+            }
+            ) {
                 Icon(
                     imageVector = Icons.Filled.ExitToApp,
                     tint = Cyan700,
