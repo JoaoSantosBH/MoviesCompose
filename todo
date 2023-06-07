@@ -2,24 +2,22 @@
 FIX:
 ====================
 jacoco -> Cannot process instrumented class com/google/accompanist/navigation/animation/R. Please supply original non-instrumented classes.
-belongs to collection
+DETAILS -> belongs to collection
 ====================
 DOING
 ====================
-
-Desfavoritar
+Dialog ERROR Home
 sharedPrefs
 
 ====================
 TO DO
 ====================
-Dialog ERROR Home
 
 full screen
 savedStateHandle
 Trocar Botoes rascunhos ToolBar [Draewr] e logout
 
-usecase
+usecase???
 
 
 ====================
@@ -47,6 +45,7 @@ tests
 Tab bar home filter
 Favoritando Icone change
 Dialog ERROR Details
+Desfavoritar
 
 
 Token vivo

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brq.hellocompose.core.data.local.dao.MovieDao
 import com.brq.hellocompose.core.data.local.entities.toLocal
+import com.brq.hellocompose.core.data.remote.model.MovieDetailResponse
 import com.brq.hellocompose.core.data.remote.model.MovieDetailResponse.Companion.toDomain
 import com.brq.hellocompose.core.services.Services
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
@@ -34,7 +35,7 @@ class MovieDetailViewModel(
             RequestHandler.doRequest {
                 service.getMovieDetails(_uiState.value.movieId, PORTUGUESE_LANGUAGE) }.then(
                 onSuccess = {
-                    _uiState.value = _uiState.value.copy(movie = it.toDomain())
+                    setUiValues(it)
                 },
                 onError = {
                     onEvent(DetailEvent.Error(it))
@@ -43,6 +44,14 @@ class MovieDetailViewModel(
                     _uiState.value = _uiState.value.copy(isLoading = false)
                 }
             )
+        }
+    }
+
+    private fun setUiValues(it: MovieDetailResponse) {
+        CoroutineScope(Dispatchers.Default).launch {
+            _uiState.value = _uiState.value.copy(movie = it.toDomain())
+            val isFavorite = db.checkIfisAFavoriteMovie(_uiState.value.movie.id)
+            if (isFavorite) _uiState.value = _uiState.value.copy(isFavorite = isFavorite)
         }
     }
 
@@ -64,7 +73,7 @@ class MovieDetailViewModel(
                     DetailEvent.SetLoadingImage -> setLoading()
                     DetailEvent.FinishLoadingImage -> finishLoading()
                     is DetailEvent.FavoriteMovie -> favoriteMovie(event.id)
-                    is DetailEvent.UnFavoriteMovie -> unfavoriteMovie(event.id)
+                    is DetailEvent.UnFavoriteMovie -> unFavoriteMovie(event.id)
                     is DetailEvent.Error -> showErrorMessage(event.message)
                 }
             }
@@ -83,10 +92,12 @@ class MovieDetailViewModel(
                 isFavorite = db.checkIfisAFavoriteMovie(movieId))
         }
     }
-    private fun unfavoriteMovie(id: Int) {
-    val toRemove = db.getFavoriteMovieById(id)
-        db.removeFavoriteMovie(toRemove)
-        _uiState.value = _uiState.value.copy(isFavorite = db.checkIfisAFavoriteMovie(id))
+    private fun unFavoriteMovie(id: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val toRemove = db.getFavoriteMovieById(id)
+            db.removeFavoriteMovie(toRemove)
+            _uiState.value = _uiState.value.copy(isFavorite = db.checkIfisAFavoriteMovie(id))
+        }
     }
 
     private fun finishLoading() {

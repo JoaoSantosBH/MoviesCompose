@@ -125,7 +125,12 @@ fun DetailsLayout(
                             Icon(
                                 modifier = Modifier
                                     .size(42.dp)
-                                    .clickable { onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id)) },
+                                    .clickable {
+                                        if (state.isFavorite)
+                                            onEvent.invoke(DetailEvent.UnFavoriteMovie(state.movie.id))
+                                        else
+                                            onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id))
+                                    },
                                 imageVector = Icons.Sharp.Favorite,
                                 tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
                                 contentDescription = null
