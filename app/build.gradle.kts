@@ -2,8 +2,8 @@ plugins {
     id(Deps.androidAplicationPlugin)
     kotlin(Deps.androidPlugin)
     id("kotlin-kapt")
-//    id("jacoco")
-//    id("jacoco-report")
+    id("jacoco")
+    id("plugins.jacoco-report")
 }
 
 android {
@@ -43,10 +43,15 @@ android {
 
         getByName("debug") {
             isMinifyEnabled = false
-            isTestCoverageEnabled = true
+            enableAndroidTestCoverage
+            enableUnitTestCoverage
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
+    }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = true
     }
 }
 
@@ -72,7 +77,7 @@ dependencies {
     implementation(Deps.retrofit)
     implementation(Deps.retrofitGson)
     implementation(Deps.interceptor)
-//    implementation(Deps.jacoco)
+    implementation(Deps.jacoco)
     testImplementation(Deps.junitTest)
     androidTestImplementation(Deps.junit5)
     androidTestImplementation(Deps.espresso)
