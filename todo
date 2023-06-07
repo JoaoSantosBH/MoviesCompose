@@ -7,16 +7,18 @@ DETAILS -> belongs to collection
 DOING
 ====================
 Drawer
+full screen
+
 sharedPrefs
 
 ====================
 TO DO
 ====================
 
-full screen
 savedStateHandle
-Trocar Botoes rascunhos ToolBar [Draewr] e logout
 Ajustes finos
+trocar placeholders
+
 usecase???
 
 
@@ -47,6 +49,7 @@ Favoritando Icone change
 Dialog ERROR Details
 Desfavoritar
 Dialog ERROR Home
+Trocar Botoes rascunhos ToolBar [Draewr] e logout
 
 
 Token vivo
