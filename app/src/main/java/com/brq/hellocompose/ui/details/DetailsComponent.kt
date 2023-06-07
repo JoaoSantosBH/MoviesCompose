@@ -82,7 +82,7 @@ fun DetailsScreen(
     Scaffold(
         content = { paddingValues ->
             if (state.isLoading) LoadingLayout(paddingValues)
-            else DetailsLayout(paddingValues, state, onEvent,navController)
+            else DetailsLayout(paddingValues, state, onEvent, navController)
         }
     )
     LaunchedEffect(key1 = Unit) {
@@ -100,7 +100,9 @@ fun DetailsLayout(
     navController: NavHostController
 ) {
 
-    Column(modifier = Modifier.padding(paddingValues).background(color = Green100)) {
+    Column(modifier = Modifier
+        .padding(paddingValues)
+        .background(color = Green100)) {
         LazyColumn {
             item {
                 Box(modifier = Modifier.fillMaxWidth()) {
@@ -142,6 +144,7 @@ fun DetailsLayout(
                         }
                     }
                 }
+            }
 
             item {
                 Row(
@@ -151,10 +154,10 @@ fun DetailsLayout(
                 ) {
                     Text(text = state.movie.overview)
                 }
-                item { CardDetails(state) }
             }
-        }
 
+            item { CardDetails(state) }
+        }
     }
 
 }
@@ -173,26 +176,34 @@ fun CardDetails(state: DetailUiStates) {
                 .weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    border = BorderStroke(1.dp, Color.Gray),
-                    content = {
-                        Column(modifier = Modifier
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                border = BorderStroke(1.dp, Color.Gray),
+                content = {
+                    Column(
+                        modifier = Modifier
                             .fillMaxWidth()
                             .background(color = Green50)
-                            .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Spacer(modifier = Modifier.height(8.dp))
-                            Icon(imageVector = Icons.Default.Favorite, contentDescription = null, tint = Cyan700)
-                            Text(
-                                state.movie.budget.toString(),
-                                modifier = Modifier.padding(16.dp),
-                                style = MaterialTheme.typography.labelLarge
-                            )
-                        }
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = null,
+                            tint = Cyan700
+                        )
+                        Text(
+                            state.movie.budget.toString(),
+                            modifier = Modifier.padding(16.dp),
+                            style = MaterialTheme.typography.labelLarge
+                        )
                     }
-                )
+                }
+            )
             Spacer(modifier = Modifier.height(16.dp))
 
             Card(
@@ -201,12 +212,20 @@ fun CardDetails(state: DetailUiStates) {
                     .padding(16.dp),
                 border = BorderStroke(1.dp, Color.Gray),
                 content = {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Green50)
-                        .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(color = Green50)
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        Icon(imageVector = Icons.Default.Info, contentDescription = null, tint = Cyan700)
+                        Icon(
+                            imageVector = Icons.Default.Info,
+                            contentDescription = null,
+                            tint = Cyan700
+                        )
                         Text(
                             state.movie.revenue.toString(),
                             modifier = Modifier.padding(16.dp),
@@ -229,12 +248,20 @@ fun CardDetails(state: DetailUiStates) {
                     .padding(16.dp),
                 border = BorderStroke(1.dp, Color.Gray),
                 content = {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Green50)
-                        .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(color = Green50)
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        Icon(imageVector = Icons.Default.Star, contentDescription = null, tint = Cyan700)
+                        Icon(
+                            imageVector = Icons.Default.Star,
+                            contentDescription = null,
+                            tint = Cyan700
+                        )
                         Text(
                             state.movie.popularity.toString(),
                             modifier = Modifier.padding(16.dp),
@@ -251,12 +278,20 @@ fun CardDetails(state: DetailUiStates) {
                     .padding(16.dp),
                 border = BorderStroke(1.dp, Color.Gray),
                 content = {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Green50)
-                        .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(color = Green50)
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        Icon(imageVector = Icons.Default.DateRange, contentDescription = null, tint = Cyan700)
+                        Icon(
+                            imageVector = Icons.Default.DateRange,
+                            contentDescription = null,
+                            tint = Cyan700
+                        )
                         Text(
                             state.movie.release_date.toString(),
                             modifier = Modifier.padding(16.dp),
@@ -273,17 +308,17 @@ fun CardDetails(state: DetailUiStates) {
 
 @Preview
 @Composable
-fun CardPreview(){
+fun CardPreview() {
     val state = DetailUiStates()
-    CardDetails( state)
+    CardDetails(state)
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Preview
 @Composable
-fun ScreenPreview(){
+fun ScreenPreview() {
     val onEvent: (DetailEvent) -> Unit = {}
     val navController = rememberAnimatedNavController()
     val state = DetailUiStates()
-    DetailsScreen( state,onEvent,navController)
+    DetailsScreen(state, onEvent, navController)
 }
