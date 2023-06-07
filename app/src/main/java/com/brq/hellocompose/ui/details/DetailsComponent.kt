@@ -41,11 +41,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.brq.hellocompose.R
-import com.brq.hellocompose.components.LoadingLayout
+import com.brq.hellocompose.core.components.LoadingLayout
+import com.brq.hellocompose.core.util.NetworkUtils
 import com.brq.hellocompose.presentation.detail.DetailEvent
 import com.brq.hellocompose.presentation.detail.DetailUiStates
 import com.brq.hellocompose.ui.theme.Grey900
-import com.brq.hellocompose.util.NetworkUtils
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay
 
@@ -78,52 +78,67 @@ fun DetailsLayout(
 ) {
 
     Column(modifier = Modifier.padding(paddingValues)) {
-        LazyColumn {
-            item {
-                Box(modifier = Modifier.fillMaxWidth()) {
-                    AsyncImage(
-                        onLoading = { onEvent.invoke(DetailEvent.SetLoadingImage) },
-                        onSuccess = { onEvent.invoke(DetailEvent.FinishLoadingImage) },
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.FillWidth,
-                        model = NetworkUtils.PATH_PREFIX_URL + state.movie.posterPath,
-                        placeholder = rememberVectorPainter(image = Icons.Default.Star),
-                        error = painterResource(R.drawable.ic_placeholder),
-                        contentDescription = state.movie.title
-                    )
-                    Box(modifier = Modifier.padding(start = 8.dp, top = 16.dp, end = 16.dp)) {
-                        Row(Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween) {
-                            Icon(
-                                modifier = Modifier
-                                    .size(42.dp)
-                                    .clickable { navController.popBackStack() },
-                                imageVector = Icons.Sharp.ArrowBack,
-                                tint = Grey900,
-                                contentDescription = null
-                            )
-                            Icon(
-                                modifier = Modifier
-                                    .size(42.dp)
-                                    .clickable { onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id)) },
-                                imageVector = Icons.Sharp.Favorite,
-                                tint = Grey900,
-                                contentDescription = null
-                            )
+        if (state.errorMessage.isNotEmpty()) {
+            //MODAL ERROR
+            Text(state.errorMessage)
+            Icon(
+                modifier = Modifier
+                    .size(42.dp)
+                    .clickable { navController.popBackStack() },
+                imageVector = Icons.Sharp.ArrowBack,
+                tint = Grey900,
+                contentDescription = null
+            )
+            ////
+        } else {
+            LazyColumn {
+                item {
+                    Box(modifier = Modifier.fillMaxWidth()) {
+                        AsyncImage(
+                            onLoading = { onEvent.invoke(DetailEvent.SetLoadingImage) },
+                            onSuccess = { onEvent.invoke(DetailEvent.FinishLoadingImage) },
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.FillWidth,
+                            model = NetworkUtils.PATH_PREFIX_URL + state.movie.posterPath,
+                            placeholder = rememberVectorPainter(image = Icons.Default.Star),
+                            error = painterResource(R.drawable.ic_placeholder),
+                            contentDescription = state.movie.title
+                        )
+                        Box(modifier = Modifier.padding(start = 8.dp, top = 16.dp, end = 16.dp)) {
+                            Row(Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween) {
+                                Icon(
+                                    modifier = Modifier
+                                        .size(42.dp)
+                                        .clickable { navController.popBackStack() },
+                                    imageVector = Icons.Sharp.ArrowBack,
+                                    tint = Grey900,
+                                    contentDescription = null
+                                )
+                                Icon(
+                                    modifier = Modifier
+                                        .size(42.dp)
+                                        .clickable { onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id)) },
+                                    imageVector = Icons.Sharp.Favorite,
+                                    tint = Grey900,
+                                    contentDescription = null
+                                )
+                            }
                         }
                     }
                 }
-            }
 
-            item {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp) ) {
-                    Text(text = state.movie.overview)
+                item {
+                    Row(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp) ) {
+                        Text(text = state.movie.overview)
+                    }
                 }
+                item { CardDetails(state) }
             }
-            item { CardDetails(state) }
         }
+
     }
 }
 

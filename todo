@@ -1,16 +1,21 @@
+FIX:
+jacoco -> Cannot process instrumented class com/google/accompanist/navigation/animation/R. Please supply original non-instrumented classes.
+belongs to collection
 ====================
 DOING
 ====================
 Favoritando Icone change
+Desfavoritar
 sharedPrefs
 
 ====================
 TO DO
 ====================
-
+Modal EERROR
 full screen
 savedStateHandle
-Botoes Toolbar
+Botoes ToolBar [Draewr] e logout
+
 usecase
 
 

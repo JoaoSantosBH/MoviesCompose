@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("br.com.compose.compose_movies_udemy", appContext.packageName)
+        assertEquals("com.brq.hellocompose", appContext.packageName)
     }
 }
