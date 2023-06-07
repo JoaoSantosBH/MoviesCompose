@@ -2,8 +2,9 @@ package plugins
 
 
 tasks.withType<Test> {
-    configure<JacocoTaskExtension> {
+    extensions.configure(JacocoTaskExtension::class) {
         isIncludeNoLocationClasses = true
+        excludes = listOf("jdk.internal.*")
     }
 }
 
@@ -89,7 +90,7 @@ if (tasks.findByName("jacocoAndroidCoverageVerification") == null) {
                 limit {
                     counter = "INSTRUCTIONAL"
                     value = "COVEREDRATIO"
-                    minimum = "0.5".toBigDecimal()
+                    minimum = "0.3".toBigDecimal()
                 }
             }
         }

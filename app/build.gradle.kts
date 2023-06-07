@@ -37,14 +37,16 @@ android {
 
         getByName("release") {
             isMinifyEnabled = false
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage = true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
 
         getByName("debug") {
             isMinifyEnabled = false
-            enableAndroidTestCoverage
-            enableUnitTestCoverage
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage =true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }

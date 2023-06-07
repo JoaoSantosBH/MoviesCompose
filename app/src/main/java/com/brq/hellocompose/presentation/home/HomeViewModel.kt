@@ -52,7 +52,7 @@ class HomeViewModel(
     }
 
     private fun updateFavorites() {
-        var result = emptyList<FavoriteMovieEntity>()
+        var result: List<FavoriteMovieEntity>
         CoroutineScope(Dispatchers.Default).launch {
             result = db.getFavoriteMoviesList()
             _uiState.value = _uiState.value.copy(favoriteIds = result.toDomain())
