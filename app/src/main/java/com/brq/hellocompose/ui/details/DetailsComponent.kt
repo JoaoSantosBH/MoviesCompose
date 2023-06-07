@@ -3,6 +3,7 @@ package com.brq.hellocompose.ui.details
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -48,6 +49,9 @@ import com.brq.hellocompose.core.components.LoadingLayout
 import com.brq.hellocompose.core.util.NetworkUtils
 import com.brq.hellocompose.presentation.detail.DetailEvent
 import com.brq.hellocompose.presentation.detail.DetailUiStates
+import com.brq.hellocompose.ui.theme.Cyan700
+import com.brq.hellocompose.ui.theme.Green100
+import com.brq.hellocompose.ui.theme.Green50
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay
 
@@ -96,7 +100,7 @@ fun DetailsLayout(
     navController: NavHostController
 ) {
 
-    Column(modifier = Modifier.padding(paddingValues)) {
+    Column(modifier = Modifier.padding(paddingValues).background(color = Green100)) {
         LazyColumn {
             item {
                 Box(modifier = Modifier.fillMaxWidth()) {
@@ -177,9 +181,10 @@ fun CardDetails(state: DetailUiStates) {
                     content = {
                         Column(modifier = Modifier
                             .fillMaxWidth()
+                            .background(color = Green50)
                             .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                         Spacer(modifier = Modifier.height(8.dp))
-                            Icon(imageVector = Icons.Default.Favorite, contentDescription = null)
+                            Icon(imageVector = Icons.Default.Favorite, contentDescription = null, tint = Cyan700)
                             Text(
                                 state.movie.budget.toString(),
                                 modifier = Modifier.padding(16.dp),
@@ -198,9 +203,10 @@ fun CardDetails(state: DetailUiStates) {
                 content = {
                     Column(modifier = Modifier
                         .fillMaxWidth()
+                        .background(color = Green50)
                         .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        Icon(imageVector = Icons.Default.Info, contentDescription = null)
+                        Icon(imageVector = Icons.Default.Info, contentDescription = null, tint = Cyan700)
                         Text(
                             state.movie.revenue.toString(),
                             modifier = Modifier.padding(16.dp),
@@ -225,9 +231,10 @@ fun CardDetails(state: DetailUiStates) {
                 content = {
                     Column(modifier = Modifier
                         .fillMaxWidth()
+                        .background(color = Green50)
                         .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        Icon(imageVector = Icons.Default.Star, contentDescription = null)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = null, tint = Cyan700)
                         Text(
                             state.movie.popularity.toString(),
                             modifier = Modifier.padding(16.dp),
@@ -246,9 +253,10 @@ fun CardDetails(state: DetailUiStates) {
                 content = {
                     Column(modifier = Modifier
                         .fillMaxWidth()
+                        .background(color = Green50)
                         .padding(16.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                         Spacer(modifier = Modifier.height(8.dp))
-                        Icon(imageVector = Icons.Default.DateRange, contentDescription = null)
+                        Icon(imageVector = Icons.Default.DateRange, contentDescription = null, tint = Cyan700)
                         Text(
                             state.movie.release_date.toString(),
                             modifier = Modifier.padding(16.dp),
