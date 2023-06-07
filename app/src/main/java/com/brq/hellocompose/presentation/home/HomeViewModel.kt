@@ -42,13 +42,19 @@ class HomeViewModel(
                     updateFavorites()
                 },
                 onError = {
-                    _uiState.value = _uiState.value.copy(isLoading = false)
+                    handleError(it)
+
                 },
                 onFinish = {
                     _uiState.value = _uiState.value.copy(isLoading = false)
                 }
             )
         }
+    }
+
+    private fun handleError(msg: String) {
+        _uiState.value = _uiState.value.copy(isLoading = false, mustShowDialog = true, errorMessage = msg)
+
     }
 
     private fun updateFavorites() {
@@ -92,9 +98,14 @@ class HomeViewModel(
                     HomeEvent.TabMoviesEvent -> filterAllMovies()
                     HomeEvent.FavMoviesEvent -> filterFavMovies()
                     HomeEvent.UpdateFavorites -> updateFavorites()
+                    HomeEvent.DismissDialog -> dismissErrorMessage()
                 }
             }
         }
+    }
+
+    private fun dismissErrorMessage() {
+       _uiState.value = _uiState.value.copy(mustShowDialog = false)
     }
 
     private fun filterAllMovies() {

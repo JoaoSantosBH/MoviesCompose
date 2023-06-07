@@ -138,7 +138,7 @@ fun DetailsLayout(
                                             onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id))
                                     },
                                 imageVector = Icons.Sharp.Favorite,
-                                tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                                tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onPrimary,
                                 contentDescription = null
                             )
                         }

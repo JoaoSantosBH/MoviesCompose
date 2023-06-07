@@ -29,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -42,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.brq.hellocompose.R
+import com.brq.hellocompose.core.components.CustomDialogWithDraweableCompose
 import com.brq.hellocompose.core.components.HomeToolBarCompose
 import com.brq.hellocompose.core.components.LoadingLayout
 import com.brq.hellocompose.core.domain.MovieModel
@@ -62,6 +64,23 @@ fun HomeScreen(
     state: HomeUiStates,
     onEvent: (HomeEvent) -> Unit
 ) {
+
+    val image = R.drawable.tmdbicon
+    val buttonText = R.string.close_label
+    val title = R.string.compose_dialog_master_choice_title_dialog_text
+    val info = state.errorMessage
+
+    val showDialog = remember { mutableStateOf(false) }
+    val positiveDialogClick: () -> Unit = {onEvent.invoke(HomeEvent.DismissDialog)}
+
+    if (state.mustShowDialog)
+        CustomDialogWithDraweableCompose(
+            title, info, image, buttonText, positiveDialogClick,
+            setShowDialog = { stateDialog ->
+                showDialog.value = stateDialog
+            }, positiveDialogClick
+        )
+
     Scaffold(
         topBar = {
             HomeToolBarCompose(title = R.string.home_toolbar_title_text)
@@ -87,7 +106,10 @@ fun HomeLayout(
     onEvent: (HomeEvent) -> Unit
 ) {
 
-    Column(modifier = Modifier.padding(paddingValues).background(color = Green100).fillMaxSize()) {
+    Column(modifier = Modifier
+        .padding(paddingValues)
+        .background(color = Green100)
+        .fillMaxSize()) {
         TabLayout(onEvent)
         Spacer(modifier = Modifier.height(8.dp))
         if (cards.isEmpty()) {
