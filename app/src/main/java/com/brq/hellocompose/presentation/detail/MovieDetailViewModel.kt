@@ -56,8 +56,6 @@ class MovieDetailViewModel(
         }
     }
 
-
-
     private fun handleEvents() {
         viewModelScope.launch {
             pendingActions.collect { event ->
@@ -74,7 +72,7 @@ class MovieDetailViewModel(
     }
 
     private fun showErrorMessage(message: String) {
-        _uiState.value = _uiState.value.copy(isLoading = false, errorMessage = message)
+        _uiState.value = _uiState.value.copy(isLoading = false, errorMessage = message, mustShowErrorDialog = true)
 
     }
 

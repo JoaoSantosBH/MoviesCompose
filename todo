@@ -6,7 +6,6 @@ belongs to collection
 ====================
 DOING
 ====================
-Modal EERROR
 
 Desfavoritar
 sharedPrefs
@@ -14,9 +13,11 @@ sharedPrefs
 ====================
 TO DO
 ====================
+Dialog ERROR Home
+
 full screen
 savedStateHandle
-Botoes ToolBar [Draewr] e logout
+Trocar Botoes rascunhos ToolBar [Draewr] e logout
 
 usecase
 
@@ -45,7 +46,10 @@ room
 tests
 Tab bar home filter
 Favoritando Icone change
+Dialog ERROR Details
 
 
 Token vivo
 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
+
+
