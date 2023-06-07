@@ -2,13 +2,13 @@ package com.brq.hellocompose.presentation.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.brq.hellocompose.local.dao.MovieDao
-import com.brq.hellocompose.local.entities.toLocal
-import com.brq.hellocompose.remote.model.MovieDetailResponse.Companion.toDomain
-import com.brq.hellocompose.services.Services
-import com.brq.hellocompose.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
-import com.brq.hellocompose.util.RequestHandler
-import com.brq.hellocompose.util.then
+import com.brq.hellocompose.core.data.local.dao.MovieDao
+import com.brq.hellocompose.core.data.local.entities.toLocal
+import com.brq.hellocompose.core.data.remote.model.MovieDetailResponse.Companion.toDomain
+import com.brq.hellocompose.core.services.Services
+import com.brq.hellocompose.core.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
+import com.brq.hellocompose.core.util.RequestHandler
+import com.brq.hellocompose.core.util.then
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -37,7 +37,7 @@ class MovieDetailViewModel(
                     _uiState.value = _uiState.value.copy(movie = it.toDomain())
                 },
                 onError = {
-                    _uiState.value = _uiState.value.copy(isLoading = false)
+                    onEvent(DetailEvent.Error(it))
                 },
                 onFinish = {
                     _uiState.value = _uiState.value.copy(isLoading = false)
@@ -67,9 +67,15 @@ class MovieDetailViewModel(
                     DetailEvent.FinishLoadingImage -> finishLoading()
                     is DetailEvent.FavoriteMovie -> favoriteMovie(event.id)
                     is DetailEvent.UnFavoriteMovie -> unfavoriteMovie(event.id)
+                    is DetailEvent.Error -> showErrorMessage(event.message)
                 }
             }
         }
+    }
+
+    private fun showErrorMessage(message: String) {
+        _uiState.value = _uiState.value.copy(isLoading = false, errorMessage = message)
+
     }
 
     private fun favoriteMovie(movieId: Int) {
