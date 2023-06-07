@@ -142,7 +142,6 @@ fun DetailsLayout(
                         }
                     }
                 }
-            }
 
             item {
                 Row(
@@ -152,9 +151,10 @@ fun DetailsLayout(
                 ) {
                     Text(text = state.movie.overview)
                 }
+                item { CardDetails(state) }
             }
-            item { CardDetails(state) }
         }
+
     }
 
 }
