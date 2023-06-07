@@ -1,6 +1,6 @@
 package com.brq.hellocompose.presentation.home
 
-import com.brq.hellocompose.domain.MovieModel
+import com.brq.hellocompose.core.domain.MovieModel
 
 data class HomeUiStates(
     val isLoading: Boolean = false,

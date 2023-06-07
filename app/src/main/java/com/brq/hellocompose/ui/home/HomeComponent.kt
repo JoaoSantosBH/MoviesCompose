@@ -41,14 +41,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.brq.hellocompose.R
-import com.brq.hellocompose.components.HomeToolBarCompose
-import com.brq.hellocompose.components.LoadingLayout
-import com.brq.hellocompose.domain.MovieModel
-import com.brq.hellocompose.domain.PopularMoviesModel
-import com.brq.hellocompose.navigation.Screen
+import com.brq.hellocompose.core.components.HomeToolBarCompose
+import com.brq.hellocompose.core.components.LoadingLayout
+import com.brq.hellocompose.core.domain.MovieModel
+import com.brq.hellocompose.core.domain.PopularMoviesModel
+import com.brq.hellocompose.core.navigation.Screen
+import com.brq.hellocompose.core.util.NetworkUtils.Companion.PATH_PREFIX_URL
 import com.brq.hellocompose.presentation.home.HomeEvent
 import com.brq.hellocompose.presentation.home.HomeUiStates
-import com.brq.hellocompose.util.NetworkUtils.Companion.PATH_PREFIX_URL
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay
 

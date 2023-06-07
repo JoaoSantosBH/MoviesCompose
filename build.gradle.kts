@@ -1,5 +1,3 @@
-//import Deps.jacoco
-
 buildscript {
 
     repositories {
@@ -12,7 +10,7 @@ buildscript {
     dependencies {
         classpath(Deps.kotlinGradlePlugin)
         classpath(Deps.androidBuildTools)
-//        classpath(Deps.jacoco)
+        classpath(Deps.jacoco)
     }
 }
 

@@ -2,16 +2,16 @@ package com.brq.hellocompose.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.brq.hellocompose.local.dao.MovieDao
-import com.brq.hellocompose.local.entities.FavoriteMovieEntity
-import com.brq.hellocompose.local.entities.toDomain
-import com.brq.hellocompose.remote.model.MovieResponse.Companion.toDomain
-import com.brq.hellocompose.remote.model.PopularMoviesResponse
-import com.brq.hellocompose.services.Services
-import com.brq.hellocompose.util.NetworkUtils.Companion.DEFAULT_NUMBER_PAGES
-import com.brq.hellocompose.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
-import com.brq.hellocompose.util.RequestHandler
-import com.brq.hellocompose.util.then
+import com.brq.hellocompose.core.data.local.dao.MovieDao
+import com.brq.hellocompose.core.data.local.entities.FavoriteMovieEntity
+import com.brq.hellocompose.core.data.local.entities.toDomain
+import com.brq.hellocompose.core.data.remote.model.MovieResponse.Companion.toDomain
+import com.brq.hellocompose.core.data.remote.model.PopularMoviesResponse
+import com.brq.hellocompose.core.services.Services
+import com.brq.hellocompose.core.util.NetworkUtils.Companion.DEFAULT_NUMBER_PAGES
+import com.brq.hellocompose.core.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
+import com.brq.hellocompose.core.util.RequestHandler
+import com.brq.hellocompose.core.util.then
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val service: Services,
-    private val db:MovieDao
+    private val db: MovieDao
 ) : ViewModel() {
 
     private val _uiState: MutableStateFlow<HomeUiStates> =
@@ -52,7 +52,7 @@ class HomeViewModel(
     }
 
     private fun updateFavorites() {
-        var result = emptyList<FavoriteMovieEntity>()
+        var result: List<FavoriteMovieEntity>
         CoroutineScope(Dispatchers.Default).launch {
             result = db.getFavoriteMoviesList()
             _uiState.value = _uiState.value.copy(favoriteIds = result.toDomain())
