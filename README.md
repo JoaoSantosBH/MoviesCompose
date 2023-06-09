@@ -1,8 +1,8 @@
 # Hello Compose Movies
 
 Projeto Movies com Compose
-![enter image description here](https://git.brq.com/mobile/android/hello_compose_movies/-/blob/master/details.png)
-![enter image description here](https://git.brq.com/mobile/android/hello_compose_movies/-/blob/master/home.png)
+![enter image description here](home.png)
+![enter image description here](details.png)
 
 
 #### C O I L
