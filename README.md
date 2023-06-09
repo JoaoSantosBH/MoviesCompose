@@ -3,7 +3,7 @@
 Projeto Movies com Compose
 
 ![enter image description here](home.png)
-![enter image description here](https://git.brq.com/mobile/android/hello_compose_movies/-/blob/3a7d0671697acc7989bc24a2514ab4e6cbcd4209/details.png)
+![enter image description here](details.png)
 
 # LIBS
 
