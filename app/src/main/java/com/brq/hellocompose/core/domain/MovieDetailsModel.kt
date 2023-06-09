@@ -3,7 +3,7 @@ package com.brq.hellocompose.core.domain
 data class MovieDetailModel(
     val adult: Boolean,
     val backdropPath: String,
-    val belongsCollection: Any,
+    val belongsCollection: BelongsModel,
     val budget: Int,
     val genres: List<GenreModel>,
     val homepage: String,
@@ -17,7 +17,7 @@ data class MovieDetailModel(
     val productionCompanies: List<ProductionCompanyModel>,
     val productionCountries: List<ProductionCountryModel>,
     val release_date: String,
-    val revenue: Int,
+    val revenue: Long,
     val runtime: Int,
     val spokenLanguages: List<SpokenLanguageModel>,
     val status: String,
@@ -31,7 +31,7 @@ data class MovieDetailModel(
         val EMPTY = MovieDetailModel(
             adult = false,
             backdropPath = "",
-            belongsCollection = "",
+            belongsCollection = BelongsModel.EMPTY,
             budget = 0,
             genres = listOf(),
             homepage = "",
@@ -95,4 +95,8 @@ data class BelongsModel(
     val id: Int,
     val name: String,
     val postePath: String
-)
+) {
+    companion object {
+        val EMPTY = BelongsModel( "", -1, "", "")
+    }
+}

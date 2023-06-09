@@ -1,20 +1,23 @@
 ====================
 FIX:
 ====================
-jacoco -> Cannot process instrumented class com/google/accompanist/navigation/animation/R. Please supply original non-instrumented classes.
-DETAILS -> belongs to collection
+jacoco ->
+Cannot process instrumented class
+com/google/accompanist/navigation/animation/R.
+Please supply original non-instrumented classes.
+
 ====================
 DOING
 ====================
+
 Drawer
-full screen
 
 sharedPrefs
 
 ====================
 TO DO
 ====================
-
+README
 savedStateHandle
 Ajustes finos
 trocar placeholders
@@ -50,6 +53,7 @@ Dialog ERROR Details
 Desfavoritar
 Dialog ERROR Home
 Trocar Botoes rascunhos ToolBar [Draewr] e logout
+full screen tela details
 
 
 Token vivo
