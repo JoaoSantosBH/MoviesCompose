@@ -86,8 +86,8 @@ fun HomeScreen(
             HomeToolBarCompose(title = R.string.home_toolbar_title_text)
         },
         content = { paddingValues ->
-            if (state.isLoading) LoadingLayout(paddingValues)
-            else HomeLayout(paddingValues, state.popularMovies, navController, onEvent)
+
+             HomeLayout(paddingValues, state.popularMovies, navController, onEvent, state)
         }
     )
     LaunchedEffect(key1 = Unit) {
@@ -103,33 +103,45 @@ fun HomeLayout(
     paddingValues: PaddingValues,
     cards: List<MovieModel>,
     navController: NavHostController,
-    onEvent: (HomeEvent) -> Unit
+    onEvent: (HomeEvent) -> Unit,
+    state: HomeUiStates
 ) {
 
     Column(modifier = Modifier
         .padding(paddingValues)
         .background(color = Green100)
         .fillMaxSize()) {
-        TabLayout(onEvent)
-        Spacer(modifier = Modifier.height(8.dp))
-        if (cards.isEmpty()) {
-            Column(modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center) {
-                Text(text = stringResource(id = R.string.no_movies_yet))
-            }
-        } else {
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                items(cards) { card ->
-                    CardMovie(navController, card)
+        TabLayout(onEvent)
+
+        if (state.isLoading) {
+            LoadingLayout(paddingValues)
+        } else {
+            Spacer(modifier = Modifier.height(8.dp))
+            if (cards.isEmpty()) {
+                Column(modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center) {
+                    Text(text = stringResource(id = R.string.no_movies_yet))
+                }
+            } else {
+
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    items(cards) { card ->
+                        CardMovie(navController, card)
+                    }
                 }
             }
         }
+
+
+
+
+
     }
 }
 
@@ -186,5 +198,5 @@ fun HomePreview() {
     val onEvent: (HomeEvent) -> Unit = {}
     val navController = rememberAnimatedNavController()
     val items = PopularMoviesModel.DUMB_RETURN_LIST.results
-    HomeLayout(PaddingValues(), items, navController, onEvent)
+    HomeLayout(PaddingValues(), items, navController, onEvent, HomeUiStates())
 }
