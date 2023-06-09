@@ -16,7 +16,7 @@ sharedPrefs
 ====================
 TO DO
 ====================
-README
+
 savedStateHandle
 Ajustes finos
 trocar placeholders
@@ -52,6 +52,8 @@ Trocar Botoes rascunhos ToolBar [Draewr] e logout
 full screen tela details
 fix DETAILS -> belongs to collection
 tests viewModel
+test endpoint
+README
 
 Token vivo
 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
