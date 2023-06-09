@@ -28,7 +28,7 @@ object Deps {
         "com.squareup.okhttp3:logging-interceptor:${Versions.interceptorVersion}"
 
     // J A C O C O
-//    const val jacoco = "org.jacoco:org.jacoco.core:${Versions.jacocoVersion}"
+    const val jacoco = "org.jacoco:org.jacoco.core:${Versions.jacocoVersion}"
 
     // M A T E R I A L
     const val material3 = "androidx.compose.material3:material3"

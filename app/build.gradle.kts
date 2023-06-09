@@ -3,6 +3,7 @@ import com.brq.hellocompose.coilDependencies
 import com.brq.hellocompose.composeDependencies
 import com.brq.hellocompose.coreDependencies
 import com.brq.hellocompose.interceptorDependencies
+import com.brq.hellocompose.jacocoDependencies
 //import com.brq.hellocompose.jacocoDependencies
 import com.brq.hellocompose.koinDependencies
 import com.brq.hellocompose.materialDependencies
@@ -15,8 +16,8 @@ plugins {
     id(Deps.androidAplicationPlugin)
     kotlin(Deps.androidPlugin)
     id(Deps.kotlinKap)
-//    id(Deps.jacocoPlugin)
-//    id(Deps.jacocoXtension)
+    id(Deps.jacocoPlugin)
+    id(Deps.jacocoXtension)
 }
 
 android {
@@ -60,8 +61,6 @@ android {
 
         getByName("debug") {
             isMinifyEnabled = false
-//            enableAndroidTestCoverage = true
-//            enableUnitTestCoverage =true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
@@ -91,6 +90,6 @@ dependencies {
 
     // T E S T S
     androidTestsDependencies()
-//    jacocoDependencies()
+    jacocoDependencies()
     testsDependencies()
 }
