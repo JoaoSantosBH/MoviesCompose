@@ -33,7 +33,7 @@ object Versions {
 
     // T E S T S
     const val espressoVersion = "3.5.1"
-    const val jacocoVersion = "0.8.8"
+    const val jacocoVersion = "0.8.10"
     const val junitTestVersion = "4.13.2"
     const val junit5Version = "1.1.5"
     const val mockKVersion = "1.13.5"
