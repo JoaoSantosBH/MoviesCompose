@@ -49,7 +49,6 @@ sealed class ResponseWrapper<out T> (
         )
 
         fun <T> fromError(response: Response<T>?): ResponseWrapper<T> {
-            val baseUrl = response?.raw()?.request?.url.toString()
             val (code, message) = try {
                 val type: Type = object : TypeToken<ErrorResponse>() {}.type
                 val stream = response?.errorBody()!!.charStream()
