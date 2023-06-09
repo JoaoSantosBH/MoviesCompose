@@ -1,10 +1,12 @@
 package com.brq.hellocompose
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -24,6 +26,7 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel : HomeViewModel by viewModel()
     var counter = 0
+    @RequiresApi(Build.VERSION_CODES.R)
     @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

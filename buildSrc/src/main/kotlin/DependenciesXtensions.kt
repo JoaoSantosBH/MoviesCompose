@@ -31,7 +31,7 @@ fun DependencyHandlerScope.interceptorDependencies() {
 }
 
 fun DependencyHandlerScope.jacocoDependencies() {
-//    "implementation"(Deps.jacoco)
+    "implementation"(Deps.jacoco)
 }
 
 fun DependencyHandlerScope.materialDependencies() {
