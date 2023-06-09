@@ -1,24 +1,25 @@
 ====================
 FIX:
 ====================
-jacoco -> Cannot process instrumented class com/google/accompanist/navigation/animation/R. Please supply original non-instrumented classes.
-DETAILS -> belongs to collection
+jacoco ->
+Cannot process instrumented class
+com/google/accompanist/navigation/animation/R.
+Please supply original non-instrumented classes.
+
 ====================
 DOING
 ====================
+
 Drawer
 sharedPrefs
 
 ====================
 TO DO
 ====================
-
-full screen
+README
 savedStateHandle
-Trocar Botoes rascunhos ToolBar [Draewr] e logout
 Ajustes finos
-usecase???
-
+trocar placeholders
 
 ====================
 DONE
@@ -41,13 +42,16 @@ srcBuild
 renomear pacotes
 jacoco
 room
-tests
+tests ROOM
 Tab bar home filter
 Favoritando Icone change
 Dialog ERROR Details
 Desfavoritar
 Dialog ERROR Home
-
+Trocar Botoes rascunhos ToolBar [Draewr] e logout
+full screen tela details
+fix DETAILS -> belongs to collection
+tests viewModel
 
 Token vivo
 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

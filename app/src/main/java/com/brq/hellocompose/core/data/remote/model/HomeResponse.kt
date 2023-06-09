@@ -18,6 +18,47 @@ data class PopularMoviesResponse(
             totalPages=this.totalPages,
             totalResults= this.totalResults
         )
+
+        val fakeResults = listOf(
+            MovieResponse(
+                adult = false,
+                backdropPath = "/nDxJJyA5giRhXx96q1sWbOUjMBI.jpg",
+                listOf(28, 35, 14),
+                594767,
+                originalLanguage = "en",
+                originalTitle = "Shazam! Fury of the Gods",
+                overview = "Billy Batson and his foster siblings, who transform into superheroes by saying \\\"Shazam!\\\", are forced to get back into action and fight the Daughters of Atlas, who they must stop from using a weapon that could destroy the world.",
+                4274.865,
+                posterPath = "/2VK4d3mqqTc7LVZLnLPeRiPaJ71.jpg",
+                releaseDate = "2023-03-15",
+                title = "Shazam! Fury of the Gods",
+                false,
+                6.9,
+                1231
+            ),
+            MovieResponse(
+                adult = false,
+                backdropPath = "/gMJngTNfaqCSCqGD4y8lVMZXKDn.jpg",
+                listOf(28, 12, 878),
+                640146,
+                originalLanguage = "en",
+                originalTitle = "Ant-Man and the Wasp: Quantumania",
+                overview = "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
+                8567.865,
+                posterPath = "/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg",
+                releaseDate = "2023-02-15",
+                title = "Ant-Man and the Wasp: Quantumania",
+                false,
+                6.5,
+                1886
+            )
+        )
+        val FakeResponse = PopularMoviesResponse(
+            page = 1,
+            fakeResults,
+            1,
+            1
+        )
     }
 }
 

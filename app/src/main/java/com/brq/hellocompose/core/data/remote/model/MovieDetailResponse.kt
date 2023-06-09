@@ -1,5 +1,6 @@
 package com.brq.hellocompose.core.data.remote.model
 
+import com.brq.hellocompose.core.domain.BelongsModel
 import com.brq.hellocompose.core.domain.GenreModel
 import com.brq.hellocompose.core.domain.MovieDetailModel
 import com.brq.hellocompose.core.domain.ProductionCompanyModel
@@ -10,7 +11,7 @@ import com.google.gson.annotations.SerializedName
 data class MovieDetailResponse(
     @SerializedName("adult") val adult: Boolean?,
     @SerializedName("backdrop_path") val backdropPath: String?,
-    @SerializedName("belongs_to_collection") val belongsToCollection: Any?,
+    @SerializedName("belongs_to_collection") val belongsToCollection: BelongsToCollection? = null,
     @SerializedName("budget") val budget: Int?,
     @SerializedName("genres") val genres: List<Genre>?,
     @SerializedName("homepage") val homepage: String?,
@@ -24,7 +25,7 @@ data class MovieDetailResponse(
     @SerializedName("production_companies") val productionCompanies: List<ProductionCompany>?,
     @SerializedName("production_countries") val productionCountries: List<ProductionCountry>?,
     @SerializedName("release_date") val releaseDate: String?,
-    @SerializedName("revenue") val revenue: Int?,
+    @SerializedName("revenue") val revenue: Long?,
     @SerializedName("runtime") val runtime: Int?,
     @SerializedName("spoken_languages") val spokenLanguages: List<SpokenLanguage>?,
     @SerializedName("status") val status: String?,
@@ -38,7 +39,7 @@ data class MovieDetailResponse(
        fun MovieDetailResponse.toDomain() = MovieDetailModel(
            adult= this.adult ?: false ,
            backdropPath= this.backdropPath ?:"" ,
-           belongsCollection =  this.belongsToCollection ?: listOf<Any>() ,
+           belongsCollection =  this.belongsToCollection?.toBelongDomain() ?: BelongsModel.EMPTY ,
            budget= this.budget ?: -1 ,
            genres = this.genres?.toGenreDomain() ?: listOf(),
            homepage= this.homepage  ?:""  ,
@@ -52,7 +53,7 @@ data class MovieDetailResponse(
            productionCompanies =  this.productionCompanies?.toProductionCompanyDomain() ?: listOf() ,
            productionCountries = this.productionCountries?.toProductionCountryDomain() ?: listOf(),
            release_date= this.releaseDate ?: "",
-           revenue= this.revenue ?: -1,
+           revenue= this.revenue ?: -1L,
            runtime= this.runtime ?: -1,
            spokenLanguages=  this.spokenLanguages?.toSpokenLanguageDomain() ?: listOf(),
            status= this.status ?: "" ,
@@ -80,7 +81,14 @@ data class MovieDetailResponse(
         originCountry = this.originCountry ?: ""
     )
 
+    fun BelongsToCollection.toBelongDomain() = BelongsModel(
+        backdropPath = this.backdropPath ?: "",
+        id = this.id ?: -1,
+        name = this.name ?: "",
+        postePath = this.posterPath ?: ""
+    )
     fun List<ProductionCountry>.toProductionCountryDomain() = this.map {it.toDomain() }
+
     private fun ProductionCountry.toDomain() = ProductionCountryModel(
         iso_3166_1 = this.iso31661 ?: "",
         name = this.name ?: ""
@@ -118,9 +126,9 @@ data class SpokenLanguage(
     @SerializedName("name") val name: String?
 )
 
-data class Belongs(
-    val backdrop_path: String,
-    val id: Int,
-    val name: String,
-    val poster_path: String
+data class BelongsToCollection(
+    @SerializedName("backdrop_path") val backdropPath: String? = null,
+    @SerializedName("id") val id: Int? = null,
+    @SerializedName("name") val name: String? = null,
+    @SerializedName("poster_path") val posterPath: String? = null
 )

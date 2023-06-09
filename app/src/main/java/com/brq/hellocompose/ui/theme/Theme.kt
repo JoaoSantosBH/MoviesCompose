@@ -2,6 +2,7 @@ package com.brq.hellocompose.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import android.view.View
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -16,6 +17,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
+    background = Cyan700,
     surface = Cyan700,
     onSurface = White,
     primary = Grey900,
@@ -51,7 +53,8 @@ fun MoviesComposeTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+                window.statusBarColor = Green100.toArgb()
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
