@@ -31,7 +31,7 @@ fun DependencyHandlerScope.interceptorDependencies() {
 }
 
 fun DependencyHandlerScope.jacocoDependencies() {
-    "implementation"(Deps.jacoco)
+//    "implementation"(Deps.jacoco)
 }
 
 fun DependencyHandlerScope.materialDependencies() {
@@ -65,5 +65,8 @@ fun DependencyHandlerScope.androidTestsDependencies() {
 fun DependencyHandlerScope.testsDependencies() {
     "testImplementation"(Deps.junitTest)
     "androidTestImplementation"(Deps.junit5)
+    "testImplementation"(Deps.mockK)
+    "testImplementation"(Deps.testCoroutines)
+
 }
 

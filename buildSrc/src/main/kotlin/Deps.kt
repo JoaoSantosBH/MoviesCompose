@@ -28,7 +28,7 @@ object Deps {
         "com.squareup.okhttp3:logging-interceptor:${Versions.interceptorVersion}"
 
     // J A C O C O
-    const val jacoco = "org.jacoco:org.jacoco.core:${Versions.jacocoVersion}"
+//    const val jacoco = "org.jacoco:org.jacoco.core:${Versions.jacocoVersion}"
 
     // M A T E R I A L
     const val material3 = "androidx.compose.material3:material3"
@@ -60,5 +60,7 @@ object Deps {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoVersion}"
     const val composeUiTestJunit = "androidx.compose.ui:ui-test-junit4"
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest"
+    const val mockK = "io.mockk:mockk:${Versions.mockKVersion}"
+    const val testCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTestVersion}"
 
 }

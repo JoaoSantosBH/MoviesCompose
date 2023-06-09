@@ -3,7 +3,7 @@ import com.brq.hellocompose.coilDependencies
 import com.brq.hellocompose.composeDependencies
 import com.brq.hellocompose.coreDependencies
 import com.brq.hellocompose.interceptorDependencies
-import com.brq.hellocompose.jacocoDependencies
+//import com.brq.hellocompose.jacocoDependencies
 import com.brq.hellocompose.koinDependencies
 import com.brq.hellocompose.materialDependencies
 import com.brq.hellocompose.retrofitDependencies
@@ -15,8 +15,8 @@ plugins {
     id(Deps.androidAplicationPlugin)
     kotlin(Deps.androidPlugin)
     id(Deps.kotlinKap)
-    id(Deps.jacocoPlugin)
-    id(Deps.jacocoXtension)
+//    id(Deps.jacocoPlugin)
+//    id(Deps.jacocoXtension)
 }
 
 android {
@@ -52,40 +52,45 @@ android {
 
         getByName("release") {
             isMinifyEnabled = false
-            enableAndroidTestCoverage = true
-            enableUnitTestCoverage = true
+//            enableAndroidTestCoverage = true
+//            enableUnitTestCoverage = true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
 
         getByName("debug") {
             isMinifyEnabled = false
-            enableAndroidTestCoverage = true
-            enableUnitTestCoverage =true
+//            enableAndroidTestCoverage = true
+//            enableUnitTestCoverage =true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
     }
 
-    testCoverage {
-        testOptions {
-            unitTests.isIncludeAndroidResources = true
-            unitTests.isReturnDefaultValues = true
-        }
-    }
+//    testCoverage {
+//        testOptions {
+//            unitTests.isIncludeAndroidResources = true
+//            unitTests.isReturnDefaultValues = true
+//        }
+//    }
 }
 
 dependencies {
-    coreDependencies()
-    composeDependencies()
+
+    androidTestsDependencies()
+    androidTestsDependencies()
     coilDependencies()
-    koinDependencies()
+    composeDependencies()
+    coreDependencies()
     interceptorDependencies()
-    jacocoDependencies()
+    koinDependencies()
     materialDependencies()
     retrofitDependencies()
     roomDependencies()
     splashScreenDependencies()
+
+    // T E S T S
     androidTestsDependencies()
+//    jacocoDependencies()
     testsDependencies()
 }

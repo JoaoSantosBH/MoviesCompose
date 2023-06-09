@@ -36,6 +36,8 @@ object Versions {
     const val jacocoVersion = "0.8.9"
     const val junitTestVersion = "4.13.2"
     const val junit5Version = "1.1.5"
+    const val mockKVersion = "1.13.5"
+    const val coroutinesTestVersion = "1.7.1"
 
 
 }
