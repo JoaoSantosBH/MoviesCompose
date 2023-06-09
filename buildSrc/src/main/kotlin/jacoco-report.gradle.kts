@@ -3,8 +3,8 @@ package plugins
 
 tasks.withType<Test> {
     extensions.configure(JacocoTaskExtension::class) {
-        isIncludeNoLocationClasses = true
-        excludes = listOf("jdk.internal.*")
+//        isIncludeNoLocationClasses = true
+        excludes = listOf("jdk.internal.*","**/google/**/*.*",)
     }
 }
 
@@ -14,6 +14,7 @@ private val fileFilter = mutableSetOf(
     "**/BuildConfig.*",
     "**/Manifest*.*",
     "**/*Test*.*",
+    "**/google/**/*.*",
     "android/**/*.*",
     "**/*\$Lambda$*.*", // Jacoco can not handle several "$" in class name.
     "**/*\$inlined$*.*" // Kotlin specific, Jacoco can not handle several "$" in class name.
@@ -67,9 +68,9 @@ fun JacocoReport.setDirectories() {
 }
 
 
-if (tasks.findByName("jacocoAndroidTestReport") == null) {
+if (tasks.findByName("jacocoReport") == null) {
 
-    tasks.register<JacocoReport>("jacocoAndroidTestReport") {
+    tasks.register<JacocoReport>("jacocoReport") {
         group = "versioning"
         description = "Code coverage report for both Android and Unit tests."
         dependsOn("testDebugUnitTest", "createDebugCoverageReport")
@@ -80,15 +81,15 @@ if (tasks.findByName("jacocoAndroidTestReport") == null) {
     }
 }
 
-if (tasks.findByName("jacocoAndroidCoverageVerification") == null) {
-    tasks.register<JacocoCoverageVerification>("jacocoAndroidCoverageVerification") {
+if (tasks.findByName("jacocoCoverage") == null) {
+    tasks.register<JacocoCoverageVerification>("jacocoCoverage") {
         group = "versioning"
         description = "Code coverage verification for Android both Android and Unit tests."
         dependsOn("testDebugUnitTest", "createDebugCoverageReport")
         violationRules {
             rule {
                 limit {
-                    counter = "INSTRUCTIONAL"
+                    counter = "INSTRUCTION"
                     value = "COVEREDRATIO"
                     minimum = "0.3".toBigDecimal()
                 }
