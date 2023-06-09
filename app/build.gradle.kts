@@ -53,25 +53,25 @@ android {
 
         getByName("release") {
             isMinifyEnabled = false
-//            enableAndroidTestCoverage = true
-//            enableUnitTestCoverage = true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
 
         getByName("debug") {
             isMinifyEnabled = false
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage  = true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }
     }
 
-//    testCoverage {
-//        testOptions {
-//            unitTests.isIncludeAndroidResources = true
-//            unitTests.isReturnDefaultValues = true
-//        }
-//    }
+    testCoverage {
+        testOptions {
+            unitTests.isIncludeAndroidResources = true
+            unitTests.isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
