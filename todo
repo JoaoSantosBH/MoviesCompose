@@ -11,7 +11,6 @@ DOING
 ====================
 
 Drawer
-
 sharedPrefs
 
 ====================
@@ -21,9 +20,6 @@ README
 savedStateHandle
 Ajustes finos
 trocar placeholders
-
-usecase???
-
 
 ====================
 DONE
@@ -46,7 +42,7 @@ srcBuild
 renomear pacotes
 jacoco
 room
-tests
+tests ROOM
 Tab bar home filter
 Favoritando Icone change
 Dialog ERROR Details
@@ -54,7 +50,8 @@ Desfavoritar
 Dialog ERROR Home
 Trocar Botoes rascunhos ToolBar [Draewr] e logout
 full screen tela details
-
+fix DETAILS -> belongs to collection
+tests viewModel
 
 Token vivo
 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

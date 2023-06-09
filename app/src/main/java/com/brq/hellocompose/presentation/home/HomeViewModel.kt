@@ -31,7 +31,7 @@ class HomeViewModel(
 
     init { handleEvents() }
 
-    private fun getMoviesList() {
+     fun getMoviesList() {
         if(_uiState.value.popularMovies.isEmpty().not()) return
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true)
@@ -65,7 +65,7 @@ class HomeViewModel(
         }
     }
 
-    private fun handleMovies(it: PopularMoviesResponse) {
+    fun handleMovies(it: PopularMoviesResponse) {
         _uiState.value = _uiState.value.copy(
             popularMovies = it.results.toDomain(),
             cachedMovies = it.results.toDomain()
