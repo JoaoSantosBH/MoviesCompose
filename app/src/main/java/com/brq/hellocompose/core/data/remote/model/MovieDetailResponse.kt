@@ -52,7 +52,7 @@ data class MovieDetailResponse(
            posterPath= this.posterPath ?:""  ,
            productionCompanies =  this.productionCompanies?.toProductionCompanyDomain() ?: listOf() ,
            productionCountries = this.productionCountries?.toProductionCountryDomain() ?: listOf(),
-           release_date= this.releaseDate ?: "",
+           release_date= this.releaseDate.toDateFormat() ?: "",
            revenue= this.revenue ?: -1L,
            runtime= this.runtime ?: -1,
            spokenLanguages=  this.spokenLanguages?.toSpokenLanguageDomain() ?: listOf(),
