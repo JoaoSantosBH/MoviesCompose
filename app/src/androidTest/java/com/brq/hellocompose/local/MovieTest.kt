@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.brq.hellocompose.DUMB_MOVIE_ID
 import com.brq.hellocompose.core.data.local.AppDatabase
 import com.brq.hellocompose.core.data.local.dao.MovieDao
+import com.brq.hellocompose.createFakeMovie
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -16,11 +18,9 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 class ReadAndWriteTest {
 
-    
     private lateinit var dao: MovieDao
     private lateinit var db: AppDatabase
-companion object {
-}
+
     @Before
     fun createDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
@@ -28,7 +28,6 @@ companion object {
             context, AppDatabase::class.java
         ).build()
         dao = db.movieDao()
-
     }
 
     @After
@@ -66,7 +65,6 @@ companion object {
         dao.insertFavoriteMovie(createFakeMovie())
         val expected = dao.getFavoriteMoviesList()
         assertEquals(expected.size, 2)
-
     }
 
 }

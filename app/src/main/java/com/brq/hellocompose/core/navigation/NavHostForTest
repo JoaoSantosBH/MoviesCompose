@@ -1,6 +1,5 @@
 package com.brq.hellocompose.core.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -8,6 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.FILM_ID
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.FILM_ID_ARG
@@ -16,48 +17,25 @@ import com.brq.hellocompose.presentation.detail.DetailUiStates
 import com.brq.hellocompose.presentation.detail.MovieDetailViewModel
 import com.brq.hellocompose.presentation.home.HomeUiStates
 import com.brq.hellocompose.presentation.home.HomeViewModel
-import com.brq.hellocompose.presentation.login.LoginUiStates
-import com.brq.hellocompose.presentation.login.LoginViewModel
 import com.brq.hellocompose.ui.details.DetailsScreen
 import com.brq.hellocompose.ui.home.HomeScreen
-import com.brq.hellocompose.ui.login.LoginScreen
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
 import org.koin.androidx.compose.getViewModel
 
-
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 internal fun AppNavigation(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    AnimatedNavHost(
+    NavHost(
         navController = navController,
-        startDestination = Screen.LoginScreen.route,
-        modifier = modifier,
+        startDestination = Screen.MoviesScreen.route
     ) {
-        navigateToLogin(navController)
-        navigateToHome(navController)
-        navigateToDetails(navController)
-    }
-}
-@OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.navigateToLogin(navController: NavHostController) {
-    composable(route = Screen.LoginScreen.route) {
-        val viewModel: LoginViewModel = getViewModel()
-        val uiState by rememberFlowWithLifecycle(viewModel.uiSTate)
-            .collectAsState(initial = LoginUiStates.Empty)
-        LoginScreen(
-            navController = navController,
-            state = uiState,
-            onEvent = viewModel::onEvent
-        )
+        navigationHome(navController)
+        navigationDetails(navController)
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
-private fun NavGraphBuilder.navigateToHome(navController: NavHostController) {
+fun NavGraphBuilder.navigationHome(navController: NavHostController) {
     composable(route = Screen.MoviesScreen.route) {
         val viewModel: HomeViewModel = getViewModel()
         val uiState by rememberFlowWithLifecycle(viewModel.uiSTate)
@@ -69,9 +47,7 @@ private fun NavGraphBuilder.navigateToHome(navController: NavHostController) {
         )
     }
 }
-
-@OptIn(ExperimentalAnimationApi::class)
-private fun NavGraphBuilder.navigateToDetails(navController: NavHostController) {
+fun NavGraphBuilder.navigationDetails(navController: NavHostController) {
     composable(
         route = Screen.MoviesDetailsScreen.route + FILM_ID_ARG,
         arguments = listOf(navArgument(FILM_ID) { type = NavType.StringType })
@@ -87,3 +63,5 @@ private fun NavGraphBuilder.navigateToDetails(navController: NavHostController) 
         )
     }
 }
+
+

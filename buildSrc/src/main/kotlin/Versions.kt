@@ -15,6 +15,8 @@ object Versions {
     const val composeAnimationNavVersion = "0.31.3-beta"
     const val composeBomVersion = "2022.10.00"
     const val composeCompilerVersion = "1.4.0-alpha02"
+    const val composeNavTestVersion = "2.5.3"
+    const val composeNavVersion = "2.6.0"
 
     // I N T E R C E P T O R
     const val interceptorVersion = "4.11.0"
@@ -38,6 +40,10 @@ object Versions {
     const val junit5Version = "1.1.5"
     const val mockKVersion = "1.13.5"
     const val coroutinesTestVersion = "1.7.1"
+    const val turbineVersion = "0.13.0"
+    const val mokitoCoreVersion = "5.3.1"
+    const val mockitoKotlinVersion = "4.1.0"
+
 
 
 }

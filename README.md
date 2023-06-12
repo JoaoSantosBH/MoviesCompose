@@ -1,29 +1,40 @@
+
 # Hello Compose Movies
 
-Projeto Movies com Compose
+![Tela Home](home.png)  
+![Tela Detalhes](details.png)
+## Projeto com Compose  e  Arquitetura MVI
 
-![enter image description here](home.png)
-![enter image description here](details.png)
+Senha fake : abc123
 
-# LIBS
+
+
+### LIBS  UTILIZADAS NO PROJETO
 
 #### C O I L
 Async Load images
-####  C O M P O S E
+#### C O M P O S E
 Declarative Ui for android
-####  I N T E R C E P T O R
+#### I N T E R C E P T O R
 Log requests for debug
-####  K O I N
-project DI
-####  R E T R O F I T
+#### K O I N
+Project DI
+#### M O C K I T O
+Moks abd Stubs for tests
+#### R E T R O F I T
 API Calls
 #### R O O M
 Local Database
 #### S P L A S H   S C R E E N
 Android Splash Screen
-  
-===================================
-####  T E S T S
-presentation
-api
-database
+#### T U R B I N E
+Flow tests
+
+===================================  
+
+#### T E S T E S  N O  P R O J E T O
+- presentation
+- api
+- database
+- ui
+- unity tests

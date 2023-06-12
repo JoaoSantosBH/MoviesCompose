@@ -10,4 +10,9 @@
     <string name="compose_dialog_master_choice_title_dialog_text">Atenção!</string>
     <string name="compose_dialog_master_choice_info_dialog_text">Texto de aviso</string>
     <string name="close_label">Fechar</string>
+    <string name="forgot_pass_text">Esqueceu sua senha?</string>
+    <string name="login_label_text">Login</string>
+    <string name="hint_name_text">Username</string>
+    <string name="hint_pass_text">Password</string>
+    <string name="fail_login_text">Falha  no Login!!</string>
 </resources>

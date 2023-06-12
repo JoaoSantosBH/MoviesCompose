@@ -16,6 +16,7 @@ fun DependencyHandlerScope.composeDependencies() {
     "implementation"(Deps.composeUi)
     "implementation"(Deps.composeUiGrafics)
     "implementation"(Deps.composePreview)
+    "implementation"(Deps.composeNavigation)
 }
 
 fun DependencyHandlerScope.coilDependencies() {
@@ -60,6 +61,7 @@ fun DependencyHandlerScope.androidTestsDependencies() {
     "androidTestImplementation"(platform(Deps.composeBom))
     "androidTestImplementation"(Deps.composeUiTestJunit)
     "testImplementation"(Deps.roomTests)
+    "androidTestImplementation"(Deps.compoaseNavTest)
 }
 
 fun DependencyHandlerScope.testsDependencies() {
@@ -67,6 +69,8 @@ fun DependencyHandlerScope.testsDependencies() {
     "androidTestImplementation"(Deps.junit5)
     "testImplementation"(Deps.mockK)
     "testImplementation"(Deps.testCoroutines)
-
+    "testImplementation"(Deps.turbineFlowTests)
+    "testImplementation"(Deps.mockitoCore)
+    "testImplementation"(Deps.mockitoKotlin)
 }
 

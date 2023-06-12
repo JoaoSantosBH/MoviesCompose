@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -147,7 +148,9 @@ fun HomeLayout(
 
 @Composable
 fun CardMovie(navController: NavHostController, card: MovieModel) {
-    Card(modifier = Modifier.clickable {
+    Card(modifier = Modifier
+        .testTag("cardMovie${card.id}")
+        .clickable {
         navController.navigate(Screen.MoviesDetailsScreen.route + "/${card.id}")
     }) {
         AsyncImage(

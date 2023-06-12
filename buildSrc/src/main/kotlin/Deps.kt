@@ -16,6 +16,8 @@ object Deps {
     const val composeUiTooling = "androidx.compose.ui:ui-tooling"
     const val composeUiGrafics = "androidx.compose.ui:ui-graphics"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview"
+    const val compoaseNavTest = "androidx.navigation:navigation-testing:${Versions.composeNavTestVersion}"
+    const val composeNavigation =  "androidx.navigation:navigation-compose:${Versions.composeNavVersion}"
 
     // C O I L
     const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilComposeVersion}"
@@ -62,5 +64,8 @@ object Deps {
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest"
     const val mockK = "io.mockk:mockk:${Versions.mockKVersion}"
     const val testCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTestVersion}"
+    const val turbineFlowTests =  "app.cash.turbine:turbine:${Versions.turbineVersion}"
+    const val mockitoCore = "org.mockito:mockito-core:${Versions.mokitoCoreVersion}"
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlinVersion}"
 
 }

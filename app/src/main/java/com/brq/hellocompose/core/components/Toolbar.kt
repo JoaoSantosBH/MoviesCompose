@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.brq.hellocompose.R
-import com.brq.hellocompose.core.util.ShowToastMessage
+import com.brq.hellocompose.core.util.showToastMessage
 import com.brq.hellocompose.ui.theme.Cyan700
 import com.brq.hellocompose.ui.theme.Green100
 
@@ -34,7 +34,7 @@ fun HomeToolBarCompose(title: Int) {
         },
         navigationIcon = {
             IconButton(onClick = {
-                ShowToastMessage(context = context, string = "NOT YET")
+                showToastMessage(context = context, string = "NOT YET")
             }) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
@@ -45,7 +45,7 @@ fun HomeToolBarCompose(title: Int) {
         },
         actions = {
             IconButton(onClick = {
-                ShowToastMessage(context = context, string = "NOT YET")
+                showToastMessage(context = context, string = "NOT YET")
             }
             ) {
                 Icon(

@@ -4,6 +4,9 @@ import com.brq.hellocompose.core.data.remote.model.MovieResponse.Companion.toDom
 import com.brq.hellocompose.core.domain.MovieModel
 import com.brq.hellocompose.core.domain.PopularMoviesModel
 import com.google.gson.annotations.SerializedName
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 data class PopularMoviesResponse(
     @SerializedName("page") val page: Int?,
@@ -91,11 +94,18 @@ data class MovieResponse(
             overview= this.overview,
             popularity= this.popularity,
             posterPath= this.posterPath,
-            releaseDate= this.releaseDate,
+            releaseDate= this.releaseDate.toDateFormat(),
             title= this.title,
             video= this.video,
             voteAverage= this.voteAverage,
             voteCount= this.voteCount
         )
     }
+}
+
+fun String?.toDateFormat(): String? {
+    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale("pt-BR"))
+    val output = SimpleDateFormat("dd-MM-yyyy", Locale("pt-BR"))
+    val data: Date = sdf.parse(this)
+    return output.format(data)
 }
