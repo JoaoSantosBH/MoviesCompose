@@ -10,6 +10,7 @@ import com.brq.hellocompose.core.services.Services
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
 import com.brq.hellocompose.core.util.RequestHandler
 import com.brq.hellocompose.core.util.then
+import com.brq.hellocompose.core.util.update
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -31,7 +32,7 @@ class MovieDetailViewModel(
 
     private fun getMoviesDetail() {
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
+            _uiState.update { it.copy(isLoading = true) }
             RequestHandler.doRequest {
                 service.getMovieDetails(_uiState.value.movieId, PORTUGUESE_LANGUAGE) }.then(
                 onSuccess = {
@@ -41,22 +42,22 @@ class MovieDetailViewModel(
                     onEvent(DetailEvent.Error(it))
                 },
                 onFinish = {
-                    _uiState.value = _uiState.value.copy(isLoading = false)
+                    _uiState.update { it.copy(isLoading = false) }
                 }
             )
         }
     }
 
-    private fun setUiValues(it: MovieDetailResponse) {
+    private fun setUiValues(mv: MovieDetailResponse) {
         CoroutineScope(Dispatchers.Default).launch {
-            _uiState.value = _uiState.value.copy(movie = it.toDomain())
+            _uiState.update { it.copy(movie = mv.toDomain()) }
             val isFavorite = db.checkIfisAFavoriteMovie(_uiState.value.movie.id)
-            if (isFavorite) _uiState.value = _uiState.value.copy(isFavorite = isFavorite)
+            if (isFavorite) _uiState.update { it.copy(isFavorite = isFavorite) }
         }
     }
 
     fun setMovieId(movieId: String) {
-        _uiState.value = _uiState.value.copy(movieId = movieId)
+        _uiState.update { it.copy(movieId = movieId) }
     }
 
     fun onEvent(event: DetailEvent) {
@@ -81,31 +82,31 @@ class MovieDetailViewModel(
     }
 
     private fun showErrorMessage(message: String) {
-        _uiState.value = _uiState.value.copy(isLoading = false, errorMessage = message, mustShowErrorDialog = true)
+        _uiState.update { it.copy(isLoading = false, errorMessage = message, mustShowErrorDialog = true) }
 
     }
 
     private fun favoriteMovie(movieId: Int) {
         CoroutineScope(Dispatchers.IO).launch{
             db.insertFavoriteMovie(movieId.toLocal())
-            _uiState.value = _uiState.value.copy(
-                isFavorite = db.checkIfisAFavoriteMovie(movieId))
+            _uiState.update { it.copy(
+                isFavorite = db.checkIfisAFavoriteMovie(movieId)) }
         }
     }
     private fun unFavoriteMovie(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             val toRemove = db.getFavoriteMovieById(id)
             db.removeFavoriteMovie(toRemove)
-            _uiState.value = _uiState.value.copy(isFavorite = db.checkIfisAFavoriteMovie(id))
+            _uiState.update { it.copy(isFavorite = db.checkIfisAFavoriteMovie(id)) }
         }
     }
 
     private fun finishLoading() {
-        _uiState.value = _uiState.value.copy(isLoading = false)
+        _uiState.update { it.copy(isLoading = false) }
     }
 
     private fun setLoading() {
-        _uiState.value = _uiState.value.copy(isLoading = true)
+        _uiState.update { it.copy(isLoading = true) }
     }
 
 

@@ -12,6 +12,7 @@ import com.brq.hellocompose.core.util.NetworkUtils.Companion.DEFAULT_NUMBER_PAGE
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.PORTUGUESE_LANGUAGE
 import com.brq.hellocompose.core.util.RequestHandler
 import com.brq.hellocompose.core.util.then
+import com.brq.hellocompose.core.util.update
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -29,14 +30,17 @@ class HomeViewModel(
     var uiSTate: StateFlow<HomeUiStates> = _uiState
     private val pendingActions = MutableSharedFlow<HomeEvent>()
 
-    init { handleEvents() }
+    init {
+        handleEvents()
+    }
 
-     fun getMoviesList() {
-        if(_uiState.value.popularMovies.isEmpty().not()) return
+    fun getMoviesList() {
+        if (_uiState.value.popularMovies.isEmpty().not()) return
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
+            _uiState.update { it.copy(isLoading = true) }
             RequestHandler.doRequest {
-                service.getPopularMoviesList(PORTUGUESE_LANGUAGE, DEFAULT_NUMBER_PAGES) }.then(
+                service.getPopularMoviesList(PORTUGUESE_LANGUAGE, DEFAULT_NUMBER_PAGES)
+            }.then(
                 onSuccess = {
                     handleMovies(it)
                     updateFavorites()
@@ -46,34 +50,35 @@ class HomeViewModel(
 
                 },
                 onFinish = {
-                    _uiState.value = _uiState.value.copy(isLoading = false)
+                    _uiState.update { it.copy(isLoading = false) }
                 }
             )
         }
     }
 
     private fun handleError(msg: String) {
-        _uiState.value = _uiState.value.copy(isLoading = false, mustShowDialog = true, errorMessage = msg)
-
+        _uiState.update { it.copy(isLoading = false, mustShowDialog = true, errorMessage = msg) }
     }
 
     private fun updateFavorites() {
         var result: List<FavoriteMovieEntity>
         CoroutineScope(Dispatchers.Default).launch {
             result = db.getFavoriteMoviesList()
-            _uiState.value = _uiState.value.copy(favoriteIds = result.toDomain())
+            _uiState.update { it.copy(favoriteIds = result.toDomain()) }
         }
     }
 
-    fun handleMovies(it: PopularMoviesResponse) {
-        _uiState.value = _uiState.value.copy(
-            popularMovies = it.results.toDomain(),
-            cachedMovies = it.results.toDomain()
-        )
+    fun handleMovies(resp: PopularMoviesResponse) {
+        _uiState.update {
+            it.copy(
+                popularMovies = resp.results.toDomain(),
+                cachedMovies = resp.results.toDomain()
+            )
+        }
     }
 
     private fun getFavoritesList(): List<Int?> {
-        if (_uiState.value.favoriteIds.isEmpty() ) {
+        if (_uiState.value.favoriteIds.isEmpty()) {
             return emptyList()
         } else {
             var returnList: List<Int?> = emptyList()
@@ -105,16 +110,22 @@ class HomeViewModel(
     }
 
     private fun dismissErrorMessage() {
-       _uiState.value = _uiState.value.copy(mustShowDialog = false)
+        _uiState.update { it.copy(mustShowDialog = false) }
     }
 
     private fun filterAllMovies() {
-        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.cachedMovies)
+        _uiState.update { it.copy(popularMovies = _uiState.value.cachedMovies) }
 
     }
 
     private fun filterFavMovies() {
-        _uiState.value = _uiState.value.copy(popularMovies = _uiState.value.popularMovies.filter { _uiState.value.favoriteIds.contains(it.id) })
+        _uiState.update {
+            it.copy(popularMovies = _uiState.value.popularMovies.filter {
+                _uiState.value.favoriteIds.contains(
+                    it.id
+                )
+            })
+        }
     }
 
 }

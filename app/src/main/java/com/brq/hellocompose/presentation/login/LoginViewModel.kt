@@ -2,6 +2,7 @@ package com.brq.hellocompose.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.brq.hellocompose.core.util.update
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -35,15 +36,15 @@ class LoginViewModel : ViewModel() {
     }
 
     private fun validatePassField(event: LoginEvent.ValidatePassField) {
-        _uiState.value = _uiState.value.copy(pass = event.pass)
-        if (event.pass.isNotEmpty() && event.pass.length > 4) _uiState.value = _uiState.value.copy(isPassError = false)
-        else _uiState.value = _uiState.value.copy(isPassError = true)
+        _uiState.update { it.copy(pass = event.pass) } 
+        if (event.pass.isNotEmpty() && event.pass.length > 4) _uiState.update { it.copy(isPassError = false) }
+        else _uiState.update { it.copy(isPassError = true) }
     }
 
     private fun validateNameField(event: LoginEvent.ValidateNameField) {
-        _uiState.value = _uiState.value.copy(name = event.name)
-        if (event.name.isNotEmpty()) _uiState.value = _uiState.value.copy(isNameError = false)
-        else _uiState.value = _uiState.value.copy(isNameError = true)
+        _uiState.update { it.copy(name = event.name) }
+        if (event.name.isNotEmpty()) _uiState.update { it.copy(isNameError = false) }
+        else _uiState.update { it.copy(isNameError = true) }
     }
 
     private fun validatingLogin() {
@@ -52,16 +53,16 @@ class LoginViewModel : ViewModel() {
             !_uiState.value.isNameError &&
             !_uiState.value.isPassError &&
             _uiState.value.name.isNotEmpty()) {
-            _uiState.value = _uiState.value.copy(isSuccessLogin = true)
+            _uiState.update { it.copy(isSuccessLogin = true) }
         }
-        else _uiState.value = _uiState.value.copy(isSuccessLogin = false)
+        else _uiState.update { it.copy(isSuccessLogin = false) }
     }
 
     private fun verifyAllFieldsAreFilled() {
         if (_uiState.value.name.isNotEmpty() && _uiState.value.pass.isNotEmpty()) {
-            _uiState.value = _uiState.value.copy( allFieldsAreFilled = true)
+            _uiState.update { it.copy( allFieldsAreFilled = true) }
         } else {
-            _uiState.value = _uiState.value.copy( allFieldsAreFilled = false)
+            _uiState.update { it.copy( allFieldsAreFilled = false) }
         }
     }
 
