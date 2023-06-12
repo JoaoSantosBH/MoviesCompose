@@ -34,15 +34,16 @@ object Versions {
     const val splashScreenVersion = "1.0.1"
 
     // T E S T S
+    const val coroutinesTestVersion = "1.7.1"
     const val espressoVersion = "3.5.1"
-    const val jacocoVersion = "0.8.5"
+    const val jacocoVersion = "0.8.8"
     const val junitTestVersion = "4.13.2"
     const val junit5Version = "1.1.5"
-    const val mockKVersion = "1.13.5"
-    const val coroutinesTestVersion = "1.7.1"
-    const val turbineVersion = "0.13.0"
     const val mokitoCoreVersion = "5.3.1"
     const val mockitoKotlinVersion = "4.1.0"
+    const val mockKVersion = "1.13.5"
+    const val turbineVersion = "0.13.0"
+
 
 
 

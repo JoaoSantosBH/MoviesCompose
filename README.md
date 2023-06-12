@@ -3,7 +3,8 @@
 
 ![Tela Home](home.png)  
 ![Tela Detalhes](details.png)
-## Projeto com Compose  e  Arquitetura MVI
+![Tela Jacoco](jacoco.png)
+## Projeto com Compose e Arquitetura MVI + Gradle Kotlin DSL
 
 Senha fake : abc123
 
@@ -17,6 +18,8 @@ Async Load images
 Declarative Ui for android
 #### I N T E R C E P T O R
 Log requests for debug
+#### J A C O C O
+Test Coverage
 #### K O I N
 Project DI
 #### M O C K I T O

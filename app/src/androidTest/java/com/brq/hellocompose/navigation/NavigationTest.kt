@@ -53,7 +53,7 @@ class NavigationTest {
     }
 
     @Test
-    fun appNavHost_verifyGoToSongsButton() {
+    fun appNavHost_Routes() {
         composeTestRule.waitForIdle()
         composeTestRule.onNode(hasTestTag(nodeRoute)).performClick()
         val route = navController.currentBackStackEntry?.destination?.route

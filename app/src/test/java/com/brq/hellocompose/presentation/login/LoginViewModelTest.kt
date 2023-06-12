@@ -33,11 +33,11 @@ class LoginViewModelTest {
             val initialState = awaitItem()
             assertEquals(initialState, LoginUiStates.Empty)
             viewModel.onEvent(LoginEvent.ValidateNameField(VALID_NAME))
-            val result = awaitItem()
-            assertEquals("name", result.name)
+            val resultValidName = awaitItem()
+            assertEquals("name", resultValidName.name)
             viewModel.onEvent(LoginEvent.ValidatePassField(VALID_PASS))
-            val correctPass = awaitItem()
-            assertFalse(correctPass.isPassError)
+            val resultCorrectPass = awaitItem()
+            assertFalse(resultCorrectPass.isPassError)
             viewModel.onEvent(LoginEvent.ValidatePassField(INVALID_PASS))
             val resultWrongPass = awaitItem()
             assertTrue(resultWrongPass.isPassError)
@@ -45,8 +45,8 @@ class LoginViewModelTest {
             val correctPassAgain = awaitItem()
             assertFalse(correctPassAgain.isPassError)
             viewModel.onEvent(LoginEvent.ValidateLogin)
-            val resultFinal = awaitItem()
-            assertTrue(resultFinal.isSuccessLogin)
+            val resultValidLoginState = awaitItem()
+            assertTrue(resultValidLoginState.isSuccessLogin)
         }
     }
 

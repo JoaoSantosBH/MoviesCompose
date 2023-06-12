@@ -4,7 +4,6 @@ import com.brq.hellocompose.composeDependencies
 import com.brq.hellocompose.coreDependencies
 import com.brq.hellocompose.interceptorDependencies
 import com.brq.hellocompose.jacocoDependencies
-//import com.brq.hellocompose.jacocoDependencies
 import com.brq.hellocompose.koinDependencies
 import com.brq.hellocompose.materialDependencies
 import com.brq.hellocompose.retrofitDependencies
@@ -76,8 +75,6 @@ android {
 
 dependencies {
 
-    androidTestsDependencies()
-    androidTestsDependencies()
     coilDependencies()
     composeDependencies()
     coreDependencies()
@@ -89,7 +86,10 @@ dependencies {
     splashScreenDependencies()
 
     // T E S T S
+    //Instrumented
     androidTestsDependencies()
+    //Coverage
     jacocoDependencies()
+    //Unit
     testsDependencies()
 }
