@@ -18,7 +18,8 @@ O padrão MVI é um ótimo padrão para trabalhar com o Compose , nele temos um 
 
 ![Foto MVI](img/mvi.png)
 
-Utilizamos data class para representar os possíveis estados da UI
+Utilizamos **data class** para representar os possíveis estados da UI </b>
+
 Ex: LoginUiStates
 
 ![Foto uiStates](img/uiStates.png)
