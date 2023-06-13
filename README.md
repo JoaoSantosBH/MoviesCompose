@@ -32,18 +32,19 @@ O padrão MVI é um ótimo padrão para trabalhar com o Compose , nele temos um 
 
 Utilizamos uma  **data class** para representar os possíveis estados da UI </br>
 
-Ex: LoginUiStates
+Ex: **LoginUiStates**
 
 ![Foto uiStates](img/uiStates.png)
 
-Utilizamos uma **sealed class** para representar os eventos da tela  </br>
-Ex: LoginEvents
+Utilizamos uma **sealed class** para representar os eventos da tela
+</br>
+Ex: **LoginEvents**
 
 ![Foto events](img/events.png)
 
 Como funciona: </br>
 Basicamente a **ViewModel** recebe um Evento da View,
-este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View (**UiStates**), que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado
+este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado
 
 ### Jetpack Compose
 O Jetpack Compose é um kit de ferramentas para criação declarativa de UIs nativas, recomendado pelo Android. Ele simplifica e acelera o desenvolvimento da IU no Android.
