@@ -1,31 +1,23 @@
-
-
-
-
 # Hello Compose Movies
 
 ### App de exemplo utilizando Jetpack Compose, Clean Architecture e padrão MVI
 
 ### Prints do app
 
-![Tela Splash](img/splash.png)   ![Tela Login](img/login.png)    ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)  
+![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
 
 ### Arquitetura
 Foi utilizada a arquitetura Clean
 #### - Camadas
-**Data**:  <br>  
-/local/Dao <br>  
-/local/Entities <br>  
-<br>  
-/remote/model <br>
-
-**Domain** <br>  
-**Navigation** <br>  
-**Services** <br>  
-**Presentation** <br>  
+**Data**:  
+/local/Dao
+/local/Entities
+/remote/model
+**Domain**
+**Navigation**  
+**Services**
+**Presentation**
 **Ui** <br>
-
-[FOTO CAMADAS]
 
 ### Pdrão MVI
 O padrão MVI é um ótimo padrão para trabalhar com o Compose , nele temos um fluxo unidirecional para atualizar os estados das Views e  seus efeitos colaterais para lidar com eventos usando LaunchedEffect, SideEffect etcc....

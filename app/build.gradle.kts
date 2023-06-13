@@ -47,6 +47,14 @@ android {
 
     buildTypes {
 
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+                    targetCompatibility = JavaVersion.VERSION_1_8
+        }
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_1_8.toString()
+        }
+
         val key = providers.gradleProperty("API_KEY").get()
         val token = providers.gradleProperty("API_TOKEN").get()
 
