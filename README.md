@@ -8,7 +8,7 @@
 
 ### Prints do app
 
-![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
+![Tela Splash](img/splash.png)   ![Tela Login](img/login.png)    ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)  
 
 ### Arquitetura
 Foi utilizada a arquitetura Clean
