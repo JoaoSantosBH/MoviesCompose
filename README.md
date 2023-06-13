@@ -76,11 +76,11 @@ Utilizamos a seguinte estrutura:  </b>
 
 
 para declara dependência utilizamos a exensão
-invocando
+invocando no build.gradle do módulo que desejarmos
 
-		coilDependencies()  
 
-no build.gradle do módulo que desejarmos
+	coilDependencies()  
+
 
 
 ### Navigation
