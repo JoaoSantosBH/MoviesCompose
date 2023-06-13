@@ -5,22 +5,22 @@
 ### App de exemplo utilizando Jetpack Compose, Clean Architecture e padrão MVI
 
 ### Prints do app
-![Tela Login](img/login.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png) 
+![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
 
 ### Arquitetura
 Foi utilizada a arquitetura Clean
 #### - Camadas
-Data: [
-/local/Dao
-/local/Entities
+**Data**:  </b>
+/local/Dao </b>
+/local/Entities </b>
+</b>
+/remote/model </b>
 
-/remote/model
-]
-Domain
-Navigation
-Services
-Presentation
-Ui
+**Domain** </b>
+**Navigation** </b>
+**Services** </b>
+**Presentation** </b>
+**Ui** </b>
 
 [FOTO CAMADAS]
 
