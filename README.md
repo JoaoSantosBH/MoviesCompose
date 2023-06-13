@@ -63,21 +63,17 @@ Algumas vantagens de se usar kotlin DSL e não Groovy:
 
 Utilizamos a seguinte estrutura: </b>
 **Deps** : onde guardamos as referencias das dependencias/libs do projeto
-
-	// C O I L  
-	const val coilCompose = "io.coil-kt:coil-		
-	compose:${Versions.coilComposeVersion}"
+![](img/deps.png)
 
 **Versions**: onde guardamos as versões dessas dependencias/libs
 
-	// C O I L  
-	const val coilComposeVersion = "2.4.0"
+![](img/version.png)
+
 
 **DependenciesXtensions** onde agrupamos as dependencias por afinidades
 
-	fun DependencyHandlerScope.coilDependencies() {  
-	  "implementation"(Deps.coilCompose)  
-	}
+![](img/depxt.png)
+
 
 para declara dependência utilizamos a exensão
 invocando
