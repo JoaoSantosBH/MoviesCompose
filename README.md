@@ -63,16 +63,16 @@ Algumas vantagens de se usar kotlin DSL e não Groovy:
 
 Utilizamos a seguinte estrutura: </b>
 **Deps** : onde guardamos as referencias das dependencias/libs do projeto
-![](img/deps.png)
+![foto deps](img/deps.png)
 
 **Versions**: onde guardamos as versões dessas dependencias/libs
 
-![](img/version.png)
+![foto version](img/version.png)
 
 
 **DependenciesXtensions** onde agrupamos as dependencias por afinidades
 
-![](img/depxt.png)
+![foto dependencias](img/depxt.png)
 
 
 para declara dependência utilizamos a exensão
