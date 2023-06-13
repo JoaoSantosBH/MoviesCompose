@@ -106,9 +106,9 @@ Para rodar teste navigation:
 
 ### Telas do App
 
-LoginScreen.kt </br>
-HomeScreen.kt </br>
-DetailScreen.kt </br>
+- LoginScreen.kt </br>
+- HomeScreen.kt </br>
+- DetailScreen.kt </br>
 
 ### Testes unitários (tests)
 
