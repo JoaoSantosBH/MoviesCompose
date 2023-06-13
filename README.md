@@ -106,24 +106,36 @@ Para rodar teste navigation:
 
 ### Telas do App
 
-- LoginScreen.kt </br>
-- HomeScreen.kt </br>
-- DetailScreen.kt </br>
+LoginScreen.kt </br>
+HomeScreen.kt </br>
+DetailScreen.kt </br>
 
 ### Testes unitários (tests)
-- presentation:  /presentation/detail/DetailViewModelTest.kt
-- presentation:  /presentation/home/HomeViewModelTest.kt
-- presentation:  /presentation/login/LoginViewModelTest.kt
-- presentation: /DateConversionTest
-- api: data/remote/service/PopularMoviesServiceTest
+
+#### Presentation
+-  /presentation/detail/DetailViewModelTest.kt
+- /presentation/home/HomeViewModelTest.kt
+- /presentation/login/LoginViewModelTest.kt
+#### Utils
+
+- /DateConversionTest
+#### Api
+
+- /remote/service/PopularMoviesServiceTest
 
 
 ### Testes instrumentais (androidTests)
-- database: /local/RoomDbTest.kt
-- navigation:  /navigation/NavigationTest
-- ui: /ui/DetailUiTest
-- ui: /ui/HomeUiTest
-- ui: /ui/LoginUiTest
+#### Room Data Base
+
+- /local/RoomDbTest.kt
+#### Navigation
+
+- /navigation/NavigationTest
+#### Ui
+
+- /ui/DetailUiTest
+- /ui/HomeUiTest
+- /ui/LoginUiTest
 
 ![Foto Testes Instrumentais](img/androidTest.png)
 
