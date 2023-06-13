@@ -61,7 +61,7 @@ Algumas vantagens de se usar kotlin DSL e não Groovy:
    ![Foto gradle](img/buildSrc.png)
 
 
-Utilizamos a seguinte estrutura: </b>
+Utilizamos a seguinte estrutura:  </b>
 **Deps** : onde guardamos as referencias das dependencias/libs do projeto
 ![foto deps](img/deps.png)
 
