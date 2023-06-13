@@ -98,7 +98,6 @@ fun HomeScreen(
     }
 }
 
-
 @Composable
 fun HomeLayout(
     paddingValues: PaddingValues,
@@ -138,11 +137,6 @@ fun HomeLayout(
                 }
             }
         }
-
-
-
-
-
     }
 }
 
@@ -178,7 +172,7 @@ fun TabLayout(onEvent: (HomeEvent) -> Unit) {
                     selected = tabIndex == index,
                     onClick = { tabIndex = index },
                     icon = {
-                        when (index) { //tint = if (state.isFavorite) MaterialTheme.colorScheme.error
+                        when (index) {
                             0 -> Icon(imageVector = Icons.Sharp.Info, contentDescription = null, tint = Cyan700)
                             1 -> Icon(imageVector = Icons.Default.Favorite, contentDescription = null, tint = Cyan700)
                         }
