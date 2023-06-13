@@ -1,4 +1,4 @@
-package com.brq.hellocompose.presentation.home.service
+package com.brq.hellocompose.data.remote.service
 
 import com.brq.hellocompose.core.data.remote.model.PopularMoviesResponse.Companion.FakeResponse
 import com.brq.hellocompose.core.services.Services

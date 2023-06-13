@@ -17,8 +17,11 @@ import com.brq.hellocompose.presentation.detail.DetailUiStates
 import com.brq.hellocompose.presentation.detail.MovieDetailViewModel
 import com.brq.hellocompose.presentation.home.HomeUiStates
 import com.brq.hellocompose.presentation.home.HomeViewModel
+import com.brq.hellocompose.presentation.login.LoginUiStates
+import com.brq.hellocompose.presentation.login.LoginViewModel
 import com.brq.hellocompose.ui.details.DetailsScreen
 import com.brq.hellocompose.ui.home.HomeScreen
+import com.brq.hellocompose.ui.login.LoginScreen
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -28,10 +31,24 @@ internal fun AppNavigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.MoviesScreen.route
+        startDestination = Screen.LoginScreen.route
     ) {
+        navigateToLogin(navController)
         navigationHome(navController)
         navigationDetails(navController)
+    }
+}
+
+fun NavGraphBuilder.navigateToLogin(navController: NavHostController) {
+    composable(route = Screen.LoginScreen.route) {
+        val viewModel: LoginViewModel = getViewModel()
+        val uiState by rememberFlowWithLifecycle(viewModel.uiSTate)
+            .collectAsState(initial = LoginUiStates.Empty)
+        LoginScreen(
+            navController = navController,
+            state = uiState,
+            onEvent = viewModel::onEvent
+        )
     }
 }
 
@@ -47,6 +64,7 @@ fun NavGraphBuilder.navigationHome(navController: NavHostController) {
         )
     }
 }
+
 fun NavGraphBuilder.navigationDetails(navController: NavHostController) {
     composable(
         route = Screen.MoviesDetailsScreen.route + FILM_ID_ARG,
@@ -62,6 +80,5 @@ fun NavGraphBuilder.navigationDetails(navController: NavHostController) {
             navController = navController
         )
     }
+
 }
-
-
