@@ -1,5 +1,6 @@
 
 
+
 # Hello Compose Movies
 
 ### App de exemplo utilizando Jetpack Compose, Clean Architecture e padrão MVI
@@ -10,17 +11,17 @@
 ### Arquitetura
 Foi utilizada a arquitetura Clean
 #### - Camadas
-**Data**:  </b>
-/local/Dao </b>
-/local/Entities </b>
-</b>
-/remote/model </b>
+**Data**:  </br>
+/local/Dao </br>
+/local/Entities </br>
+</br>
+/remote/model </br>
 
-**Domain** </b>
-**Navigation** </b>
-**Services** </b>
-**Presentation** </b>
-**Ui** </b>
+**Domain** </br>
+**Navigation** </br>
+**Services** </br>
+**Presentation** </br>
+**Ui** </br>
 
 [FOTO CAMADAS]
 
@@ -29,18 +30,18 @@ O padrão MVI é um ótimo padrão para trabalhar com o Compose , nele temos um 
 
 ![Foto MVI](img/mvi.png)
 
-Utilizamos uma  **data class** para representar os possíveis estados da UI </b>
+Utilizamos uma  **data class** para representar os possíveis estados da UI </br>
 
 Ex: LoginUiStates
 
 ![Foto uiStates](img/uiStates.png)
 
-Utilizamos uma **sealed class** para representar os eventos da tela  </b>
+Utilizamos uma **sealed class** para representar os eventos da tela  </br>
 Ex: LoginEvents
 
 ![Foto events](img/events.png)
 
-Como funciona: </b>
+Como funciona: </br>
 Basicamente a **ViewModel** recebe um Evento da View,
 este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View (**UiStates**), que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado
 
@@ -61,7 +62,7 @@ Algumas vantagens de se usar kotlin DSL e não Groovy:
    ![Foto gradle](img/buildSrc.png)
 
 
-Utilizamos a seguinte estrutura:  </b>
+Utilizamos a seguinte estrutura:  </br>
 **Deps** : onde guardamos as referencias das dependencias/libs do projeto
 ![foto deps](img/deps.png)
 
@@ -84,7 +85,7 @@ invocando no build.gradle do módulo que desejarmos
 
 
 ### Navigation
-A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guardas nossas rotas de navegação:  </b>
+A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guardas nossas rotas de navegação:  </br>
 Routes.kt
 ![Foto Rotas](img/routes.png)
 
@@ -105,9 +106,9 @@ Para rodar teste navigation:
 
 ### Telas do App
 
-LoginScreen.kt </b>
-HomeScreen.kt </b>
-DetailScreen.kt </b>
+LoginScreen.kt </br>
+HomeScreen.kt </br>
+DetailScreen.kt </br>
 
 ### Testes unitários (tests)
 - presentation:  /presentation/detail/DetailViewModelTest.kt
