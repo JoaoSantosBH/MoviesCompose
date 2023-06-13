@@ -2,14 +2,25 @@
 
 # Hello Compose Movies
 
-![Tela Home](home.png)    ![Tela Detalhes](details.png)
 ### App de exemplo utilizando Jetpack Compose, Clean Architecture e padrão MVI
 
-### Versão
+### Prints do app
+![Tela Home](home.png)    ![Tela Detalhes](details.png)
 
 ### Arquitetura
 Foi utilizada a arquitetura Clean
 #### - Camadas
+Data: [
+/local/Dao
+/local/Entities
+
+/remote/model
+]
+Domain
+Navigation
+Services
+Presentation
+Ui
 
 [FOTO CAMADAS]
 
