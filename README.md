@@ -138,7 +138,7 @@ Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] pa
 ### Cobertura de testes - Jacoco
 ![Tela Jacoco](jacoco.png)
 
-Para rodar utilize os scripts:  
+Para rodar o jacoco utilize os scripts da pasta/scripts jacoco no gradle:  
 ![Tela Jacoco](img/jacocos.png)
 
 
@@ -171,7 +171,7 @@ com.squareup.retrofit2:retrofit:${retrofitVersion}
 com.squareup.retrofit2:converter-gson:${retrofitVersion}
 
 #### Room
-androidx.room:room-runtime:${roomVersion}   
+androidx.room:room-runtime:${roomVersion}
 androidx.room:room-compiler:${roomVersion}
 
 #### Splash Screen
