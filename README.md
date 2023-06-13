@@ -18,23 +18,23 @@ O padrão MVI é um ótimo padrão para trabalhar com o Compose , nele temos um 
 
 ![Foto MVI](img/mvi.png)
 
-Utilizamos **data class** para representar os possíveis estados da UI </b>
+Utilizamos uma  **data class** para representar os possíveis estados da UI </b>
 
 Ex: LoginUiStates
 
 ![Foto uiStates](img/uiStates.png)
 
-Utilizamos sealed class para representar os eventos da tela
+Utilizamos uma **sealed class** para representar os eventos da tela  </b>
 Ex: LoginEvents
 
 ![Foto events](img/events.png)
 
-Como funciona:
-Basicamente a ViewModel recebe um Evento da View,
-este Evento dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View (UiStates), que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado
+Como funciona: </b>
+Basicamente a **ViewModel** recebe um Evento da View,
+este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View (**UiStates**), que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado
 
 ### Jetpack Compose
-O Jetpack Compose é um kit de ferramentas moderno recomendado pelo Android para criar declarativamente UIs nativas. Ele simplifica e acelera o desenvolvimento da IU no Android.
+O Jetpack Compose é um kit de ferramentas para criação declarativa de UIs nativas, recomendado pelo Android. Ele simplifica e acelera o desenvolvimento da IU no Android.
 
 ### Gradle Kotlin DSL
 
@@ -50,34 +50,34 @@ Algumas vantagens de se usar kotlin DSL e não Groovy:
    ![Foto gradle](img/buildSrc.png)
 
 
-Utilizamos a seguinte estrutura:
-Deps : onde guardamos as referencias das dependencias/libs do projeto
+Utilizamos a seguinte estrutura: </b>
+**Deps** : onde guardamos as referencias das dependencias/libs do projeto
 
 	// C O I L  
 	const val coilCompose = "io.coil-kt:coil-		
 	compose:${Versions.coilComposeVersion}"
 
-Versions: onde guardamos as versões dessas dependencias/libs
+**Versions**: onde guardamos as versões dessas dependencias/libs
 
 	// C O I L  
 	const val coilComposeVersion = "2.4.0"
 
-DependenciesXtensions.kt onde agrupamos as dependencias por afinidades
+**DependenciesXtensions** onde agrupamos as dependencias por afinidades
 
 	fun DependencyHandlerScope.coilDependencies() {  
 	  "implementation"(Deps.coilCompose)  
 	}
 
-para declara dependencia utilizamos a extensdão
+para declara dependência utilizamos a exensão
 invocando
 
 		coilDependencies()  
 
-no build.gradle do módulo que desejamso
+no build.gradle do módulo que desejarmos
 
 
 ### Navigation
-A navegação do app utiliza o Compose e para tal temos uma sealed class de rotas
+A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guardas nossas rotas de navegação:  </b>
 Routes.kt
 ![Foto Rotas](img/routes.png)
 
@@ -85,7 +85,7 @@ Routes.kt
 Para realizar o Login utilize a
 Senha fake : abc123
 
-Foi utilizada a lib AnimatedNavHost para navegação entre telas, com efeitos de transições entre as telas, porém esta lib ainda não conta com suporte a testes, e por tal motivo foi criado um arquivo com a lib padrão do compose apenas para rodar os testes de navegação, para isso execute os procedimentos citados abaixo:
+Foi utilizada a lib **AnimatedNavHost** para navegação entre telas, com efeitos de transições entre as telas, porém esta lib ainda não conta com suporte a testes, e por tal motivo foi criado um arquivo com a lib padrão do compose apenas para rodar os testes de navegação, para isso execute os procedimentos citados abaixo:
 Para rodar teste navigation:
 
        Substitua o componente [AnimatedNavHost] no arquivo [NavvHost]
@@ -98,9 +98,9 @@ Para rodar teste navigation:
 
 ### Telas do App
 
-LoginScreen.kt
-HomeScreen.kt
-DetailScreen.kt
+LoginScreen.kt </b>
+HomeScreen.kt </b>
+DetailScreen.kt </b>
 
 ### Testes unitários (tests)
 - presentation:  /presentation/detail/DetailViewModelTest.kt
@@ -123,40 +123,40 @@ DetailScreen.kt
 ![Tela Jacoco](jacoco.png)
 
 Para rodar utilize os scripts:
-![Tela Jacoco](jacocos.png)
+![Tela Jacoco](img/jacocos.png)
 
 
 ### Libs utilizadas no projeto
 
-#### - JetpackCompose
+#### JetpackCompose
 androidx.activity:activity-compose:${activityComposeVersion}
 androidx.navigation:navigation-compose:${composeNavVersion}"
 
-#### - Coil
+#### Coil
 "io.coil-kt:coil-compose:${coilComposeVersion}"
 
-#### - Koin
+#### Koin
 "io.insert-koin:koin-androidx-compose:${koinComposeVersion}"
 
-#### - Interceptor
+#### Interceptor
 "com.squareup.okhttp3:logging-interceptor:${interceptorVersion}"
 
-#### - Jacoco
+#### Jacoco
 "org.jacoco:org.jacoco.core:${jacocoVersion}"
 
-#### - Material Design 3
+#### Material Design 3
 "androidx.compose.material3:material3"
 
-#### - Retrofit
+#### Retrofit
 "com.squareup.retrofit2:retrofit:${retrofitVersion}"
 "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
 
-#### - Room
+#### Room
 "androidx.room:room-runtime:${roomVersion}"  
 "androidx.room:room-compiler:${roomVersion}"
 
-#### - Splash Screen
+#### Splash Screen
 "androidx.core:core-splashscreen:${splashScreenVersion}"
 
-#### - Turbine
+#### Turbine
 turbineFlowTests =  "app.cash.turbine:turbine:${turbineVersion}"
