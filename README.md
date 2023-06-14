@@ -44,12 +44,12 @@ Como funciona: <br>
 Basicamente a **ViewModel** recebe um Evento da View,        
 este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado  da View
 
-### Jetpack Compose
-O Jetpack Compose é um kit para criação de UIs nativas, de maneira declarativa, e recomendado pelo Android. Ele simplifica e acelera o desenvolvimento da UI no Android.
+### UI
+Para criação das Views foi utilizado o Jetpack Compose, um kit para criação de UIs nativas, de maneira declarativa, e recomendado pelo Android. Ele simplifica e acelera o desenvolvimento da UI no Android.
 
-### Gradle Kotlin DSL
+### Gerenciamento de dependências
 
-O gerenciamento de dependências do projeto foi feito com Gradle Plugin e Kotlin DSL
+O gerenciamento de dependências do projeto foi feito com **Gradle Plugin e Kotlin DSL**
 
 Algumas vantagens de se usar kotlin DSL e não Groovy:
 - Preenchimento automático do código(_autocomplete_)
@@ -81,8 +81,10 @@ invocando no ***build.gradle.kts*** do módulo que desejarmos colocar a dependê
 Ex:    
 ***coilDependencies()***
 
+### Injeção de dependências
+Foi utilizado o koin para injeção de dependências do projeto
 
-### Navigation
+### Navegação
 A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guarda as nossas rotas de navegação:  <br>        
 Routes.kt        
 ![Foto Rotas](img/routes.png)
@@ -95,6 +97,8 @@ Foi utilizada a lib **AnimatedNavHost** para navegação entre telas, com efeito
 Para rodar teste navigation:
 
 Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] padrao do compose, exemplo no arquivo [NavHostForTest] Depois altere na [MainActivity] de [val navController = rememberAnimatedNavController()] para [val navController = rememberNavController()] Feito isso rode o teste
+
+Também pode se utilizar a branch "teste" caso não queira realizar nenhuma das alterações acima mencionadas, e rodar os testes nela
 
 
 ### Features do App
@@ -125,6 +129,9 @@ Para rodar os testes digite no terminal:
 
 ***./gradlew testDebugUnitTest***
 
+![Foto tests](img/gradleUnit.png)
+
+
 ### Testes instrumentais (androidTests)
 ##### Room Data Base
 
@@ -144,9 +151,11 @@ Para rodar os testes digite no terminal:
 
 
 Para rodar os testes digite no terminal:    
-***./gradlew connectedDebugAndroidTest***
+***./gradlew connectedDebugAndroidTest***  
+![Foto tests](img/gradleIns.png)
 
-### Jacoco - Cobertura de testes
+
+### Cobertura de testes - Jacoco
 ![Tela Jacoco](jacoco.png)
 
 Para rodar o jacoco utilize os scripts da pasta/scripts/jacoco no gradle:        
@@ -159,7 +168,7 @@ antes set a variavel cache para false,  no arquivo gradle.properties
 Para abrir no Browser:    
 PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
 
-### Libs utilizadas no projeto
+### Sumário de libs utilizadas no projeto
 
 #### JetpackCompose
 androidx.activity:activity-compose:${activityComposeVersion}        
