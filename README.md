@@ -45,7 +45,7 @@ Basicamente a **ViewModel** recebe um Evento da View,
 este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado  da View
 
 ### UI
-Para criação das Views foi utilizado o Jetpack Compose, um kit para criação de UIs nativas, de maneira declarativa, e recomendado pelo Android. Ele simplifica e acelera o desenvolvimento da UI no Android.
+Para criação das Views foi utilizado o Jetpack Compose, uma api para criação declarativa de UIs nativas,  recomendado pelo Android.
 
 ### Gerenciamento de dependências
 
@@ -82,12 +82,23 @@ Ex:
 ***coilDependencies()***
 
 ### Injeção de dependências
-Foi utilizado o koin para injeção de dependências do projeto
+Foi utilizada a lib koin para injeção de dependências do projeto
 
 ### Navegação
 A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guarda as nossas rotas de navegação:  <br>        
 Routes.kt        
 ![Foto Rotas](img/routes.png)
+
+
+### Features do App
+- LoginScreen.kt <br>
+- HomeScreen.kt <br>
+- DetailScreen.kt <br>
+
+### Prints do app
+
+![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
+
 
 ### Instruções específicas do projeto
 Para realizar o Login utilize a        
@@ -99,18 +110,6 @@ Para rodar teste navigation:
 Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] padrao do compose, exemplo no arquivo [NavHostForTest] Depois altere na [MainActivity] de [val navController = rememberAnimatedNavController()] para [val navController = rememberNavController()] Feito isso rode o teste
 
 Também pode se utilizar a branch "teste" caso não queira realizar nenhuma das alterações acima mencionadas, e rodar os testes nela
-
-
-### Features do App
-
-- LoginScreen.kt <br>
-- HomeScreen.kt <br>
-- DetailScreen.kt <br>
-
-### Prints do app
-
-![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
-
 
 ### Testes unitários (tests)
 
