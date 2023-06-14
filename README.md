@@ -78,8 +78,10 @@ Utilizamos a seguinte estrutura:  <br>
 para declarar uma dependência utilizamos a extensão,        
 invocando no ***build.gradle.kts*** do módulo que desejarmos colocar a dependência :
 
-Ex:    
-***coilDependencies()***
+Ex:
+
+    coilDependencies()
+
 
 ### Injeção de dependências
 Foi utilizada a lib koin para injeção de dependências do projeto
@@ -126,7 +128,8 @@ Também pode se utilizar a branch "teste" caso não queira realizar nenhuma das 
 
 Para rodar os testes digite no terminal:
 
-***./gradlew testDebugUnitTest***
+
+    ./gradlew testDebugUnitTest 
 
 ![Foto tests](img/gradleUnit.png)
 
@@ -149,8 +152,10 @@ Para rodar os testes digite no terminal:
 ![Video Testes Instrumentais](/img/espresso.webm)
 
 
-Para rodar os testes digite no terminal:    
-***./gradlew connectedDebugAndroidTest***  
+Para rodar os testes digite no terminal:
+
+    ./gradlew connectedDebugAndroidTest
+
 ![Foto tests](img/gradleIns.png)
 
 
@@ -161,8 +166,22 @@ Para rodar o jacoco utilize os scripts da pasta/scripts/jacoco no gradle:
 ![Tela Jacoco](img/jacocos.png)
 
 ou pelo terminal:      
-antes set a variavel cache para false,  no arquivo gradle.properties    
-*org.gradle.unsafe.configuration-cache=**false*** rode o comando ->  ***./gradlew jacocoCoverage*** rode o comando ->  ***./gradlew jacocoReport***
+antes set a variável cache para **false**,  no arquivo **gradle.properties**
+
+    org.gradle.unsafe.configuration-cache=false 
+
+ou apenas comente esta linha colocando um # no início
+
+    #org.gradle.unsafe.configuration-cache=true 
+
+rode o comando:
+
+    ./gradlew jacocoCoverage
+
+rode o comando:
+
+    ./gradlew jacocoReport 
+
 
 Para abrir no Browser:    
 PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
