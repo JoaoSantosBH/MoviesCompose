@@ -66,8 +66,6 @@ android {
 
         getByName("debug") {
             isMinifyEnabled = false
-            enableAndroidTestCoverage = true
-            enableUnitTestCoverage  = true
             buildConfigField("String", "API_KEY", key )
             buildConfigField("String", "API_TOKEN", token)
         }

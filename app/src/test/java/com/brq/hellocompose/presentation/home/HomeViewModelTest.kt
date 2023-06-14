@@ -8,7 +8,6 @@ import com.brq.hellocompose.features.home.presentation.HomeEvent
 import com.brq.hellocompose.features.home.presentation.HomeUiStates
 import com.brq.hellocompose.features.home.presentation.HomeViewModel
 import com.brq.hellocompose.features.home.services.HomeServices
-import io.mockk.mockk
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.test.runTest
@@ -26,7 +25,8 @@ class HomeViewModelTest {
 
     private lateinit var viewModel: HomeViewModel
 
-    val mdb = mockk<MovieDao>()
+    @Mock
+    val mdb: MovieDao = mock()
 
     @Mock
     val mserv :HomeServices = mock()
@@ -36,17 +36,18 @@ class HomeViewModelTest {
 
     @Before
     fun setUp() {
-        viewModel = HomeViewModel(mserv, mdb)
+        openMocks(mdb)
         openMocks(mserv)
+        viewModel = HomeViewModel(mserv, mdb)
     }
 
     @Test
-    fun `testing HOME UI states from triggered by event`() = runTest {
+    fun `testing Home uiStates triggered by events`() = runTest {
 
         val expectedResult = Response.success(FakeResponse)
 
         mserv.stub {
-            onBlocking { getPopularMoviesList("", 1) } doAnswer { expectedResult }
+            onBlocking { getPopularMoviesList("A", 1) } doAnswer { expectedResult }
         }
 
         viewModel.uiSTate.test {
