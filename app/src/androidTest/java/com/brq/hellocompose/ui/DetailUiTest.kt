@@ -10,10 +10,10 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.printToLog
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
+import com.brq.hellocompose.features.details.presentation.DetailUiStates
+import com.brq.hellocompose.features.details.ui.DetailsLayout
 import com.brq.hellocompose.nodeBackButton
 import com.brq.hellocompose.onEventDetail
-import com.brq.hellocompose.presentation.detail.DetailUiStates
-import com.brq.hellocompose.ui.details.DetailsLayout
 import com.brq.hellocompose.ui.theme.MoviesComposeTheme
 import org.junit.Before
 import org.junit.Rule

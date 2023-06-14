@@ -1,6 +1,6 @@
 package com.brq.hellocompose.presentation
 
-import com.brq.hellocompose.core.data.remote.model.toDateFormat
+import com.brq.hellocompose.features.home.data.remote.model.toDateFormat
 import org.junit.Assert
 import org.junit.Test
 

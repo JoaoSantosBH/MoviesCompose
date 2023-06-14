@@ -1,12 +1,12 @@
 package com.brq.hellocompose
 
-import com.brq.hellocompose.core.data.local.entities.FavoriteMovieEntity
-import com.brq.hellocompose.core.domain.PopularMoviesModel
 import com.brq.hellocompose.core.navigation.Screen
 import com.brq.hellocompose.core.util.NetworkUtils
-import com.brq.hellocompose.presentation.detail.DetailEvent
-import com.brq.hellocompose.presentation.home.HomeEvent
-import com.brq.hellocompose.presentation.login.LoginEvent
+import com.brq.hellocompose.features.details.data.local.entities.FavoriteMovieEntity
+import com.brq.hellocompose.features.details.presentation.DetailEvent
+import com.brq.hellocompose.features.home.domain.PopularMoviesModel
+import com.brq.hellocompose.features.home.presentation.HomeEvent
+import com.brq.hellocompose.features.login.presentation.LoginEvent
 
 val fakeItems = PopularMoviesModel.DUMB_RETURN_LIST.results
 

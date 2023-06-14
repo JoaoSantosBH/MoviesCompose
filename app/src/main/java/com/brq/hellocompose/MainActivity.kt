@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.brq.hellocompose.core.navigation.AppNavigation
-import com.brq.hellocompose.presentation.home.HomeViewModel
+import com.brq.hellocompose.features.home.presentation.HomeViewModel
 import com.brq.hellocompose.ui.theme.MoviesComposeTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay

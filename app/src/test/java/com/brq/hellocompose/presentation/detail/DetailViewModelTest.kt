@@ -1,8 +1,10 @@
 package com.brq.hellocompose.presentation.detail
 
 import com.brq.hellocompose.MainDispatcherRule
-import com.brq.hellocompose.core.data.local.dao.MovieDao
-import com.brq.hellocompose.core.services.Services
+import com.brq.hellocompose.features.details.data.local.dao.MovieDao
+import com.brq.hellocompose.features.details.presentation.DetailEvent
+import com.brq.hellocompose.features.details.presentation.MovieDetailViewModel
+import com.brq.hellocompose.features.details.services.DetailsServices
 import io.mockk.mockk
 import junit.framework.TestCase.assertFalse
 import junit.framework.TestCase.assertTrue
@@ -17,7 +19,7 @@ import org.junit.Test
 class DetailViewModelTest {
     private lateinit var viewModel: MovieDetailViewModel
     val mdb = mockk<MovieDao>()
-    val mserv = mockk<Services>()
+    val mserv = mockk<DetailsServices>()
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()

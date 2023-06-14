@@ -9,13 +9,13 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
+import com.brq.hellocompose.features.login.presentation.LoginUiStates
+import com.brq.hellocompose.features.login.ui.LoginLayout
 import com.brq.hellocompose.nodeLoginButton
 import com.brq.hellocompose.nodeLoginNameTextField
 import com.brq.hellocompose.nodeLoginPassTextField
 import com.brq.hellocompose.nodeLoginTitle
 import com.brq.hellocompose.onLoginDetail
-import com.brq.hellocompose.presentation.login.LoginUiStates
-import com.brq.hellocompose.ui.login.LoginLayout
 import com.brq.hellocompose.ui.theme.MoviesComposeTheme
 import org.junit.Before
 import org.junit.Rule

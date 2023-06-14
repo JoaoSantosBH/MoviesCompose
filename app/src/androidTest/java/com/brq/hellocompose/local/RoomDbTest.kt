@@ -6,8 +6,8 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.brq.hellocompose.DUMB_MOVIE_ID
 import com.brq.hellocompose.core.data.local.AppDatabase
-import com.brq.hellocompose.core.data.local.dao.MovieDao
 import com.brq.hellocompose.createFakeMovie
+import com.brq.hellocompose.features.details.data.local.dao.MovieDao
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before

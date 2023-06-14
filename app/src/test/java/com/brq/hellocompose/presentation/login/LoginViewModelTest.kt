@@ -6,6 +6,9 @@ import com.brq.hellocompose.INVALID_PASS
 import com.brq.hellocompose.MainDispatcherRule
 import com.brq.hellocompose.VALID_NAME
 import com.brq.hellocompose.VALID_PASS
+import com.brq.hellocompose.features.login.presentation.LoginEvent
+import com.brq.hellocompose.features.login.presentation.LoginUiStates
+import com.brq.hellocompose.features.login.presentation.LoginViewModel
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse
 import junit.framework.TestCase.assertTrue

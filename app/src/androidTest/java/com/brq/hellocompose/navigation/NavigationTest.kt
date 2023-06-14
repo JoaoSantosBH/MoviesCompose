@@ -10,10 +10,10 @@ import androidx.navigation.testing.TestNavHostController
 import com.brq.hellocompose.core.navigation.AppNavigation
 import com.brq.hellocompose.expectedRoute
 import com.brq.hellocompose.fakeItems
+import com.brq.hellocompose.features.home.presentation.HomeEvent
+import com.brq.hellocompose.features.home.presentation.HomeUiStates
+import com.brq.hellocompose.features.home.ui.HomeLayout
 import com.brq.hellocompose.nodeRoute
-import com.brq.hellocompose.presentation.home.HomeEvent
-import com.brq.hellocompose.presentation.home.HomeUiStates
-import com.brq.hellocompose.ui.home.HomeLayout
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule

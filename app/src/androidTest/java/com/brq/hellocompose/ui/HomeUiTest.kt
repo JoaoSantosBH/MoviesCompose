@@ -9,11 +9,11 @@ import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.brq.hellocompose.fakeItems
+import com.brq.hellocompose.features.home.presentation.HomeUiStates
+import com.brq.hellocompose.features.home.ui.HomeLayout
 import com.brq.hellocompose.nodeFav
 import com.brq.hellocompose.nodeFilm
 import com.brq.hellocompose.onEventHome
-import com.brq.hellocompose.presentation.home.HomeUiStates
-import com.brq.hellocompose.ui.home.HomeLayout
 import com.brq.hellocompose.ui.theme.MoviesComposeTheme
 import org.junit.Before
 import org.junit.Rule

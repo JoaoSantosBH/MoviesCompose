@@ -3,13 +3,9 @@
 
 ### App de exemplo utilizando Jetpack Compose, Clean Architecture e padrão MVI
 
-### Prints do app
-
-![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
-
 ### Arquitetura
 Foi utilizada a arquitetura Clean
-#### - Camadas
+### Camadas
 **Data**:    
 /local/Dao  
 /local/Entities  
@@ -19,8 +15,12 @@ Foi utilizada a arquitetura Clean
 **Presentation**  
 **Ui** <br>
 
-### Pdrão MVI
-O padrão MVI é um ótimo padrão para trabalhar com o Compose , nele temos um fluxo unidirecional para atualizar os estados das Views e  seus efeitos colaterais para lidar com eventos usando LaunchedEffect, SideEffect etcc....
+### Padrão MVI
+O padrão MVI é um ótimo padrão para se trabalhar com o Compose , nele podemos citar as seguintes vantagens:
+- Fluxo de dados unidirecional e cíclico — é um padrão de design em que o estado flui para baixo e os eventos fluem para cima. Com essa abordagem, podemos separar elementos que podem ser compostos que exibem um estado na IU das partes do seu aplicativo que armazenam e alteram o estado.
+- Fonte única de verdade — a entidade principal nesta arquitetura, da qual emanam todos os outros benefícios.
+- Facilidade de depuração. Como temos apenas uma fonte de dados, é fácil depurá-la.
+- Facilidade de teste. Na maioria dos casos, basta verificar um novo estado após algum evento para validar o código, e isso é bastante fácil de fazer com a implementação correta.
 
 ![Foto MVI](img/mvi.png)
 
@@ -38,10 +38,10 @@ Ex: **LoginEvents**
 
 Como funciona: <br>    
 Basicamente a **ViewModel** recebe um Evento da View,    
-este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado
+este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado  da View
 
 ### Jetpack Compose
-O Jetpack Compose é um kit de ferramentas para criação declarativa de UIs nativas, recomendado pelo Android. Ele simplifica e acelera o desenvolvimento da IU no Android.
+O Jetpack Compose é um kit para criação de UIs nativas, de maneira declarativa, e recomendado pelo Android. Ele simplifica e acelera o desenvolvimento da UI no Android.
 
 ### Gradle Kotlin DSL
 
@@ -58,28 +58,28 @@ Algumas vantagens de se usar kotlin DSL e não Groovy:
 
 
 Utilizamos a seguinte estrutura:  <br>    
-**Deps** : onde guardamos as referencias das dependencias/libs do projeto    
+**Deps** : onde guardamos as referências das dependências/libs do projeto    
 ![foto deps](img/deps.png)
 
-**Versions**: onde guardamos as versões dessas dependencias/libs
+**Versions**: onde guardamos as versões dessas dependências/libs
 
 ![foto version](img/version.png)
 
 
-**DependenciesXtensions** onde agrupamos as dependencias por afinidades
+**DependenciesXtensions** onde agrupamos as dependências por afinidades
 
 ![foto dependencias](img/depxt.png)
 
 
-para declara dependência utilizamos a exensão    
-invocando no build.gradle do módulo que desejarmos
+para declarar uma dependência utilizamos a extensão,    
+invocando no ***build.gradle.kts*** do módulo que desejarmos colocar a dependência :
 
-
-coilDependencies()
+Ex:
+***coilDependencies()***
 
 
 ### Navigation
-A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guardas nossas rotas de navegação:  <br>    
+A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guarda as nossas rotas de navegação:  <br>    
 Routes.kt    
 ![Foto Rotas](img/routes.png)
 
@@ -93,11 +93,16 @@ Para rodar teste navigation:
 Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] padrao do compose, exemplo no arquivo [NavHostForTest] Depois altere na [MainActivity] de [val navController = rememberAnimatedNavController()] para [val navController = rememberNavController()] Feito isso rode o teste
 
 
-### Telas do App
+### Features do App
 
 - LoginScreen.kt <br>
 - HomeScreen.kt <br>
 - DetailScreen.kt <br>
+
+### Prints do app
+
+![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
+
 
 ### Testes unitários (tests)
 
@@ -112,6 +117,9 @@ Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] pa
 
 - /remote/service/PopularMoviesServiceTest
 
+Para rodar os testes digite no terminal:
+
+***./gradlew testDebugUnitTest***
 
 ### Testes instrumentais (androidTests)
 ##### Room Data Base
@@ -128,25 +136,28 @@ Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] pa
 
 ![Foto Testes Instrumentais](img/androidTest.png)
 
-### Cobertura de testes - Jacoco
+![Video Testes Instrumentais](/img/espresso.webm)
+
+
+Para rodar os testes digite no terminal:
+***./gradlew connectedDebugAndroidTest***
+
+### Jacoco - Cobertura de testes
 ![Tela Jacoco](jacoco.png)
 
-Para rodar o jacoco utilize os scripts da pasta/scripts jacoco no gradle:    
+Para rodar o jacoco utilize os scripts da pasta/scripts/jacoco no gradle:    
 ![Tela Jacoco](img/jacocos.png)
 
 ou pelo terminal:  
 antes set a variavel cache para false  
-org.gradle.unsafe.configuration-cache=false  
-rode o comando ->  ./gradlew jacocoCoverage  
-rode o comando ->  ./gradlew jacocoReport
+*org.gradle.unsafe.configuration-cache=**false***  
+rode o comando ->  ***./gradlew jacocoCoverage***  
+rode o comando ->  ***./gradlew jacocoReport***
 
 Para abrir no Browser:
 PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
 
 ### Libs utilizadas no projeto
-
-
-
 
 #### JetpackCompose
 androidx.activity:activity-compose:${activityComposeVersion}    

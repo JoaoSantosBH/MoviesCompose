@@ -1,8 +1,8 @@
 package com.brq.hellocompose.data.remote.service
 
-import com.brq.hellocompose.core.data.remote.model.PopularMoviesResponse.Companion.FakeResponse
-import com.brq.hellocompose.core.services.Services
 import com.brq.hellocompose.core.util.NetworkUtils
+import com.brq.hellocompose.features.home.data.remote.model.PopularMoviesResponse.Companion.FakeResponse
+import com.brq.hellocompose.features.home.services.HomeServices
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -13,7 +13,7 @@ import retrofit2.Response
 
 class PopularMoviesServiceTest {
 
-    val service = mockk<Services>()
+    val service = mockk<HomeServices>()
 
     @Before
     fun setup(){

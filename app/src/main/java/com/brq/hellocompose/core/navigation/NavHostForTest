@@ -13,15 +13,15 @@ import androidx.navigation.navArgument
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.FILM_ID
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.FILM_ID_ARG
 import com.brq.hellocompose.core.util.rememberFlowWithLifecycle
-import com.brq.hellocompose.presentation.detail.DetailUiStates
-import com.brq.hellocompose.presentation.detail.MovieDetailViewModel
-import com.brq.hellocompose.presentation.home.HomeUiStates
-import com.brq.hellocompose.presentation.home.HomeViewModel
-import com.brq.hellocompose.presentation.login.LoginUiStates
-import com.brq.hellocompose.presentation.login.LoginViewModel
-import com.brq.hellocompose.ui.details.DetailsScreen
-import com.brq.hellocompose.ui.home.HomeScreen
-import com.brq.hellocompose.ui.login.LoginScreen
+import com.brq.hellocompose.features.details.presentation.DetailUiStates
+import com.brq.hellocompose.features.details.presentation.MovieDetailViewModel
+import com.brq.hellocompose.features.home.presentation.HomeUiStates
+import com.brq.hellocompose.features.home.presentation.HomeViewModel
+import com.brq.hellocompose.features.login.presentation.LoginUiStates
+import com.brq.hellocompose.features.login.presentation.LoginViewModel
+import com.brq.hellocompose.features.details.ui.DetailsScreen
+import com.brq.hellocompose.features.home.ui.HomeScreen
+import com.brq.hellocompose.features.login.ui.LoginScreen
 import org.koin.androidx.compose.getViewModel
 
 @Composable
