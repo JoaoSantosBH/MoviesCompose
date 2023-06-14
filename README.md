@@ -177,16 +177,8 @@ ___
 Para rodar o jacoco utilize os scripts da pasta/scripts/jacoco no gradle:        
 ![Tela Jacoco](img/jacocos.png)
 
-ou pelo terminal:      
-antes set a variável cache para **false**,  no arquivo **gradle.properties**
+ou pelo terminal:
 
-    org.gradle.unsafe.configuration-cache=false 
-
-ou apenas comente esta linha colocando um # no início
-
-    #org.gradle.unsafe.configuration-cache=true 
-
-rode o comando:
 
     ./gradlew jacocoCoverage
 
