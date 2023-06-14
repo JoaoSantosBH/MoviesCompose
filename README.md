@@ -195,11 +195,15 @@ rode o comando:
     ./gradlew jacocoReport 
 
 
-Para abrir no Browser:   
+Para abrir no Browser:
+
 Coverage Report:
 PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
 
-PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
+Test Report:
+PATH --> /app/build/reports/tests/testDebugUnitTest/index.html
+
+
 ___ 
 #### Sumário de libs utilizadas no projeto
  ___
