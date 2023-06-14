@@ -195,9 +195,12 @@ rode o comando:
     ./gradlew jacocoReport 
 
 
-Para abrir no Browser:    
+Para abrir no Browser:   
+Coverage Report:
 PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
- ___ 
+
+PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
+___ 
 #### Sumário de libs utilizadas no projeto
  ___
 #### JetpackCompose
