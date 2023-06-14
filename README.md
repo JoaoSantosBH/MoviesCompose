@@ -203,6 +203,7 @@ PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
 Test Report:
 PATH --> /app/build/reports/tests/testDebugUnitTest/index.html
 
+![Tela report](img/report.png)
 
 ___ 
 #### Sumário de libs utilizadas no projeto
