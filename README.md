@@ -165,11 +165,6 @@ ___
 - /ui/HomeUiTest
 - /ui/LoginUiTest
 
-![Foto Testes Instrumentais](img/androidTest.png)
-
-![Video Testes Instrumentais](/img/espresso.webm)
-
-
 Para rodar os testes Intrumentais:
 
 Clique com o botão direito do mouse em cima da pasta **com(androidTest)** em seguida em rodar os testes conforme imagem
@@ -244,3 +239,7 @@ androidx.core:core-splashscreen:${splashScreenVersion}
 
 #### Turbine
 turbineFlowTests =  app.cash.turbine:turbine:${turbineVersion}
+
+![Video Testes Instrumentais](/img/espresso.webm)  
+
+
