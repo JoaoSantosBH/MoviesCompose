@@ -137,7 +137,7 @@ ___
 
 Para rodar os testes Unitários:
 
-Clique com o botão direito do mouse em cima da pasta **com(test)** em seguida em rodar os testes conforme imagem
+Clique com o botão direito do mouse em cima da pasta **com(test)** em seguida em rodar os testes conforme imagem, lembre-se de utilizar as instruções acima ()
 
 ![Foto unitTest](img/uinitTestMouse.png)
 
@@ -166,7 +166,7 @@ ___
 
 Para rodar os testes Intrumentais:
 
-Clique com o botão direito do mouse em cima da pasta **com(androidTest)** em seguida em rodar os testes conforme imagem
+Clique com o botão direito do mouse em cima da pasta **com(androidTest)** em seguida em rodar os testes conforme imagem, lembre-se de utilizar as instruções acima (alternativa 1 ou 2)
 
 ![Foto Testes Instrumentais](img/androidTestMouse.png)
 
@@ -198,8 +198,6 @@ Para abrir no Browser:
 Coverage Report:  
 PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
 
-Test Report:  
-PATH --> /app/build/reports/tests/testDebugUnitTest/index.html
 
 ![Tela report](img/report.png)
 
