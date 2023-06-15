@@ -36,7 +36,7 @@ object Versions {
     // T E S T S
     const val coroutinesTestVersion = "1.7.1"
     const val espressoVersion = "3.5.1"
-    const val jacocoVersion = "0.8.8"
+    const val jacocoVersion = "0.8.10"
     const val junitTestVersion = "4.13.2"
     const val junit5Version = "1.1.5"
     const val mokitoCoreVersion = "5.3.1"

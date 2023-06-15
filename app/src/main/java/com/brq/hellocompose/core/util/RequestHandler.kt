@@ -1,6 +1,5 @@
 package com.brq.hellocompose.core.util
 
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -26,13 +25,10 @@ object RequestHandler {
             }
             return wrapper
         } catch (e: UnknownHostException) {
-            Log.e("RequestHandler", ">>> UnknownHostException ${e.message}")
             ResponseWrapper.unexpected()
         } catch (e: IOException) {
-            Log.e("RequestHandler", ">>> IOException ${e.message}")
             ResponseWrapper.unexpected()
         } catch (e: Exception) {
-            Log.e("RequestHandler", ">>> Exception ${e.message}")
             ResponseWrapper.unexpected()
         }
     }

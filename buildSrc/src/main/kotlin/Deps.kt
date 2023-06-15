@@ -35,6 +35,14 @@ object Deps {
     // M A T E R I A L
     const val material3 = "androidx.compose.material3:material3"
 
+    // N A M E S
+    const val packageIdName = "com.brq.hellocompose"
+    const val TYPE_ARG = "String"
+    const val M_KEY = "API_KEY"
+    const val M_TOKEN = "API_TOKEN"
+    const val RELEASE = "release"
+    const val DEBUG = "debug"
+
     // P L U G I N S
     const val androidLib = "com.android.library"
     const val androidAplicationPlugin = "com.android.application"

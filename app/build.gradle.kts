@@ -1,3 +1,8 @@
+import Deps.DEBUG
+import Deps.M_KEY
+import Deps.M_TOKEN
+import Deps.RELEASE
+import Deps.TYPE_ARG
 import com.brq.hellocompose.androidTestsDependencies
 import com.brq.hellocompose.coilDependencies
 import com.brq.hellocompose.composeDependencies
@@ -21,15 +26,24 @@ plugins {
 
 android {
 
-    namespace = "com.brq.hellocompose"
+    namespace = Deps.packageIdName
     compileSdk = 33
     defaultConfig {
-        applicationId = "com.brq.hellocompose"
+        applicationId = Deps.packageIdName
         minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = Deps.androidTestRunnerImplementationClass
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     buildFeatures {
@@ -39,6 +53,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.composeCompilerVersion
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -47,36 +62,32 @@ android {
 
     buildTypes {
 
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
-        }
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_1_8.toString()
-        }
+        val key = providers.gradleProperty(M_KEY).get()
+        val token = providers.gradleProperty(M_TOKEN).get()
 
-        val key = providers.gradleProperty("API_KEY").get()
-        val token = providers.gradleProperty("API_TOKEN").get()
-
-        getByName("release") {
+        getByName(RELEASE) {
             isMinifyEnabled = false
-            buildConfigField("String", "API_KEY", key )
-            buildConfigField("String", "API_TOKEN", token)
+            buildConfigField(TYPE_ARG, M_KEY, key)
+            buildConfigField(TYPE_ARG, M_TOKEN, token)
         }
 
-        getByName("debug") {
+        getByName(DEBUG) {
             isMinifyEnabled = false
-            buildConfigField("String", "API_KEY", key )
-            buildConfigField("String", "API_TOKEN", token)
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage = true
+            buildConfigField(TYPE_ARG, M_KEY, key)
+            buildConfigField(TYPE_ARG, M_TOKEN, token)
         }
     }
 
     testCoverage {
-        testOptions {
-            unitTests.isIncludeAndroidResources = true
-            unitTests.isReturnDefaultValues = true
+        jacocoVersion = Versions.jacocoVersion
+        testOptions.unitTests.apply {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
         }
     }
+
 }
 
 dependencies {
