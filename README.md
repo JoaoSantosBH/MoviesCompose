@@ -24,19 +24,18 @@ ___
 ![Foto MVI](img/mvi.png)
 
 O padrão MVI é um ótimo padrão para se trabalhar com o Compose:
-- Fluxo de dados unidirecional e cíclico — é um padrão de design em que o estado flui para baixo e os eventos fluem para cima.
-- Fonte única de verdade — a viewModel,  garante um estado e um evento por vez na tela.
-- Facilidade de depuração. Como temos apenas uma fonte de dados, é fácil depurá-la.
-- Facilidade de teste. Basta verificar um novo estado após algum evento disparado para validar o código.
+- Fluxo de dados unidirecional e cíclico
+- Gerenciamento de estado usando imutabilidade para ter uma única fonte de verdade.
+- Facilidade de depuração
+- Facilidade de teste .
 
-
-Utilizamos uma  **data class** para representar os possíveis estados da UI <br>
+Utilizamos uma  **data class** para representar os  estados da View <br>
 
 Ex: **LoginUiStates**
 
 ![Foto uiStates](img/uiStates.png)
 
-Utilizamos uma **sealed class** para representar os eventos da tela          
+Utilizamos uma **sealed class** para representar os eventos           
 <br>          
 Ex: **LoginEvents**
 
@@ -44,7 +43,7 @@ Ex: **LoginEvents**
 
 Como funciona: <br>          
 Basicamente a **ViewModel** recebe um Evento da View,          
-este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado  da View
+este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o **recomposition** do Compose renderize as alterações na View para corresponder ao novo estado  da View
 ___ 
 #### UI
 ___  
@@ -105,7 +104,7 @@ ___
 - DetailScreen.kt <br>
 ___  
 #### Prints do app
-___ ![Tela Splash](img/splash.png)   ![Tela Login](img/login.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)
+___ ![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
 
 ___
 #### Instruções específicas do projeto
