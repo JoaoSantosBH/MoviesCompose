@@ -104,7 +104,7 @@ ___
 - DetailScreen.kt <br>
 ___  
 #### Prints do app
-___ ![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
+___ ![Tela Splash](img/splash.png)   ![Tela Login](img/login.png)     ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)
 
 ___
 #### Instruções específicas do projeto
