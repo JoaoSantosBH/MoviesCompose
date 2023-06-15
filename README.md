@@ -25,7 +25,7 @@ ___
 
 O padrão MVI é um ótimo padrão para se trabalhar com o Compose:
 - Fluxo de dados unidirecional e cíclico — é um padrão de design em que o estado flui para baixo e os eventos fluem para cima.
-- Fonte única de verdade — a entidade principal nesta arquitetura, da qual emanam todos os outros benefícios.
+- Fonte única de verdade — a viewModel,  garante um estado e um evento por vez na tela.
 - Facilidade de depuração. Como temos apenas uma fonte de dados, é fácil depurá-la.
 - Facilidade de teste. Na maioria dos casos, basta verificar um novo estado após algum evento para validar o código, e isso é bastante fácil de fazer com a implementação correta.
 
