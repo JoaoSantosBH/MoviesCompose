@@ -17,8 +17,9 @@ Foi utilizada a arquitetura Clean com abstrações de camadas arquiteturais e po
 - **Features**:       
   features/login    
   features/home    
-  features/details  
-  ___#### Padrão MVI
+  features/details
+ ___
+#### Padrão MVI
 ___  
 ![Foto MVI](img/mvi.png)
 
@@ -43,12 +44,15 @@ Ex: **LoginEvents**
 
 Como funciona: <br>          
 Basicamente a **ViewModel** recebe um Evento da View,          
-este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado  da View  
-___ #### UI
+este **Evento** dispara uma acão, e o efeito desta ação causa uma alteracão na classe de estados da View **UiStates**, que  faz com que o recomposition do Compose renderize as alterações na View para corresponder ao novo estado  da View
+___ 
+#### UI
 ___  
-Para criação das Views foi utilizado o **Jetpack Compose**, uma api para criação declarativa de UIs nativas,  recomendado pelo Android.  
-___ #### Gerenciamento de dependências  
-___ O gerenciamento de dependências do projeto foi feito com **Gradle Plugin e Kotlin DSL**
+Para criação das Views foi utilizado o **Jetpack Compose**, uma api para criação declarativa de UIs nativas,  recomendado pelo Android.
+___ 
+#### Gerenciamento de dependências
+___ 
+O gerenciamento de dependências do projeto foi feito com **Gradle Plugin e Kotlin DSL**
 
 Algumas vantagens de se usar kotlin DSL e não Groovy:
 - Preenchimento automático do código(_autocomplete_)
@@ -79,17 +83,22 @@ invocando no ***build.gradle.kts*** do módulo que desejarmos colocar a dependê
 
 Ex:
 
-coilDependencies()  
-___ #### Injeção de dependências
+
+     coilDependencies()  
+
+___ 
+#### Injeção de dependências
 ___  
-Foi utilizada a lib koin para injeção de dependências do projeto  
-___ #### Navegação
+Foi utilizada a lib koin para injeção de dependências do projeto
+___ 
+#### Navegação
 ___  
 A navegação do app utiliza a API do Compose Navigations e para tal temos uma **sealed class** que guarda as nossas rotas de navegação:  <br>          
 Routes.kt          
 ![Foto Rotas](img/routes.png)
 
-___ #### Features do App
+___ 
+#### Features do App
 ___  
 - LoginScreen.kt <br>
 - HomeScreen.kt <br>
@@ -98,7 +107,8 @@ ___
 #### Prints do app
 ___ ![Tela Splash](img/splash.png)   ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)   ![Tela Login](img/login.png)
 
-___ #### Instruções específicas do projeto
+___
+#### Instruções específicas do projeto
 ___  
 Para realizar o Login utilize a          
 Senha fake : abc123
@@ -111,9 +121,11 @@ Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] pa
 
 ***Alternativa 02:***
 
-Também pode se utilizar a branch "***teste***" caso não queira realizar nenhuma das alterações acima mencionadas, e rodar os testes nela  
-___ #### Testes unitários (tests)  
-___ ##### Presentation
+Também pode se utilizar a branch "***teste***" caso não queira realizar nenhuma das alterações acima mencionadas, e rodar os testes nela
+___ 
+#### Testes unitários (tests)
+___
+##### Presentation
 - /presentation/detail/DetailViewModelTest.kt
 - /presentation/home/HomeViewModelTest.kt
 - /presentation/login/LoginViewModelTest.kt
@@ -133,11 +145,13 @@ Clique com o botão direito do mouse em cima da pasta **com(test)** em seguida e
 
 ou digite no terminal:
 
-./gradlew testDebugUnitTest
+     ./gradlew testDebugUnitTest   
+
 
 ![Foto tests](img/gradleUnit.png)
 
-___ #### Testes instrumentais (androidTests)
+___ 
+#### Testes instrumentais (androidTests)
 ___  
 ##### Room Data Base
 
@@ -166,24 +180,24 @@ Clique com o botão direito do mouse em cima da pasta **com(androidTest)** em se
 
 ou digite no terminal:
 
-./gradlew connectedDebugAndroidTest
+     ./gradlew connectedDebugAndroidTest  
+
 
 ![Foto tests](img/gradleIns.png)
 
-___ #### Cobertura de testes - Jacoco
+___
+#### Cobertura de testes - Jacoco
 ___  
 ![Tela Jacoco](jacoco.png)
 
 Para rodar o jacoco utilize os scripts da pasta/scripts/jacoco no gradle:          
 ![Tela Jacoco](img/jacocos.png)
 
-ou pelo terminal:
+ou pelo terminal, rode o comando:
 
 
-./gradlew jacocoCoverage  
-rode o comando:
+    ./gradlew jacocoReport   
 
-./gradlew jacocoReport
 
 Para abrir no Browser:
 
@@ -195,8 +209,10 @@ PATH --> /app/build/reports/tests/testDebugUnitTest/index.html
 
 ![Tela report](img/report.png)
 
-___ #### Sumário de libs utilizadas no projeto  
-___#### JetpackCompose  
+___ 
+#### Sumário de libs utilizadas no projeto
+ ___
+#### JetpackCompose
 androidx.activity:activity-compose:${activityComposeVersion}          
 androidx.navigation:navigation-compose:${composeNavVersion}
 
