@@ -204,7 +204,7 @@ PATH --> /app/build/reports/coverage/androidTest/debug/connected/index.html
 ___ 
 #### Sumário de libs utilizadas no projeto
  ___
-#### JetpackCompose
+#### Compose
 androidx.activity:activity-compose:${activityComposeVersion}          
 androidx.navigation:navigation-compose:${composeNavVersion}
 
