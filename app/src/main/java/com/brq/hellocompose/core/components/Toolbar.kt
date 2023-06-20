@@ -1,5 +1,6 @@
 package com.brq.hellocompose.core.components
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
@@ -15,14 +16,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.brq.hellocompose.R
+import com.brq.hellocompose.core.navigation.Screen
 import com.brq.hellocompose.core.util.showToastMessage
 import com.brq.hellocompose.ui.theme.Cyan700
 import com.brq.hellocompose.ui.theme.Green100
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeToolBarCompose(title: Int) {
+fun HomeToolBarCompose(title: Int, navController: NavHostController) {
     val context = LocalContext.current
     CenterAlignedTopAppBar(
         title = {
@@ -45,7 +49,7 @@ fun HomeToolBarCompose(title: Int) {
         },
         actions = {
             IconButton(onClick = {
-                showToastMessage(context = context, string = "NOT YET")
+                navController.navigate(Screen.LoginScreen.route)
             }
             ) {
                 Icon(
@@ -60,16 +64,18 @@ fun HomeToolBarCompose(title: Int) {
 }
 
 
+@OptIn(ExperimentalAnimationApi::class)
 @Preview
 @Composable
 fun PreviewToolbar () {
-    val onClickAction: () -> Unit = {}
-    HomeToolBarCompose(R.string.home_toolbar_title_text)
+    val navController = rememberAnimatedNavController()
+    HomeToolBarCompose(R.string.home_toolbar_title_text, navController)
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Preview
 @Composable
 fun PreviewToolbarWithSecondIcon () {
-    val onClickAction: () -> Unit = {}
-    HomeToolBarCompose(R.string.home_toolbar_title_text)
+    val navController = rememberAnimatedNavController()
+    HomeToolBarCompose(R.string.home_toolbar_title_text, navController)
 }

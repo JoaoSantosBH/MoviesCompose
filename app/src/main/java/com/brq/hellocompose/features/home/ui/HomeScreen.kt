@@ -86,7 +86,7 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            HomeToolBarCompose(title = R.string.home_toolbar_title_text)
+            HomeToolBarCompose(title = R.string.home_toolbar_title_text, navController)
         },
         content = { paddingValues ->
 
