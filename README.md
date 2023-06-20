@@ -112,15 +112,6 @@ ___
 Para realizar o Login utilize a          
 Senha fake : abc123
 
-Foi utilizada a lib **AnimatedNavHost** para navegação entre telas, com efeitos de transições entre as telas, porém esta lib ainda não conta com suporte a testes, e por tal motivo foi criado um arquivo com a lib padrão do compose apenas para rodar os testes de navegação, para isso execute os procedimentos citados abaixo:          
-Para rodar teste navigation:
-
-***Alternativa 01:***  
-Substitua o componente [AnimatedNavHost] no arquivo [NavvHost] pelo [NavHost] padrao do compose, exemplo no arquivo [NavHostForTest] Depois altere na [MainActivity] de [val navController = rememberAnimatedNavController()] para [val navController = rememberNavController()] Feito isso rode o teste
-
-***Alternativa 02:***
-
-Também pode se utilizar a branch "***teste***" caso não queira realizar nenhuma das alterações acima mencionadas, e rodar os testes nela
 ___ 
 #### Testes unitários (tests)
 ___

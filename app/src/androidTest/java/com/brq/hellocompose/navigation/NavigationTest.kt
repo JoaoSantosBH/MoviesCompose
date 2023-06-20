@@ -19,16 +19,6 @@ import org.junit.Rule
 import org.junit.Test
 
 class NavigationTest {
-    /**
-     *  Para este teste de navegação em específico
-     *  substitua o componente [AnimatedNavHost] no arquivo [NavvHost]
-     *  pelo [NavHost] padrao do compose, exemplo no arquivo [NavHostForTest]
-     *  pois o AnimatedNavHost nao eh compativel com testes ainda
-     *
-     *  Depois altere na [MainActivity]  de [val navController = rememberAnimatedNavController()]
-     *  para [val navController = rememberNavController()]
-     * **/
-
     @get:Rule
     val composeTestRule = createComposeRule()
     val onEvent: (HomeEvent) -> Unit = {}
