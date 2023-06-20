@@ -19,14 +19,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.brq.hellocompose.R
 import com.brq.hellocompose.core.navigation.Screen
-import com.brq.hellocompose.core.util.showToastMessage
 import com.brq.hellocompose.ui.theme.Cyan700
 import com.brq.hellocompose.ui.theme.Green100
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeToolBarCompose(title: Int, navController: NavHostController) {
+fun HomeToolBarCompose(
+    title: Int,
+    navController: NavHostController,
+    menuClick: () -> Unit
+) {
     val context = LocalContext.current
     CenterAlignedTopAppBar(
         title = {
@@ -38,7 +41,7 @@ fun HomeToolBarCompose(title: Int, navController: NavHostController) {
         },
         navigationIcon = {
             IconButton(onClick = {
-                showToastMessage(context = context, string = "NOT YET")
+                menuClick.invoke()
             }) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
@@ -69,7 +72,8 @@ fun HomeToolBarCompose(title: Int, navController: NavHostController) {
 @Composable
 fun PreviewToolbar () {
     val navController = rememberAnimatedNavController()
-    HomeToolBarCompose(R.string.home_toolbar_title_text, navController)
+    val menuClick: () -> Unit = {}
+    HomeToolBarCompose(R.string.home_toolbar_title_text, navController, menuClick)
 }
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -77,5 +81,6 @@ fun PreviewToolbar () {
 @Composable
 fun PreviewToolbarWithSecondIcon () {
     val navController = rememberAnimatedNavController()
-    HomeToolBarCompose(R.string.home_toolbar_title_text, navController)
+    val menuClick: () -> Unit = {}
+    HomeToolBarCompose(R.string.home_toolbar_title_text, navController, menuClick)
 }

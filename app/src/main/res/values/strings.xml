@@ -15,4 +15,6 @@
     <string name="hint_name_text">Username</string>
     <string name="hint_pass_text">Password</string>
     <string name="fail_login_text">Falha  no Login!!</string>
+    <string name="app_drawer_title">Menu</string>
+
 </resources>

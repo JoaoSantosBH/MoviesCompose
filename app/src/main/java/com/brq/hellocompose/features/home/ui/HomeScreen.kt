@@ -20,18 +20,23 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.sharp.Info
 import androidx.compose.material3.Card
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,7 +63,9 @@ import com.brq.hellocompose.features.home.presentation.HomeUiStates
 import com.brq.hellocompose.ui.theme.Cyan700
 import com.brq.hellocompose.ui.theme.Green100
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -84,15 +91,31 @@ fun HomeScreen(
             }, positiveDialogClick
         )
 
-    Scaffold(
-        topBar = {
-            HomeToolBarCompose(title = R.string.home_toolbar_title_text, navController)
-        },
-        content = { paddingValues ->
+    val drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val coroutineScope: CoroutineScope = rememberCoroutineScope()
 
-             HomeLayout(paddingValues, state.popularMovies, navController, onEvent, state)
-        }
-    )
+    ModalNavigationDrawer(drawerContent = {
+        AppDrawer(
+            route = Screen.MoviesScreen.route,
+            navigateToOther = {  },
+            navigateToAnother = {  },
+            closeDrawer = { coroutineScope.launch { drawerState.close() } },
+            modifier = Modifier
+        )
+    }, drawerState = drawerState) {
+
+        val menuClick : () -> Unit = { coroutineScope.launch { drawerState.open() }}
+
+        Scaffold(
+            topBar = {
+                HomeToolBarCompose(title = R.string.home_toolbar_title_text, navController, menuClick)
+            },
+            content = { paddingValues ->
+                HomeLayout(paddingValues, state.popularMovies, navController, onEvent, state)
+            }
+        )
+    }
+
     LaunchedEffect(key1 = Unit) {
         delay(1000)
         onEvent.invoke(HomeEvent.UpdateFavorites)
