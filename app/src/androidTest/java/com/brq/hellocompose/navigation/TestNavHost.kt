@@ -1,4 +1,5 @@
-package com.brq.hellocompose.core.navigation
+package com.brq.hellocompose.navigation
+
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -10,22 +11,23 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.brq.hellocompose.core.navigation.Screen
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.FILM_ID
 import com.brq.hellocompose.core.util.NetworkUtils.Companion.FILM_ID_ARG
 import com.brq.hellocompose.core.util.rememberFlowWithLifecycle
 import com.brq.hellocompose.features.details.presentation.DetailUiStates
 import com.brq.hellocompose.features.details.presentation.MovieDetailViewModel
+import com.brq.hellocompose.features.details.ui.DetailsScreen
 import com.brq.hellocompose.features.home.presentation.HomeUiStates
 import com.brq.hellocompose.features.home.presentation.HomeViewModel
+import com.brq.hellocompose.features.home.ui.HomeScreen
 import com.brq.hellocompose.features.login.presentation.LoginUiStates
 import com.brq.hellocompose.features.login.presentation.LoginViewModel
-import com.brq.hellocompose.features.details.ui.DetailsScreen
-import com.brq.hellocompose.features.home.ui.HomeScreen
 import com.brq.hellocompose.features.login.ui.LoginScreen
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-internal fun AppNavigation(
+internal fun AppNavigationTest(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {

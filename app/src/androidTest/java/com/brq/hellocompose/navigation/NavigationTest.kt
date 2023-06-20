@@ -7,7 +7,6 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
-import com.brq.hellocompose.core.navigation.AppNavigation
 import com.brq.hellocompose.expectedRoute
 import com.brq.hellocompose.fakeItems
 import com.brq.hellocompose.features.home.presentation.HomeEvent
@@ -40,7 +39,7 @@ class NavigationTest {
         composeTestRule.setContent {
             navController = TestNavHostController(LocalContext.current)
             navController.navigatorProvider.addNavigator(ComposeNavigator())
-            AppNavigation(navController = navController)
+            AppNavigationTest(navController = navController)
 
             HomeLayout(
                 paddingValues = PaddingValues(),
