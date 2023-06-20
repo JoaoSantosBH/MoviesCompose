@@ -114,7 +114,7 @@ class HomeViewModel(
     }
 
     private fun filterAllMovies() {
-        _uiState.update { it.copy(popularMovies = _uiState.value.cachedMovies) }
+        _uiState.update { it.copy(popularMovies = _uiState.value.cachedMovies, isTabFavSelected = false) }
 
     }
 
@@ -124,7 +124,7 @@ class HomeViewModel(
                 _uiState.value.favoriteIds.contains(
                     it.id
                 )
-            })
+            }, isTabFavSelected = true)
         }
     }
 

@@ -1,6 +1,7 @@
 package com.brq.hellocompose.features.home.ui
 
 import android.content.res.Configuration
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -97,6 +98,7 @@ fun HomeScreen(
         onEvent.invoke(HomeEvent.UpdateFavorites)
         if (state.popularMovies.isEmpty()) onEvent.invoke(HomeEvent.GetMovieList)
     }
+    BackHandler {}
 }
 
 @Composable
@@ -123,7 +125,7 @@ fun HomeLayout(
                 Column(modifier = Modifier.fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center) {
-                    Text(text = stringResource(id = R.string.no_movies_yet))
+                    if (state.isTabFavSelected) Text(text = stringResource(id = R.string.no_movies_yet))
                 }
             } else {
 

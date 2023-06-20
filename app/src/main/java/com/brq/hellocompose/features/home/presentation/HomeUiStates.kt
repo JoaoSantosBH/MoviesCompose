@@ -9,9 +9,10 @@ data class HomeUiStates(
     val cachedMovies: List<MovieModel> = emptyList(),
     val favoriteIds: List<Int?> = emptyList(),
     val mustShowDialog: Boolean = false,
-    val errorMessage: String = ""
+    val errorMessage: String = "",
+    val isTabFavSelected : Boolean = false
 ) {
-        companion object {
+    companion object {
         val Empty = HomeUiStates()
     }
 
