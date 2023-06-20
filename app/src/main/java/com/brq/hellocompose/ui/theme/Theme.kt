@@ -2,6 +2,7 @@ package com.brq.hellocompose.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -55,10 +56,15 @@ fun MoviesComposeTheme(
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = Green100.toArgb()
-            window.decorView.windowInsetsController!!.hide(
-                android.view.WindowInsets.Type.statusBars()
-            )
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+                window.decorView.windowInsetsController!!.hide(
+                    android.view.WindowInsets.Type.statusBars()
+                )
+                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            } else {
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+            }
+
         }
     }
 
