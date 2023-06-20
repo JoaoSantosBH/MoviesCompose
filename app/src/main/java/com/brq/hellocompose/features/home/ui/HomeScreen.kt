@@ -18,7 +18,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.sharp.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,8 +35,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,6 +44,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.brq.hellocompose.R
 import com.brq.hellocompose.core.components.CustomDialogWithDraweableCompose
 import com.brq.hellocompose.core.components.HomeToolBarCompose
@@ -150,11 +150,15 @@ fun CardMovie(navController: NavHostController, card: MovieModel) {
         .clickable {
         navController.navigate(Screen.MoviesDetailsScreen.route + "/${card.id}")
     }) {
+
         AsyncImage(
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillWidth,
-            model = PATH_PREFIX_URL + card.posterPath,
-            placeholder = rememberVectorPainter(image = Icons.Default.Star),
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(PATH_PREFIX_URL + card.posterPath)
+                .crossfade(true)
+                .build(),
+            placeholder = painterResource(R.drawable.baseline_local_movies_24),
             error = painterResource(R.drawable.ic_placeholder),
             contentDescription = card.title
         )
