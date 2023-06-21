@@ -61,12 +61,12 @@ fun DependencyHandlerScope.androidTestsDependencies() {
     "androidTestImplementation"(platform(Deps.composeBom))
     "androidTestImplementation"(Deps.composeUiTestJunit)
     "testImplementation"(Deps.roomTests)
+    "androidTestImplementation"(Deps.junit5)
     "androidTestImplementation"(Deps.compoaseNavTest)
 }
 
 fun DependencyHandlerScope.testsDependencies() {
     "testImplementation"(Deps.junitTest)
-    "androidTestImplementation"(Deps.junit5)
     "testImplementation"(Deps.mockK)
     "testImplementation"(Deps.testCoroutines)
     "testImplementation"(Deps.turbineFlowTests)

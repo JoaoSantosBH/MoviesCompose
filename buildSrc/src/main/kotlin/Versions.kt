@@ -21,6 +21,9 @@ object Versions {
     // I N T E R C E P T O R
     const val interceptorVersion = "4.11.0"
 
+    // J A C O C O
+    const val jacocoVersion = "0.8.10"
+
     // K O I N
     const val koinComposeVersion = "3.4.1"
 
@@ -36,15 +39,11 @@ object Versions {
     // T E S T S
     const val coroutinesTestVersion = "1.7.1"
     const val espressoVersion = "3.5.1"
-    const val jacocoVersion = "0.8.10"
     const val junitTestVersion = "4.13.2"
     const val junit5Version = "1.1.5"
     const val mokitoCoreVersion = "5.3.1"
     const val mockitoKotlinVersion = "4.1.0"
     const val mockKVersion = "1.13.5"
     const val turbineVersion = "0.13.0"
-
-
-
 
 }

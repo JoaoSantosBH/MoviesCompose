@@ -20,30 +20,32 @@ plugins {
     id(Deps.androidAplicationPlugin)
     kotlin(Deps.androidPlugin)
     id(Deps.kotlinKap)
-    id(Deps.jacocoPlugin)
+    jacoco
     id(Deps.jacocoXtension)
+
 }
 
 android {
 
     namespace = Deps.packageIdName
-    compileSdk = 33
+    compileSdk = AppConfig.targetSdk
+
     defaultConfig {
         applicationId = Deps.packageIdName
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
         testInstrumentationRunner = Deps.androidTestRunnerImplementationClass
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     buildFeatures {
@@ -102,11 +104,14 @@ dependencies {
     roomDependencies()
     splashScreenDependencies()
 
-    // T E S T S
+    // T E S T S   S E C T I O N
+
     //Instrumented
     androidTestsDependencies()
+
     //Coverage
     jacocoDependencies()
+
     //Unit
     testsDependencies()
 }
