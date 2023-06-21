@@ -6,11 +6,6 @@ tasks.withType<Test> {
         isIncludeNoLocationClasses = true
         excludes = listOf(
             "jdk.internal.*",
-            "**/google/**/*.*",
-            "**/coil/**/*.*",
-            "coil/compose/singleton/*",
-            "**/compose/**/*.*",
-            "io.*.*"
             )
     }
 }
