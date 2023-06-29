@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.brq.hellocompose.R
 import com.brq.hellocompose.ui.theme.Cyan900
-import com.brq.hellocompose.ui.theme.Green100
 
 @Composable
 fun CustomDialogWithDraweableCompose(
@@ -81,7 +80,7 @@ private fun ButtonLayout(positiveClick: () -> Unit, btnText: Int) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(46.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Green100)
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
         ) {
             Text(text = stringResource(id = btnText), color = Color.White)
         }

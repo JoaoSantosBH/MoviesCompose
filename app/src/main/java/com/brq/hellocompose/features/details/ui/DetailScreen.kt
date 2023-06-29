@@ -1,5 +1,6 @@
 package com.brq.hellocompose.features.details.ui
 
+import android.content.res.Configuration
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -40,6 +41,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -50,9 +52,6 @@ import com.brq.hellocompose.core.components.LoadingLayout
 import com.brq.hellocompose.core.util.NetworkUtils
 import com.brq.hellocompose.features.details.presentation.DetailEvent
 import com.brq.hellocompose.features.details.presentation.DetailUiStates
-import com.brq.hellocompose.ui.theme.Cyan700
-import com.brq.hellocompose.ui.theme.Green100
-import com.brq.hellocompose.ui.theme.Green50
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay
 
@@ -103,7 +102,7 @@ fun DetailsLayout(
 
     Column(modifier = Modifier
         .padding(paddingValues)
-        .background(color = Green100)) {
+        .background(color = MaterialTheme.colorScheme.surface)) {
         LazyColumn {
             item {
                 Box(modifier = Modifier.fillMaxWidth()) {
@@ -140,7 +139,7 @@ fun DetailsLayout(
                                             onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id))
                                     },
                                 imageVector = Icons.Sharp.Favorite,
-                                tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onPrimary,
+                                tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onError,
                                 contentDescription = null
                             )
                         }
@@ -187,7 +186,7 @@ fun CardDetails(state: DetailUiStates) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(color = Green50)
+                            .background(color = MaterialTheme.colorScheme.surface)
                             .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -196,10 +195,12 @@ fun CardDetails(state: DetailUiStates) {
                         Icon(
                             imageVector = Icons.Default.Favorite,
                             contentDescription = null,
-                            tint = Cyan700
+                            tint = MaterialTheme.colorScheme.primary
                         )
                         Text(
                             state.movie.budget.toString(),
+                            overflow = TextOverflow.Ellipsis,
+                            maxLines = 1,
                             modifier = Modifier.padding(16.dp),
                             style = MaterialTheme.typography.labelLarge
                         )
@@ -217,7 +218,7 @@ fun CardDetails(state: DetailUiStates) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(color = Green50)
+                            .background(color = MaterialTheme.colorScheme.surface)
                             .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -226,10 +227,12 @@ fun CardDetails(state: DetailUiStates) {
                         Icon(
                             imageVector = Icons.Default.Info,
                             contentDescription = null,
-                            tint = Cyan700
+                            tint = MaterialTheme.colorScheme.primary
                         )
                         Text(
                             state.movie.revenue.toString(),
+                            overflow = TextOverflow.Ellipsis,
+                            maxLines = 1,
                             modifier = Modifier.padding(16.dp),
                             style = MaterialTheme.typography.labelLarge
                         )
@@ -253,7 +256,7 @@ fun CardDetails(state: DetailUiStates) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(color = Green50)
+                            .background(color = MaterialTheme.colorScheme.surface)
                             .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -262,10 +265,12 @@ fun CardDetails(state: DetailUiStates) {
                         Icon(
                             imageVector = Icons.Default.Star,
                             contentDescription = null,
-                            tint = Cyan700
+                            tint = MaterialTheme.colorScheme.primary
                         )
                         Text(
                             state.movie.popularity.toString(),
+                            overflow = TextOverflow.Ellipsis,
+                            maxLines = 1,
                             modifier = Modifier.padding(16.dp),
                             style = MaterialTheme.typography.labelLarge
                         )
@@ -283,7 +288,7 @@ fun CardDetails(state: DetailUiStates) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(color = Green50)
+                            .background(color = MaterialTheme.colorScheme.surface)
                             .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -292,11 +297,13 @@ fun CardDetails(state: DetailUiStates) {
                         Icon(
                             imageVector = Icons.Default.DateRange,
                             contentDescription = null,
-                            tint = Cyan700
+                            tint = MaterialTheme.colorScheme.primary
                         )
                         Text(
                             state.movie.release_date.toString(),
                             modifier = Modifier.padding(16.dp),
+                            overflow = TextOverflow.Ellipsis,
+                            maxLines = 1,
                             style = MaterialTheme.typography.labelLarge
                         )
                     }
@@ -308,7 +315,11 @@ fun CardDetails(state: DetailUiStates) {
 }
 
 
-@Preview(showSystemUi = false, showBackground = true)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL,
+    showSystemUi = false, backgroundColor = 0xFFF44336
+)
 @Composable
 fun CardPreview() {
     val state = DetailUiStates()
@@ -317,7 +328,7 @@ fun CardPreview() {
 
 @OptIn(ExperimentalAnimationApi::class)
 @Preview(device = "spec:width=1440px,height=2560px,dpi=560",
-    showSystemUi = false, showBackground = false
+    showSystemUi = false, showBackground = true
 )
 @Composable
 fun ScreenPreview() {
