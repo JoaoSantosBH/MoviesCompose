@@ -16,14 +16,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.sharp.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
@@ -60,8 +57,8 @@ import com.brq.hellocompose.features.home.domain.MovieModel
 import com.brq.hellocompose.features.home.domain.PopularMoviesModel
 import com.brq.hellocompose.features.home.presentation.HomeEvent
 import com.brq.hellocompose.features.home.presentation.HomeUiStates
-import com.brq.hellocompose.ui.theme.Cyan700
-import com.brq.hellocompose.ui.theme.Green100
+import com.brq.hellocompose.ui.theme.ButtonDisabledColor
+import com.brq.hellocompose.ui.theme.OrangeBrqColor
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -98,7 +95,7 @@ fun HomeScreen(
         AppDrawer(
             route = Screen.MoviesScreen.route,
             navigateToOther = {  },
-            navigateToAnother = {  },
+            navigateToAnother = { navController.navigate(Screen.LoginScreen.route) },
             closeDrawer = { coroutineScope.launch { drawerState.close() } },
             modifier = Modifier
         )
@@ -135,7 +132,7 @@ fun HomeLayout(
 
     Column(modifier = Modifier
         .padding(paddingValues)
-        .background(color = Green100)
+        .background(color = MaterialTheme.colorScheme.background)
         .fillMaxSize()) {
 
         TabLayout(onEvent)
@@ -145,17 +142,21 @@ fun HomeLayout(
         } else {
             Spacer(modifier = Modifier.height(8.dp))
             if (cards.isEmpty()) {
-                Column(modifier = Modifier.fillMaxSize(),
+                Column(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center) {
                     if (state.isTabFavSelected) Text(text = stringResource(id = R.string.no_movies_yet))
                 }
             } else {
 
+                Spacer(modifier = Modifier.height(24.dp))
+
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(cards) { card ->
                         CardMovie(navController, card)
@@ -171,8 +172,8 @@ fun CardMovie(navController: NavHostController, card: MovieModel) {
     Card(modifier = Modifier
         .testTag("cardMovie${card.id}")
         .clickable {
-        navController.navigate(Screen.MoviesDetailsScreen.route + "/${card.id}")
-    }) {
+            navController.navigate(Screen.MoviesDetailsScreen.route + "/${card.id}")
+        }) {
 
         AsyncImage(
             modifier = Modifier.fillMaxSize(),
@@ -182,7 +183,7 @@ fun CardMovie(navController: NavHostController, card: MovieModel) {
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.baseline_local_movies_24),
-            error = painterResource(R.drawable.ic_placeholder),
+            error = painterResource(R.drawable.baseline_local_movies_24),
             contentDescription = card.title
         )
     }
@@ -194,19 +195,24 @@ fun TabLayout(onEvent: (HomeEvent) -> Unit) {
 
     val tabs = listOf(stringResource(id = R.string.films_tab_title),
         stringResource(id = R.string.films_tab_favorites))
+    val selected = remember { mutableStateOf(false) }
+    val color = if(selected.value) OrangeBrqColor else ButtonDisabledColor
 
     Column(modifier = Modifier.fillMaxWidth()) {
-        TabRow(selectedTabIndex = tabIndex, containerColor = Green100) {
+        TabRow(selectedTabIndex = tabIndex,
+            containerColor = MaterialTheme.colorScheme.background,
+
+        ) {
             tabs.forEachIndexed { index, title ->
-                Tab(text = { Text(title) },
+                Tab(text = {
+                    Text(
+                        text = title,
+                        color = if (tabIndex == index)  OrangeBrqColor else ButtonDisabledColor
+                    ) },
                     selected = tabIndex == index,
-                    onClick = { tabIndex = index },
-                    icon = {
-                        when (index) {
-                            0 -> Icon(imageVector = Icons.Sharp.Info, contentDescription = null, tint = Cyan700)
-                            1 -> Icon(imageVector = Icons.Default.Favorite, contentDescription = null, tint = Cyan700)
-                        }
-                    }
+                    onClick = {
+                        selected.value = !selected.value
+                        tabIndex = index },
                 )
             }
         }

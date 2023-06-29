@@ -1,7 +1,7 @@
 package com.brq.hellocompose.features.login.ui
 
 import android.content.Context
-import androidx.compose.foundation.Image
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,20 +9,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
@@ -30,29 +23,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Wallpapers
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.brq.hellocompose.R
 import com.brq.hellocompose.core.navigation.Screen
 import com.brq.hellocompose.core.util.showToastMessage
 import com.brq.hellocompose.features.login.presentation.LoginEvent
 import com.brq.hellocompose.features.login.presentation.LoginUiStates
-import com.brq.hellocompose.ui.theme.Cyan700
-import com.brq.hellocompose.ui.theme.Green100
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,6 +45,7 @@ fun LoginScreen(
     val context = LocalContext.current
     val focusRequester = remember { FocusRequester() }
     val loginFailMessage = stringResource(id = R.string.fail_login_text)
+
     Scaffold(
         content = { paddingValues ->
             LoginLayout(paddingValues, onEvent, state, context, focusRequester)
@@ -96,113 +78,56 @@ fun LoginLayout(
         modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues)
-            .background(color = Green100), contentAlignment = Alignment.TopCenter
+            .background(color = MaterialTheme.colorScheme.background), contentAlignment = Alignment.TopCenter
     ) {
-        Column(
-            modifier = Modifier.padding(20.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-
-            Image(painter = painterResource(id = R.drawable.tmdbicon), contentDescription = null)
-            Text(
-                modifier = Modifier.testTag("Login title"),
-                text = stringResource(id = R.string.login_label_text),
-                style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Monospace)
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-            TextField(
-                modifier = Modifier
-                    .testTag("Name textField")
-                    .focusRequester(focusRequester)
-                    .onFocusChanged { focusState ->
-                        if (!focusState.isFocused)
-                        onEvent.invoke(LoginEvent.ValidateNameField(state.name))
-                                    },
-                label = { Text(text = stringResource(id = R.string.hint_name_text)) },
-                value = state.name,
-                onValueChange = {
-                    onEvent.invoke(LoginEvent.ValidateNameField(it))
-                },
-                isError = state.isNameError,
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Next,
-                    keyboardType = KeyboardType.Text
-                )
-            )
-            if (state.isNameError) {
-                Text(
-                    text = state.nameErrorHint,
-                    color = MaterialTheme.colorScheme.error,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            TextField(
-                modifier = Modifier.testTag("Pass textField"),
-                label = { Text(text = stringResource(id = R.string.hint_pass_text)) },
-                value = state.pass,
-                visualTransformation = PasswordVisualTransformation(),
-                onValueChange = {
-                    onEvent.invoke(LoginEvent.ValidatePassField(it))
-                },
-                isError = state.isPassError,
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Go,
-                    keyboardType = KeyboardType.Password
-                ),
-                keyboardActions = KeyboardActions(
-                    onGo = {
-                        onEvent.invoke(LoginEvent.ValidateLogin)
-                    }
-                )
-            )
-            if (state.isPassError) {
-                Text(
-                    text = state.passErrorHint,
-                    color = MaterialTheme.colorScheme.error,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-            Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
-                Button(
-                    onClick = {
-                        onEvent.invoke(LoginEvent.ValidateLogin)
-
-                    },
-                    shape = RoundedCornerShape(50.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Cyan700),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .testTag("Button Login")
-                        .height(50.dp)
+        LazyColumn {
+            item {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = stringResource(id = R.string.login_label_text))
+
+                    LogoBrq()
+
+                    NameTextField(focusRequester, onEvent, state)
+                    if (state.isNameError) {
+                        Text(
+                            text = state.nameErrorHint,
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.padding(start = 16.dp)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    PassTextField(state, onEvent)
+                    if (state.isPassError) {
+                        Text(
+                            text = state.passErrorHint,
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.padding(start = 16.dp)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(48.dp))
+                    BottomLoginLayout(onEvent, context, state)
                 }
             }
-
-            Spacer(modifier = Modifier.height(20.dp))
-            ClickableText(
-                text = AnnotatedString(stringResource(id = R.string.forgot_pass_text)),
-                onClick = { showToastMessage(context, "NOT YET") },
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    fontFamily = FontFamily.Default
-                )
-            )
         }
     }
 
 }
 
-@Preview(device = "id:Nexus 5")
+
+
+
+@Preview(device = "id:Nexus 5",
+    uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
+    wallpaper = Wallpapers.NONE, showBackground = true
+)
 @Composable
 fun LoginPreview() {
     val context = LocalContext.current

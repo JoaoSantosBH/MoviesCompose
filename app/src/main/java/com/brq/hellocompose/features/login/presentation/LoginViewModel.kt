@@ -30,21 +30,33 @@ class LoginViewModel : ViewModel() {
                     is LoginEvent.ValidateLogin -> validatingLogin()
                     is LoginEvent.ValidateNameField -> validateNameField(event)
                     is LoginEvent.ValidatePassField -> validatePassField(event)
+                    is LoginEvent.CleanNameField -> cleanNameField()
+                    is LoginEvent.CleanPassField -> cleanPassField()
                 }
             }
         }
+    }
+
+    private fun cleanPassField() {
+        _uiState.update { it.copy(pass = "", allFieldsAreFilled = false) }
+    }
+
+    private fun cleanNameField() {
+        _uiState.update { it.copy(name = "", allFieldsAreFilled = false) }
     }
 
     private fun validatePassField(event: LoginEvent.ValidatePassField) {
         _uiState.update { it.copy(pass = event.pass) } 
         if (event.pass.isNotEmpty() && event.pass.length > 4) _uiState.update { it.copy(isPassError = false) }
         else _uiState.update { it.copy(isPassError = true) }
+        verifyAllFieldsAreFilled()
     }
 
     private fun validateNameField(event: LoginEvent.ValidateNameField) {
         _uiState.update { it.copy(name = event.name) }
         if (event.name.isNotEmpty()) _uiState.update { it.copy(isNameError = false) }
         else _uiState.update { it.copy(isNameError = true) }
+        verifyAllFieldsAreFilled()
     }
 
     private fun validatingLogin() {
@@ -59,7 +71,10 @@ class LoginViewModel : ViewModel() {
     }
 
     private fun verifyAllFieldsAreFilled() {
-        if (_uiState.value.name.isNotEmpty() && _uiState.value.pass.isNotEmpty()) {
+        if (_uiState.value.name.isNotEmpty() &&
+            _uiState.value.pass.isNotEmpty() &&
+            _uiState.value.pass.length > 4
+        ) {
             _uiState.update { it.copy( allFieldsAreFilled = true) }
         } else {
             _uiState.update { it.copy( allFieldsAreFilled = false) }
