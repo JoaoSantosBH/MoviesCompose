@@ -2,6 +2,7 @@ package com.brq.hellocompose.core.components
 
 import android.content.res.Configuration
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.material.*
 import androidx.compose.material3.DropdownMenu
@@ -40,6 +41,8 @@ fun HomeToolBarCompose(
     menuClick: () -> Unit
 ) {
     var showMenu by remember { mutableStateOf(false) }
+    val icon = if (showMenu) R.drawable.icon_exit else R.drawable.icon_exit_disabled
+
     TopAppBar(
         title = {
             Text(
@@ -56,8 +59,8 @@ fun HomeToolBarCompose(
                 showMenu = true
             }
             ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.icon_exit),
+                Image(
+                    painter = painterResource(id = icon),
                     contentDescription = ""
                 )
             }
