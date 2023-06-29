@@ -19,7 +19,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brq.hellocompose.R
-import com.brq.hellocompose.ui.theme.Cyan900
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +36,8 @@ fun AppDrawer(
             label = {
                 Text(
                     text = stringResource(id = R.string.app_name),
-                    style = MaterialTheme.typography.labelSmall
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary
                 )
             },
             selected = route == "",
@@ -45,18 +45,34 @@ fun AppDrawer(
                 navigateToOther()
                 closeDrawer()
             },
-            icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Home,
+                    contentDescription = null,
+                    tint =  MaterialTheme.colorScheme.primary
+                    ) },
             shape = MaterialTheme.shapes.small
         )
 
         NavigationDrawerItem(
-            label = { Text(text = stringResource(id = R.string.continue_label), style = MaterialTheme.typography.labelSmall) },
+            label = { 
+                Text(
+                    text = stringResource(id = R.string.exit),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary
+
+                    ) },
             selected = route == "",
             onClick = {
                 navigateToAnother()
                 closeDrawer()
             },
-            icon = { Icon(imageVector = Icons.Default.Person, contentDescription = null) },
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null,
+                    tint =  MaterialTheme.colorScheme.primary
+                    ) },
             shape = MaterialTheme.shapes.small
         )
     }
@@ -69,7 +85,7 @@ fun DrawerHeader(modifier: Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start,
         modifier = modifier
-            .background(color = Cyan900)
+            .background(color = MaterialTheme.colorScheme.primary)
             .padding(16.dp)
             .fillMaxWidth()
     ) {
@@ -93,7 +109,7 @@ fun DrawerHeader(modifier: Modifier) {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun DrawerHeaderPreview() {
     AppDrawer(modifier = Modifier, route = "")

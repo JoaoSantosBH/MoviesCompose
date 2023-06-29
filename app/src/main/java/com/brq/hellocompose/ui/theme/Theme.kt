@@ -18,21 +18,21 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    background = Cyan700,
-    surface = Cyan700,
+    background = BackgroundDark,
+    surface = SurfaceDark,
     onSurface = White,
-    primary = Grey900,
+    primary = OnSurface,
     onPrimary = White,
-    secondary = Grey100
+    secondary = SecondaryDark
 )
 
 private val LightColorScheme = lightColorScheme(
-    background = Green100,
-    surface = Green50,
-    onSurface = Grey900,
-    primary = Grey50,
-    onPrimary = Grey900,
-    secondary = Grey700
+    background = BackgroundLight,
+    surface = Surface,
+    onSurface = OnSurface,
+    primary = PrimaryLight,
+    onPrimary = OnSurface,
+    secondary = Secondary
 )
 @RequiresApi(Build.VERSION_CODES.R)
 @Composable
@@ -55,7 +55,7 @@ fun MoviesComposeTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = Green100.toArgb()
+            window.statusBarColor = BackgroundLight.toArgb()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
                 window.decorView.windowInsetsController!!.hide(
                     android.view.WindowInsets.Type.statusBars()
