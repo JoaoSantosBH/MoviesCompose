@@ -20,7 +20,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -128,7 +127,7 @@ fun DetailsLayout(
                                     .clickable { navController.popBackStack() },
                                 contentDescription = null
                             )
-                            Icon(
+                            Image(
                                 modifier = Modifier
                                     .size(42.dp)
                                     .clickable {
@@ -137,8 +136,7 @@ fun DetailsLayout(
                                         else
                                             onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id))
                                     },
-                                painter = painterResource(id = R.drawable.icon_heart_toolbar),
-                                tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onError,
+                                painter = if (state.isFavorite) painterResource(id = R.drawable.icon_heart_toolbar_enabled) else painterResource(id = R.drawable.icon_heart_toolbar),
                                 contentDescription = null
                             )
                         }

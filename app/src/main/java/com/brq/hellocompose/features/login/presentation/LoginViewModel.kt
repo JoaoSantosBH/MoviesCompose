@@ -64,10 +64,11 @@ class LoginViewModel : ViewModel() {
         if (_uiState.value.pass == uiSTate.value.fakePass &&
             !_uiState.value.isNameError &&
             !_uiState.value.isPassError &&
+            !_uiState.value.isLoginError &&
             _uiState.value.name.isNotEmpty()) {
-            _uiState.update { it.copy(isSuccessLogin = true) }
+            _uiState.update { it.copy(isSuccessLogin = true, isLoginError = false) }
         }
-        else _uiState.update { it.copy(isSuccessLogin = false) }
+        else _uiState.update { it.copy(isSuccessLogin = false, isLoginError = true) }
     }
 
     private fun verifyAllFieldsAreFilled() {

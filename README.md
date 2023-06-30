@@ -99,9 +99,9 @@ Routes.kt
 ___ 
 #### Features do App
 ___  
-- LoginScreen.kt <br>
-- HomeScreen.kt <br>
-- DetailScreen.kt <br>
+- Login <br>
+- Home <br>
+- Details <br>
 ___  
 #### Prints do app
 ___ ![Tela Splash](img/splash.png)   ![Tela Login](img/login.png)     ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)

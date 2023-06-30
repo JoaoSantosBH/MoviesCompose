@@ -55,13 +55,13 @@ fun LoginScreen(
         if (state.isSuccessLogin)
             navController.navigate(Screen.HomeScreen.route)
         else
-            if (state.allFieldsAreFilled && state.isSuccessLogin.not()) showToastMessage(
+            if (state.allFieldsAreFilled && state.isLoginError) showToastMessage(
                 context = context,
                 loginFailMessage
             )
     }
     LaunchedEffect(key1 = state.name) {
-        focusRequester.requestFocus()
+//        focusRequester.requestFocus()
     }
 }
 

@@ -11,7 +11,7 @@
     <string name="compose_dialog_master_choice_info_dialog_text">Texto de aviso</string>
     <string name="close_label">Fechar</string>
     <string name="forgot_pass_text">Esqueci a Senha</string>
-    <string name="login_label_text">Login</string>
+    <string name="login_label_text">Entrar</string>
     <string name="hint_name_text">Usuário</string>
     <string name="hint_pass_text">Senha</string>
     <string name="fail_login_text">Falha  no Login!!</string>
