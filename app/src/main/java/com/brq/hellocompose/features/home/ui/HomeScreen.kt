@@ -93,7 +93,7 @@ fun HomeScreen(
 
     ModalNavigationDrawer(drawerContent = {
         AppDrawer(
-            route = Screen.MoviesScreen.route,
+            route = Screen.HomeScreen.route,
             navigateToOther = {  },
             navigateToAnother = { navController.navigate(Screen.LoginScreen.route) },
             closeDrawer = { coroutineScope.launch { drawerState.close() } },
@@ -172,7 +172,7 @@ fun CardMovie(navController: NavHostController, card: MovieModel) {
     Card(modifier = Modifier
         .testTag("cardMovie${card.id}")
         .clickable {
-            navController.navigate(Screen.MoviesDetailsScreen.route + "/${card.id}")
+            navController.navigate(Screen.DetailsScreen.route + "/${card.id}")
         }) {
 
         AsyncImage(

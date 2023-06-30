@@ -14,7 +14,7 @@ val onEventHome: (HomeEvent) -> Unit = {}
 val onEventDetail: (DetailEvent) -> Unit = {}
 val onLoginDetail: (LoginEvent) -> Unit = {}
 
-val expectedRoute = Screen.MoviesDetailsScreen.route + NetworkUtils.FILM_ID_ARG
+val expectedRoute = Screen.DetailsScreen.route + NetworkUtils.FILM_ID_ARG
 
 const val nodeRoute = "cardMovie640146"
 const val nodeFilm = "Filmes"

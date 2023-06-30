@@ -55,7 +55,7 @@ fun NavGraphBuilder.navigateToLogin(navController: NavHostController) {
 }
 
 fun NavGraphBuilder.navigationHome(navController: NavHostController) {
-    composable(route = Screen.MoviesScreen.route) {
+    composable(route = Screen.HomeScreen.route) {
         val viewModel: HomeViewModel = getViewModel()
         val uiState by rememberFlowWithLifecycle(viewModel.uiSTate)
             .collectAsState(initial = HomeUiStates.Empty)
@@ -69,7 +69,7 @@ fun NavGraphBuilder.navigationHome(navController: NavHostController) {
 
 fun NavGraphBuilder.navigationDetails(navController: NavHostController) {
     composable(
-        route = Screen.MoviesDetailsScreen.route + FILM_ID_ARG,
+        route = Screen.DetailsScreen.route + FILM_ID_ARG,
         arguments = listOf(navArgument(FILM_ID) { type = NavType.StringType })
     ) { backStackEntry ->
         val viewModel: MovieDetailViewModel = getViewModel()

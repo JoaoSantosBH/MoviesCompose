@@ -2,7 +2,6 @@ package com.brq.hellocompose.features.details.ui
 
 import android.content.res.Configuration
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,12 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.sharp.Favorite
-import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -41,8 +35,10 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Wallpapers
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
@@ -52,6 +48,7 @@ import com.brq.hellocompose.core.components.LoadingLayout
 import com.brq.hellocompose.core.util.NetworkUtils
 import com.brq.hellocompose.features.details.presentation.DetailEvent
 import com.brq.hellocompose.features.details.presentation.DetailUiStates
+import com.brq.hellocompose.ui.theme.OrangeBrqColor
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.delay
 
@@ -100,9 +97,11 @@ fun DetailsLayout(
     navController: NavHostController
 ) {
 
-    Column(modifier = Modifier
-        .padding(paddingValues)
-        .background(color = MaterialTheme.colorScheme.surface)) {
+    Column(
+        modifier = Modifier
+            .padding(paddingValues)
+            .background(color = MaterialTheme.colorScheme.background)
+    ) {
         LazyColumn {
             item {
                 Box(modifier = Modifier.fillMaxWidth()) {
@@ -113,7 +112,7 @@ fun DetailsLayout(
                         contentScale = ContentScale.FillWidth,
                         model = NetworkUtils.PATH_PREFIX_URL + state.movie.posterPath,
                         placeholder = rememberVectorPainter(image = Icons.Default.Star),
-                        error = painterResource(R.drawable.ic_placeholder),
+                        error = painterResource(R.drawable.baseline_local_movies_24),
                         contentDescription = state.movie.title
                     )
                     Box(modifier = Modifier.padding(start = 8.dp, top = 16.dp, end = 16.dp)) {
@@ -122,7 +121,7 @@ fun DetailsLayout(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.baseline_arrow_circle_left_24),
+                                painter = painterResource(id = R.drawable.icon_return),
                                 modifier = Modifier
                                     .testTag("backButton")
                                     .size(42.dp)
@@ -138,7 +137,7 @@ fun DetailsLayout(
                                         else
                                             onEvent.invoke(DetailEvent.FavoriteMovie(state.movie.id))
                                     },
-                                imageVector = Icons.Sharp.Favorite,
+                                painter = painterResource(id = R.drawable.icon_heart_toolbar),
                                 tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onError,
                                 contentDescription = null
                             )
@@ -148,12 +147,37 @@ fun DetailsLayout(
             }
 
             item {
+                Spacer(modifier = Modifier.height(32.dp))
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = state.movie.title,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.titleLarge.copy(color = Color.White)
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = stringResource(id = R.string.sinopse_text),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.labelLarge.copy(color = OrangeBrqColor)
+                )
+            }
+
+            item {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
-                    Text(text = state.movie.overview)
+                    Text(
+                        text = state.movie.overview,
+                        style = MaterialTheme.typography.titleLarge.copy(color = Color.White)
+                    )
                 }
             }
 
@@ -165,7 +189,10 @@ fun DetailsLayout(
 
 @Composable
 fun CardDetails(state: DetailUiStates) {
-
+    val firstCardIcon = R.drawable.ic_first_card
+    val secondCardIcon = R.drawable.ic_second_card
+    val thirdCardIcon = R.drawable.ic_third_card
+    val fourthCardIcon = R.drawable.ic_fourth_card
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -177,69 +204,17 @@ fun CardDetails(state: DetailUiStates) {
                 .weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                border = BorderStroke(1.dp, Color.Gray),
-                content = {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = MaterialTheme.colorScheme.surface)
-                            .padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Icon(
-                            imageVector = Icons.Default.Favorite,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            state.movie.budget.toString(),
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 1,
-                            modifier = Modifier.padding(16.dp),
-                            style = MaterialTheme.typography.labelLarge
-                        )
-                    }
-                }
+            CardStatisticLayout(
+                state.movie.popularity.toString(),
+                firstCardIcon,
+                R.string.first_card_title
             )
             Spacer(modifier = Modifier.height(16.dp))
-
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                border = BorderStroke(1.dp, Color.Gray),
-                content = {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = MaterialTheme.colorScheme.surface)
-                            .padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Icon(
-                            imageVector = Icons.Default.Info,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            state.movie.revenue.toString(),
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 1,
-                            modifier = Modifier.padding(16.dp),
-                            style = MaterialTheme.typography.labelLarge
-                        )
-                    }
-                }
+            CardStatisticLayout(
+                state.movie.release_date,
+                thirdCardIcon,
+                R.string.third_card_title
             )
-
         }
         Column(
             modifier = Modifier
@@ -247,72 +222,21 @@ fun CardDetails(state: DetailUiStates) {
                 .weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                border = BorderStroke(1.dp, Color.Gray),
-                content = {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = MaterialTheme.colorScheme.surface)
-                            .padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            state.movie.popularity.toString(),
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 1,
-                            modifier = Modifier.padding(16.dp),
-                            style = MaterialTheme.typography.labelLarge
-                        )
-                    }
-                }
+            CardStatisticLayout(
+                state.movie.voteAverage.toString(),
+                secondCardIcon,
+                R.string.second_card_title
             )
-
             Spacer(modifier = Modifier.height(16.dp))
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                border = BorderStroke(1.dp, Color.Gray),
-                content = {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = MaterialTheme.colorScheme.surface)
-                            .padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Icon(
-                            imageVector = Icons.Default.DateRange,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            state.movie.release_date.toString(),
-                            modifier = Modifier.padding(16.dp),
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 1,
-                            style = MaterialTheme.typography.labelLarge
-                        )
-                    }
-                }
+            CardStatisticLayout(
+                state.movie.overview,
+                fourthCardIcon,
+                R.string.fourth_card_title
             )
-
         }
     }
 }
+
 
 
 @Preview(
@@ -327,8 +251,11 @@ fun CardPreview() {
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-@Preview(device = "spec:width=1440px,height=2560px,dpi=560",
-    showSystemUi = false, showBackground = true
+@Preview(
+    device = "id:Galaxy Nexus",
+    showSystemUi = false, showBackground = true, backgroundColor = 0xFF536DFE,
+    uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL,
+    wallpaper = Wallpapers.GREEN_DOMINATED_EXAMPLE, apiLevel = 31
 )
 @Composable
 fun ScreenPreview() {

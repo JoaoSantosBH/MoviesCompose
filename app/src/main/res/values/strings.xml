@@ -17,5 +17,11 @@
     <string name="fail_login_text">Falha  no Login!!</string>
     <string name="app_drawer_title">Menu</string>
     <string name="exit">Sair</string>
+    <string name="sinopse_text">SINOPSE</string>
+    <string name="first_card_title">CURTIDAS</string>
+    <string name="second_card_title">FAVORITOS</string>
+    <string name="third_card_title">ESTREIA</string>
+    <string name="fourth_card_title">LEGENDA</string>
+
 
 </resources>
