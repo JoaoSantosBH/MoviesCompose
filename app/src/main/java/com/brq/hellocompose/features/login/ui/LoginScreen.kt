@@ -53,7 +53,7 @@ fun LoginScreen(
     )
     SideEffect {
         if (state.isSuccessLogin)
-            navController.navigate(Screen.MoviesScreen.route)
+            navController.navigate(Screen.HomeScreen.route)
         else
             if (state.allFieldsAreFilled && state.isSuccessLogin.not()) showToastMessage(
                 context = context,

@@ -44,7 +44,7 @@ data class MovieDetailModel(
             posterPath = "",
             productionCompanies = listOf(),
             productionCountries = listOf(),
-            release_date = "",
+            release_date = "27/02/2022",
             revenue = -1,
             runtime = -1,
             spokenLanguages = listOf(),
