@@ -17,10 +17,9 @@ val onLoginDetail: (LoginEvent) -> Unit = {}
 val expectedRoute = Screen.DetailsScreen.route + NetworkUtils.FILM_ID_ARG
 
 const val nodeRoute = "cardMovie640146"
-const val nodeFilm = "Filmes"
-const val nodeFav = "Favoritos"
+const val nodeFilm = "Todos os Filmes"
+const val nodeFav = "Filmes Favoritos"
 const val nodeBackButton = "backButton"
-const val nodeLoginTitle  = "Login title"
 const val nodeLoginNameTextField = "Name textField"
 const val nodeLoginPassTextField = "Pass textField"
 const val nodeLoginButton = "Button Login"
