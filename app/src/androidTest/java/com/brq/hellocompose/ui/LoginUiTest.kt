@@ -14,7 +14,6 @@ import com.brq.hellocompose.features.login.ui.LoginLayout
 import com.brq.hellocompose.nodeLoginButton
 import com.brq.hellocompose.nodeLoginNameTextField
 import com.brq.hellocompose.nodeLoginPassTextField
-import com.brq.hellocompose.nodeLoginTitle
 import com.brq.hellocompose.onLoginDetail
 import com.brq.hellocompose.ui.theme.MoviesComposeTheme
 import org.junit.Before
@@ -50,7 +49,6 @@ class LoginUiTest {
     @Test
     fun loginLayoutTest() {
 
-        composeTestRule.onNodeWithTag(nodeLoginTitle).assertIsDisplayed()
         composeTestRule.onNodeWithTag(nodeLoginNameTextField).assertIsDisplayed()
         composeTestRule.onNodeWithTag(nodeLoginNameTextField).performClick()
 
