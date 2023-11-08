@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MoviesCompose</string>
     <string name="home_title_text">Compose Films</string>
-    <string name="home_toolbar_title_text">BRQ Movies</string>
+    <string name="home_toolbar_title_text">Movies</string>
     <string name="films_tab_title">Todos os Filmes</string>
     <string name="films_tab_favorites">Filmes Favoritos</string>
     <string name="no_movies_yet">Ainda não existem favoritos!</string>
