@@ -103,10 +103,7 @@ ___
 - Home <br>
 - Details <br>
 ___  
-#### Prints do app
-___ ![Tela Splash](img/splash.png)   ![Tela Login](img/login.png)     ![Tela Home](img/home.png)    ![Tela Detalhes](img/details.png)
 
-___
 #### Instruções específicas do projeto
 ___  
 Para realizar o Login utilize a          
